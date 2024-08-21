@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CS 4440</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons/css/academicons.min.css">
+    <link rel="stylesheet" href="../css/main.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
+    <script src="https://kit.fontawesome.com/982c2a20d7.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse">
+    <a class="navbar-brand" href="http://cs.utah.edu">
+        <img class="button" width="185px" src="../../../img/ksoclogo_white.png" style="margin-top:1.3%">
+    </a>
+
+    <div class="ml-auto">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav" style="margin-top: 1px;">
+                <li><a href="../">Syllabus</a></li>
+                <li><a href="../schedule">Schedule</a></li>
+                <li><a href="../assignments">Assignments</a></li>
+                <li><a href="../wiki">Wiki</a></li>
+                <li><a href="../redirect_piazza">Piazza</a></li>
+                <li><a href="../redirect_canvas">Canvas</a></li>
+                <li><a href="../redirect_pollev">PollEv</a></li>
+                <li><a href="../redirect_taqueue">TA&nbsp;Queue</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ################################################################################### -->
+
+<div class="container main-container">
+    <div class="col-md-10">
+        <h1>CS 4440 Wiki: <br class="on-narrow"><b style="color:dodgerblue">Terminal Cheat Sheet</b></h1><br>
+
+    <!-- ################################################################################### -->
+
+        <p>The following is a brief introduction of terminal commands that you will likely make use of in this course. If you think of any others worth including here, please let us know on <a href="../redirect_piazza">Piazza</a>!</p>
+
+    <!-- ################################################################################### -->
+
+        <hr><h2 id=nav>Navigating the File System</h2>
+ 
+        <p id=pwd><b><code>pwd</code>: print working directory:</b></p>
+<pre>
+$ pwd                   # Print path of current dir
+</pre>
+
+        <p id=mkdir><b><code>mkdir</code>: create directory:</b></p>
+<pre>
+$ mkdir dir             # Create directory dir
+</pre>
+
+        <p id=cd><b><code>cd</code>: change directory:</b></p>
+<pre>
+$ cd dir                # Move to directory dir
+
+$ cd ..                 # Move to parent of current directory
+
+$ cd ../..              # Move to parent of parent of current directory
+</pre>
+
+        <p id=ls><b><code>ls</code>: list the contents of a directory:</b></p>
+<pre>
+$ ls                    # Print contents of current directory
+
+$ ls dir                # Print contents of directory dir
+</pre>
+
+        <p id=rm><b><code>rm</code>: permanently delete:</b></p>
+<pre>
+$ rm file               # Remove file
+
+$ rm -r dir             # Recursively delete directory dir and its contents
+</pre>
+
+
+    <!-- ################################################################################### -->
+
+        <hr><h2 id=files>Working with Files</h2>
+
+        <p id=cp><b><code>cp</code>: copying files:</b></p>
+<pre>
+$ cp srcFile dstFile    # Copy srcFile over dstFile
+
+$ cp srcFile dstDir     # Copy srcFile to dstDir
+
+$ cp srcDir/* dstDir    # Copy contents of srcDir into dstDir
+</pre>
+
+        <p id=cat><b><code>cat</code>: print or concatenate files:</b></p>
+<pre>
+$ cat file              # Print the contents of file
+
+$ cat src > dst         # Copy contents of src over dst
+
+$ cat pre suf > new     # Concatenate prefix and suffix into a new file
+</pre>
+
+        <p id=mv><b><code>mv</code>: move files or directories:</b></p>
+<pre>
+$ mv srcFile dstDir     # Move srcFile to dstDir/srcFile
+
+$ mv srcDir dstDir      # Move srcDir to dstDir/srcDir
+</pre>
+
+        <p id=wget><b><code>wget</code>: download from web:</b></p>
+<pre>
+$ wget url.com/srcFile  # Download srcFile to current directory
+</pre>
+
+    <!-- ################################################################################### -->
+
+        <hr><h2 id=archives>Working with Archives</h2>
+
+        <p id=tarx><b><code>tar -xf</code>: extract archive:</b></p>
+<pre>
+$ tar -x src.tar.gz     # Extract archive src to current directory
+</pre>
+
+        <p id=tarc><b><code>tar -czvf</code>: generate archive:</b></p>
+<pre>
+$ tar -c dst.tar.gz src # Create archive dst.tar.gz containing src
+</pre>
+
+    <!-- ################################################################################### -->
+    </div>
+    <div class="col-md-2 text-left" style="position:static;">
+        <div class="col-md-12 text-left" style="position:fixed;">
+            <h4><b>Table of Contents:</b></h4>
+                <ul>
+                    <li><a href="#nav">Navigation</a></li>
+                        <ul>
+                            <li><a href="#pwd">pwd (print path)</a></li>
+                            <li><a href="#mkdir">mkdir (create dir)</a></li>
+                            <li><a href="#cd">cd (change dir)</a></li>
+                            <li><a href="#ls">ls (list contents)</a></li>
+                            <li><a href="#rm">rm (delete forever)</a></li>
+                        </ul>
+                    <li style="margin-top:1ex"><a href="#">Files</a></li>
+                        <ul>
+                            <li><a href="#cp">cp (copying)</a></li>
+                            <li><a href="#cat">cat (print or concat)</a></li>
+                            <li><a href="#mv">mv (move)</a></li>
+                            <li><a href="#wget">wget (download)</a></li>
+                        </ul>
+                    <li style="margin-top:1ex"><a href="#archives">Archives</a></li>
+                        <ul>
+                            <li><a href="#tarx">tar -x (extract)</a></li>
+                            <li><a href="#tarc">tar -c (compress)</a></li>
+                        </ul>
+                </ul>
+            </h4>
+        </div>
+    </div>
+
+</div>
+
+<!-- ################################################################################### -->
+
+<footer class="bg-light text-center text-lg-start">
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); font-size: 0.75em;">
+        Copyright © Stefan Nagy. All rights reserved.
+    </div>
+</footer>
+
+<!-- ################################################################################### -->
+
+</body>
+
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CS 4440</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons/css/academicons.min.css">
+    <link rel="stylesheet" href="../css/main.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
+    <script src="https://kit.fontawesome.com/982c2a20d7.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse">
+    <a class="navbar-brand" href="http://cs.utah.edu">
+        <img class="button" width="185px" src="../../../img/ksoclogo_white.png" style="margin-top:1.3%">
+    </a>
+
+    <div class="ml-auto">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav" style="margin-top: 1px;">
+                <li><a href="../">Syllabus</a></li>
+                <li><a href="../schedule">Schedule</a></li>
+                <li><a href="../assignments">Assignments</a></li>
+                <li><a href="../wiki">Wiki</a></li>
+                <li><a href="../redirect_piazza">Piazza</a></li>
+                <li><a href="../redirect_canvas">Canvas</a></li>
+                <li><a href="../redirect_pollev">PollEv</a></li>
+                <li><a href="../redirect_taqueue">TA&nbsp;Queue</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ################################################################################### -->
+
+<div class="container main-container">
+    <div class="col-md-10">
+        <h1>CS 4440 Wiki: <br class="on-narrow"><b style="color:dodgerblue">The PyRoots Module</b></h1><br>
+
+    <!-- ################################################################################### -->
+
+        <p>This module is derived from <code>mpmath</code> by Fredrik Johnson (<a href="https://raw.githubusercontent.com/fredrik-johansson/mpmath/43b5c9bffeaa3ec2909b9bd10175c140c056f89a/mpmath/libmp/libintmath.py">link</a>), and used under fair-use.</p>
+
+        <p>To use it, include <code>from pyroots import *</code> in your Python 3 script.</p>
+
+        <br><br>
+
+    <!-- ################################################################################### -->
+
+        <h3 id=integer_nthroot>Function <code>integer_nthroot(y, n)</code></h3>
+        <p>Returns a tuple containing <code>x = floor(y**(1/n))</code>
+        and a boolean indicating whether the result is exact (that is,
+        whether <code>x**n == y</code>).</p>
+<pre><code class="language-python"
+>>>> print(integer_nthroot(16,2))
+(4, True)
+
+>>> print(integer_nthroot(26,2))
+(5, False)
+</code></pre>
+
+        <h3 id=integer_to_base64>Function <code>integer_to_base64(n)</code></h3>
+        <p>Converts an arbitrarily-long integer <code>n</code> to a big-endian base64 encoding.</p>
+<pre><code class="language-python"
+>>>> print(integer_to_base64(12345678))
+b'vGFO'
+</code></pre>
+
+        <!--<h3 id=integer_to_bytes>Function <code>integer_to_bytes(n)</code></h3>
+        <p>Converts an arbitrarily-long integer <code>n</code> to a byte string with big-endian encoding.</p>
+<pre><code class="language-python"
+>>>> x = integer_to_bytes(12345678)
+>>> print(bytes(x,'utf-8'))
+b'\x00\xc2\xbcaN'
+</code></pre>
+
+        <h3 id=bytes_to_integer>Function <code>bytes_to_integer(b)</code></h3>
+        <p>Converts big-endian byte string <code>s</code> to an arbitrarily-long integer.</p>
+<pre><code class="language-python"
+>>>> s = b'\x00\xc2\xbcaN'.decode('utf-8')
+>>> print(bytes_to_integer(s))
+12345678
+</code></pre>
+
+        <h3 id=unhexlify>Function <code>unhexlify(h, /)</code></h3>
+        <p>Converts <code>h</code> from hexadecimal representation to plaintext. <code>h</code> must contain an even number of hex digits (in upper or lower case).</p>
+<pre><code class="language-python"
+>>>> print(unhexlify('3132333435363738'))
+b'12345678'
+
+>>> print(unhexlify('554e49564552534954594f4655544148'))
+b'UNIVERSITYOFUTAH'
+</code></pre>-->
+
+    <!-- ################################################################################### -->
+    </div>
+    <div class="col-md-2 text-left" style="position:static;">
+        <div class="col-md-12 text-left" style="position:fixed;">
+            <h4><b>Table of Contents:</b></h4>
+                <ul>
+                    <li><a href="#integer_nthroot">integer_nthroot</a></li>
+                    <li><a href="#integer_to_base64">integer_to_base64</a></li>
+                    <!--<li><a href="#integer_to_bytes">integer_to_bytes</a></li>
+                    <li><a href="#bytes_to_integer">bytes_to_integer</a></li>
+                    <li><a href="#unhexlify">unhexlify</a></li>-->
+                </ul>
+            </h4>
+        </div>
+    </div>
+
+</div>
+
+<!-- ################################################################################### -->
+
+<footer class="bg-light text-center text-lg-start">
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); font-size: 0.75em;">
+        Copyright © Stefan Nagy. All rights reserved.
+    </div>
+</footer>
+
+<!-- ################################################################################### -->
+
+</body>
+
+</html>

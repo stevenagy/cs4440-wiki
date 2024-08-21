@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CS 4440</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons/css/academicons.min.css">
+    <link rel="stylesheet" href="../css/main.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
+    <script src="https://kit.fontawesome.com/982c2a20d7.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse">
+    <a class="navbar-brand" href="http://cs.utah.edu">
+        <img class="button" width="185px" src="../../../img/ksoclogo_white.png" style="margin-top:1.3%">
+    </a>
+
+    <div class="ml-auto">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav" style="margin-top: 1px;">
+                <li><a href="../">Syllabus</a></li>
+                <li><a href="../schedule">Schedule</a></li>
+                <li><a href="../assignments">Assignments</a></li>
+                <li><a href="../wiki">Wiki</a></li>
+                <li><a href="../redirect_piazza">Piazza</a></li>
+                <li><a href="../redirect_canvas">Canvas</a></li>
+                <li><a href="../redirect_pollev">PollEv</a></li>
+                <li><a href="../redirect_taqueue">TA&nbsp;Queue</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ################################################################################### -->
+
+<div class="container main-container">
+    <div class="col-md-10">
+        <h1>CS 4440 Wiki: <br class="on-narrow"><b style="color:dodgerblue">The PyMD5 Module</b></h1><br>
+
+    <!-- ################################################################################### -->
+
+        <p>This module is derived from <code>MD5C.C</code> by RSA Data Security, Inc.</p>
+
+        <p>To use it, include <code>from pymd5 import *</code> in your Python 3 script.</p>
+
+        <br><br>
+
+    <!-- ################################################################################### -->
+
+        <h3 id=md5>Class <code>md5(string='', state=None, count=0)</code></h3>
+        <p>Returns a new <code>md5</code> objects and processes string.  Optional advanced parameters allow you to resume an earlier computation by setting the internal state of the function and the counter of message bits processed so far. Most of the interface matches Python's standard <code>hashlib</code>.</p>
+<pre><code class="language-python"
+>>>> m = md5()
+</code></pre>
+
+        <h3 id=update>Function <code>md5.update(arg)</code></h3>
+        <p>Updates the <code>md5</code> object with the string <code>arg</code>. Repeated calls are equivalent to a single call with the concatenation of all the arguments.</p>
+<pre><code class="language-python"
+>>>> m.update("msg")
+</code></pre>
+
+        <h3 id=digest>Function <code>md5.digest()</code></h3>  
+        <p>Returns the digest of the strings passed to the <code>update()</code> method so far. This may contain non-ASCII characters, including <code>NULL</code> bytes.</p>
+<pre><code class="language-python"
+>>>> print(m.digest())
+b'\xf2\xbc[\x1d\x86\x98p\xd7h\x8fq\xb2\xd8p0\xbd'
+</code></pre>
+
+        <h3 id=hexdigest>Function <code>md5.hexdigest()</code></h3>
+        <p>Like <code>digest()</code> but returns a string of double length, containing only hexadecimal digits.</p>
+<pre><code class="language-python"
+>>>> print(m.hexdigest())
+f2bc5b1d869870d7688f71b2d87030bd
+</code></pre>
+
+        <h3 id=digest_size>Function <code>md5.digest_size</code></h3>
+        <p>Returns the size of the resulting hash in bytes.</p>
+<pre><code class="language-python"
+>>>> print(m.digest_size)
+16
+</code></pre>
+
+        <h3 id=block_size>Function <code>md5.block_size</code></h3>  
+        <p>Returns the internal block size of the hash algorithm in bytes.</p>
+<pre><code class="language-python"
+>>>> print(m.block_size)
+64
+</code></pre>
+
+    <h3 id=padding>Function <code>padding(msg_bits)</code></h3>
+        <p>Given a message size (in bits), returns the number of padding bytes that should be appended to the end of a message to reach a multiple of the block size.</p>
+    </li>
+<pre><code class="language-python"
+>>>> p = pymd5.padding(8)  # 8 bits (1 byte)
+>>> print(len(p))
+63
+
+>>> p = pymd5.padding(16) # 16 bits (2 bytes)
+>>> print(len(p))
+62
+</code></pre>
+
+    <!-- ################################################################################### -->
+    </div>
+    <div class="col-md-2 text-left" style="position:static;">
+        <div class="col-md-12 text-left" style="position:fixed;">
+            <h4><b>Table of Contents:</b></h4>
+                <ul>
+                    <li><a href="#md5">md5</a></li>
+                    <li><a href="#update">md5.update</a></li>
+                    <li><a href="#digest">md5.digest</a></li>
+                    <li><a href="#hexdigest">md5.hexdigest</a></li>
+                    <li><a href="#digest_size">md5.digest_size</a></li>
+                    <li><a href="#block_size">md5.block_size</a></li>
+                    <li><a href="#padding">padding</a></li>
+                </ul>
+            </h4>
+        </div>
+    </div>
+
+</div>
+
+<!-- ################################################################################### -->
+
+<footer class="bg-light text-center text-lg-start">
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); font-size: 0.75em;">
+        Copyright © Stefan Nagy. All rights reserved.
+    </div>
+</footer>
+
+<!-- ################################################################################### -->
+
+</body>
+
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CS 4440</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons/css/academicons.min.css">
+    <link rel="stylesheet" href="../css/main.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
+    <script src="https://kit.fontawesome.com/982c2a20d7.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse">
+    <a class="navbar-brand" href="http://cs.utah.edu">
+        <img class="button" width="185px" src="../../../img/ksoclogo_white.png" style="margin-top:1.3%">
+    </a>
+
+    <div class="ml-auto">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav" style="margin-top: 1px;">
+                <li><a href="../">Syllabus</a></li>
+                <li><a href="../schedule">Schedule</a></li>
+                <li><a href="../assignments">Assignments</a></li>
+                <li><a href="../wiki">Wiki</a></li>
+                <li><a href="../redirect_piazza">Piazza</a></li>
+                <li><a href="../redirect_canvas">Canvas</a></li>
+                <li><a href="../redirect_pollev">PollEv</a></li>
+                <li><a href="../redirect_taqueue">TA&nbsp;Queue</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ################################################################################### -->
+
+<div class="container main-container">
+    <div class="col-md-10">
+        <h1>CS 4440 Wiki: <br class="on-narrow"><b style="color:dodgerblue">Python 3 Cheat Sheet</b></h1><br>
+
+    <!-- ################################################################################### -->
+
+        <p>Below is an abridged cheat sheet of Python 3 fundamentals that you'll use in this course.</p>
+
+        <p><b>This page is by no means comprehensive—we encourage you to bookmark and familiarize yourself with one of the many in-depth Python tutorials on the web.</b> Some great examples are:</p>
+
+        <ul>
+            <li><a href="https://docs.python.org/3/contents.html">The Official Python Docs</li>
+            <li><a href="https://www.learnpython.org/">LearnPython.org</a></li>
+            <li><a href="https://developers.google.com/edu/python">Google's Python Class</a></li>
+        </ul>
+
+    <!-- ################################################################################### -->
+
+        <hr><h2 id=run>Running Python Code</h2>
+ 
+        <h3 id=run#interactive><b>Interactive Mode:</b></h3>
+        <p>In some course exercises, we'll walk you through examples demonstrated in Python's <b>interactive mode</b>. Think of interactive mode as a Python "session", where you write programs line-by-line (rather than all at once) and get feedback as each line is processed and executed.</p>
+
+        <p>To launch interactive mode, run <code>python3</code> in your terminal. An example session is below:</p>
+<pre><code class="language-python"
+>$ python3
+>>> print("Hello from the interpreter!")
+Hello f&#8203;rom the interpreter!
+>>> exit()
+</code></pre>
+
+        <h3 id=run#scripts><b>Writing and Running Scripts:</b></h3>
+        <p>The most common way that you'll be using Python is writing and running your own programs (or more technically, "scripts"). After editing your Python program (any IDE or text editor will work), save it as a <code>.py</code> file. Then, run it by calling <code>$ python3 /path/to/your/script.py</code>. An example is below:</p>
+<pre><code class="language-python"
+>$ echo 'print("Hello from a script!")' > example.py
+$ python3 example.py
+Hello f&#8203;rom a script!
+</code></pre>
+
+        <h3 id="run#debug"><b>Debugging Code:</b></h3>
+        <p>Occasionally your code might not function as expected. Thankfully, Python provides descriptive <b>error messages</b> to help you narrow down where your code is incorrect. For example:</p>
+<pre><code class="language-python"
+>>>> print(os.path)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'os' is not defined
+</code></pre>
+
+        <p>Here, we see error <code>NameError: name 'os' is not defined</code>. We can pinpoint that our mistake is a failure to define module <code>os</code>. A quick Google search turns up that this is indeed a core Python library, and that the fix is probably to just prepend the line <code>import os</code> at the beginning of our code.</p>
+
+        <p>To be successful in this course, <b>you'll need to get comfortable with debugging</b>. Often, the right fix will take you just a few minutes to find via research on Google, some trial-and-error fixing, adding a few <code>print()</code> statements, etc. Before you reach out to the course staff or ask on Piazza, we expect that <b>you've spent some time trying to debug</b> your own code <i>first</i>. To help others best help you, be sure to describe in detail <b>what you've tried</b>, what you think might be wrong, what solutions didn't work, etc.</p>
+
+        <p>Debugging is a skill you'll use all throughout your software development career—get comfortable with it!</p>
+
+   <!-- ################################################################################### -->
+        <hr><h2 id=mods>Modules and Libraries</h2>
+
+        <p>In many course exercises, you'll borrow functionality from third-party modules (files ending in <code>.py</code>) or libraries (collections of modules). These modules may contain useful variables (e.g., <code>os.<b><code>name</code></b></code>) or functions (e.g., <code>os.<b><code>uname()</code></b></code>). We'll cover the three main ways to import and use such objects below.</p><br>
+
+        <p>Note that in all of CS 4440, you may only use <b>default Python libraries</b> (the ones that come pre-installed in your Linux VM) and/or <b>modules that we provide you</b>. We won't install any others when grading your work, which means your code will fail—and you'll lose points—if you rely on any external dependencies.</p>
+
+        <h3 id="mods#import"><b>Importing Modules:</b></h3>
+<pre><code class="language-python"
+>>>> import os               # Import the `os` module.
+>>> print(os.name)          # To access objects, we use prefix "os.OBJNAME".
+posix
+
+>>> print(os.uname())       # This applies to all objects. E.g., `uname()`. 
+posix.uname_result(sysname='Linux', ...)
+</code></pre>
+
+        <h3 id="mods#import#one"><b>Importing Specific Objects:</b></h3>
+<pre><code class="language-python"
+>>>> from os import name     # Import variable `name` from the `os` module.
+>>> print(name)             # We no longer need a prefix to access `name`!
+posix
+
+>>> print(uname())          # This fails. Why? We've only imported `name`! 
+NameError: name 'uname' is not defined. Did you mean: 'name'?
+
+>>> print(os.uname())       # Also fails. Why? We didn't import the module!
+NameError: name 'os' is not defined
+</code></pre>
+
+        <h3 id="mods#import#all"><b>Importing All Objects:</b></h3>
+<pre><code class="language-python"
+>>>> from os import *        # The '*' imports every object from the module.
+>>> print(name)             # As before, we no longer need to prefix objects!
+posix
+
+>>> print(uname())          # We can now access all objects from the module!
+posix.uname_result(sysname='Linux', ...)
+</code></pre>
+
+
+    <!-- ################################################################################### -->
+        <hr><h2 id=vars>Variables</h2>
+
+        <h3 id="vars#init"><b>Initializing:</b></h3>
+<pre><code class="language-python"
+>>>> x = 5           # We've declared variable `x` with value 5.
+>>> print(type(x))  # Python correctly infers it is an integer!
+<&#8203;c&#8203;lass 'int'>
+
+>>> x = "cs4440"    # Let's now overwrite `x` with a string. 
+>>> print(type(x))  # Notice how its type changes accordingly!
+<&#8203;c&#8203;lass 'str'>
+</code></pre>
+
+        <h3 id="vars#cast"><b>Casting:</b></h3>
+<pre><code class="language-python"
+>>>> x = int(5)      # Let's cast `x` as an `int` (integer).
+>>> print(x)        # Now print it — it's indeed an integer!
+5
+    
+>>> x = float(5)    # Now cast it as a `float` type!
+>>> print(x)        # Here we go — it is indeed a float!
+5.0
+</code></pre>
+
+    <!-- ################################################################################### -->
+        <hr><h2 id=strs>String Manipulation</h2>
+
+        <h3 id="strs#length"><b>Length of a String:</b></h3>
+<pre><code class="language-python"
+>>>> x = "cs4440"            # Use `len()` to get a string's length.
+>>> print(len(x))
+6
+</code></pre>
+
+        <h3 id="strs#append"><b>Appending to a String:</b></h3>
+<pre><code class="language-python"
+>>>> x = "cs4440"            # Append ' is cool' to string 'cs4440'.
+>>> x += " is cool"
+>>> print(x)
+cs4440 i&#8203;s cool
+</code></pre>
+
+        <h3 id="strs#substrs"><b>Substrings:</b></h3>
+<pre><code class="language-python"
+>>>> x = "cs4440 is cool"    # Check if substring 'cool' is present.
+>>> print("cool" in x)
+T&#8203;rue
+
+>>> print("4440" not in x)  # Check if substring '4440' not present.
+F&#8203;alse
+</code></pre>
+
+        <h3 id="strs#split"><b>Splitting by a Delimiter:</b></h3>
+<pre><code class="language-python"
+>>>> x = "cs4440:cool"       # Use delimiter ':' to split into a list.
+>>> print(x.split(':'))
+['cs4440', 'cool']
+</code></pre>
+
+        <h3 id="strs#strip"><b>Stripping Characters:</b></h3>
+<pre><code class="language-python"
+>>>> x = "  cs4440   "       # Strip any leading / trailing whitespace.
+>>> print(x.strip())
+cs4440
+
+>>> x = "cs4440"            # Strip the substring '4440' from our string.
+>>> print(x.strip('4440'))
+cs
+</code></pre>
+
+        <h3 id="strs#repeat"><b>Repeating Characters:</b></h3>
+<pre><code class="language-python"
+>>>> x = "A"*10            # You can use multiplication to quickly  
+>>> print(x)              # generate strings of repeated characters.
+AAAAAAAAAA
+</code></pre>
+
+        <h3 id="strs#bytes"><b>Byte Strings:</b></h3>
+<pre><code class="language-python"
+>>>> x = b'cs4440'               # Python byte strings are wrapped by `b''`.
+>>> print(x.decode('utf-8'))    # Use `decode()` to convert them to strings.
+cs4440
+
+>>> x = "cs4440"                # To convert a string to a byte string, you
+>>> print(x.encode('utf-8'))    # can similarly use the `encode()` function.
+b'cs4440'
+</code></pre>
+
+    <!-- ################################################################################### -->
+        <hr><h2 id=lists>List Manipulation</h2>
+
+        <h3 id="lists#index"><b>Indexing:</b></h3>
+<pre><code class="language-python"
+>>>> x = ['cs4440', 'is', 'cool']    # Print the 0th item of our list.
+>>> print(x[0])
+cs4440
+
+>>> x = ['cs4440', 'is', 'cool']    # Print the last item of our list.
+>>> print(x[-1])
+cool
+</code></pre>
+
+        <h3 id="lists#insert"><b>Inserting:</b></h3>
+<pre><code class="language-python"
+>>>> x = ['cs4440', 'is', 'cool']    # Overwrite the last item with 'fun'.
+>>> x[-1] = 'fun'
+>>> print(x)
+['cs4440', 'is', 'fun']
+
+>>> x.insert(2, 'super')            # Insert string 'super' in index two.
+>>> print(x)
+['cs4440', 'is', 'super', 'fun']
+</code></pre>
+
+        <h3 id="lists#join"><b>Joining:</b></h3>
+<pre><code class="language-python"
+>>>> x = ['cs4440', 'is', 'cool']    # Join items into a space-delimited string. 
+>>> print(' '.join(x))
+cs4440 i&#8203;s cool
+
+>>> y = ['all', 'day']              # Joins list y to our previous list x.
+>>> print(x + y)
+['cs4440', 'is', 'super', 'cool', 'all', 'day']
+</code></pre>
+
+    <!-- ################################################################################### -->
+        <hr><h2 id=conds>Conditional Statements</h2>
+
+        <h3 id="conds#if"><b>If Statements:</b></h3>
+<pre><code class="language-python"
+>>>> x = 5
+>>> if (5 % 2 == 1):    # Evaluates to True if x modulo 2 equals 1.
+...     print("Yes!")   # Prints string "Yes!" if condition is True.
+Yes!
+</code></pre>
+
+        <h3 id="conds#else"><b>Else Statements:</b></h3>
+<pre><code class="language-python"
+>>>> x = 5
+>>> if (x % 3 == 1):    # Evaluates to True if x modulo 3 equals 1.
+...     print("Yes!")
+... else:               # Prints "Nope!" if the condition is False. 
+...     print("Nope!")  
+Nope!
+</code></pre>
+
+    <!-- ################################################################################### -->
+        <hr><h2 id=loops>Loops</h2>
+
+        <h3 id="loops#for"><b>For Loops:</b></h3>
+<pre><code class="language-python"
+>>>> x = ['a', 'b', 'c']    # For every item `y` in list `x`...
+>>> for y in x:
+...     print(y)
+a
+b
+c
+</code></pre>
+        <h3 id="loops#while"><b>While Loops:</b></h3>
+<pre><code class="language-python"
+>>>> x = 3
+>>> while x != 0:          # While x is not equal to 0...
+...   print(x)             # Print x and then decrement it.
+...   x -= 1
+3
+2
+1
+</code></pre>
+
+    <!-- ################################################################################### -->
+        <hr><h2 id=funcs>Functions</h2>
+
+        <h3 id="funcs#defs"><b>Defining Functions:</b></h3>
+<pre><code class="language-python"
+>>>> def foo():             # Definition of function `foo()`.
+...      print("Hello!")
+...      return
+
+>>> def bar(x, y):         # Definition of function `bar()`,
+...      print(x+y)        # which expects two arguments.
+...      return
+</code></pre>
+
+        <h3 id="funcs#call"><b>Calling Functions:</b></h3>
+<pre><code class="language-python"
+>>>> foo()                  # Call foo(), which has no arguments.
+Hello!
+
+>>> bar(4000,440)          # Call bar(), which has two arguments.
+4440
+</code></pre>
+
+    <!-- ################################################################################### -->
+    </div>
+    <div class="col-md-2 text-left" style="position:static;">
+        <div class="col-md-12 text-left" style="position:fixed;">
+            <h4><b>Table of Contents:</b></h4>
+                <ul>
+                    <li><a href="#run">Running Code</a></li>
+                        <ul>
+                            <li><a href="#run#interactive">Interactive Mode</a></li>
+                            <li><a href="#run#scripts">Running Scripts</a></li>
+                            <li><a href="#run#debug">Debugging</a></li>
+                        </ul>
+
+                    <li style="margin-top:1ex"><a href="#mods">Modules</a></li>
+                    <ul>
+                        <li><a href="#mods#import">Importing</a></li>
+                    </ul>
+
+                    <li style="margin-top:1ex"><a href="#vars">Variables</a></li>
+                    <ul>
+                        <li><a href="#vars#init">Initializing</a></li>
+                        <li><a href="#vars#cast">Casting</a></li>
+                    </ul>
+
+                    <li style="margin-top:1ex"><a href="#strs">Strings</a></li>
+                    <ul>
+                        <li><a href="#strs#length">Length</a></li>
+                        <li><a href="#strs#append">Appending</a></li>
+                        <li><a href="#strs#substrs">Substrings</a></li>
+                        <li><a href="#strs#split">Splitting</a></li>
+                        <li><a href="#strs#strip">Stripping</a></li>
+                        <li><a href="#strs#repeat">Repeating</a></li>
+                        <li><a href="#strs#bytes">Byte Strings</a></li>
+                    </ul>
+
+                    <li style="margin-top:1ex"><a href="#lists">Lists</a></li>
+                    <ul>
+                        <li><a href="#lists#index">Indexing</a></li>
+                        <li><a href="#lists#insert">Inserting</a></li>
+                        <li><a href="#lists#join">Joining</a></li>
+                    </ul>
+
+                    <li style="margin-top:1ex"><a href="#conds">Conditionals</a></li>
+                    <ul>
+                        <li><a href="#conds#if">If and Else</a></li>
+                    </ul>
+
+                    <li style="margin-top:1ex"><a href="#loops">Loops</a></li>
+                    <ul>
+                        <li><a href="#loops#for">For and While</a></li>
+                    </ul>
+
+                    <li style="margin-top:1ex"><a href="#funcs">Functions</a></li>
+                    <ul>
+                        <li><a href="#funcs#defs">Definitions</a></li>
+                        <li><a href="#funcs#call">Calling</a></li>
+                    </ul>
+                </ul>
+            </h4>
+        </div>
+    </div>
+
+</div>
+
+<!-- ################################################################################### -->
+
+<footer class="bg-light text-center text-lg-start">
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); font-size: 0.75em;">
+        Copyright © Stefan Nagy. All rights reserved.
+    </div>
+</footer>
+
+<!-- ################################################################################### -->
+
+</body>
+
+</html>

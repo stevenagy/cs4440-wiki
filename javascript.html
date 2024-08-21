@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CS 4440</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons/css/academicons.min.css">
+    <link rel="stylesheet" href="../css/main.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
+    <script src="https://kit.fontawesome.com/982c2a20d7.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse">
+    <a class="navbar-brand" href="http://cs.utah.edu">
+        <img class="button" width="185px" src="../../../img/ksoclogo_white.png" style="margin-top:1.3%">
+    </a>
+
+    <div class="ml-auto">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav" style="margin-top: 1px;">
+                <li><a href="../">Syllabus</a></li>
+                <li><a href="../schedule">Schedule</a></li>
+                <li><a href="../assignments">Assignments</a></li>
+                <li><a href="../wiki">Wiki</a></li>
+                <li><a href="../redirect_piazza">Piazza</a></li>
+                <li><a href="../redirect_canvas">Canvas</a></li>
+                <li><a href="../redirect_pollev">PollEv</a></li>
+                <li><a href="../redirect_taqueue">TA&nbsp;Queue</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ################################################################################### -->
+
+<div class="container main-container">
+    <div class="col-md-10">
+        <h1>CS 4440 Wiki: <br class="on-narrow"><b style="color:dodgerblue">JavaScript Cheat Sheet</b></h1><br>
+
+    <!-- ################################################################################### -->
+
+        <p>Below is an abridged cheat sheet of JavaScript fundamentals relevant to Project 3.</p>
+
+        <p><b>This page is by no means comprehensive—we encourage you to bookmark and familiarize yourself with one of the many in-depth JavaScript tutorials on the web.</b> Some great examples are:</p>
+
+        <ul>
+            <li><a href="https://www.javascript.com/learn">The Official JavaScript Docs</a></li>
+            <li><a href="https://htmlcheatsheet.com/js/">HTMLCheetSheet's JS Cheat Sheet</a></li>
+            <li><a href="https://www.w3schools.com/js/js_intro.asp">W3 Schools' JavaScript Introduction</a></li>
+        </ul>
+
+    <!-- ################################################################################### -->
+
+        <hr><h2 id=exec>Executing JavaScript Code</h2>
+        <p>In Project 3, you'll work with three fundamental ways to execute JavaScript code: <b>on-page scripts</b> wrapped in HTML code, <b>functions</b>, and <b>event</b>-driven execution.</p>
+
+        <h3 id=exec#scripts>On-page Scripts:</h3>
+<pre><code class="language-java">&lt;script&gt;
+    /* Code to be executed as the parent HTML code is processed. */
+&lt;&sol;script&gt;
+</code></pre> 
+
+        <h3 id=exec#funcs>Functions:</h3>
+<pre><code class="language-js">function foo(){
+    /* Code to be executed when this function is called. */
+}
+</code></pre>
+
+        <h3 id=exec#events>Events:</h3>
+<pre><code class="language-js">document.onload = function(){ 
+    /* Code to be executed when the document is loaded. */ 
+}
+
+window.onload = function(){ 
+    /* Code to be executed when the window is loaded. */ 
+}
+</code></pre> 
+
+   <!-- ################################################################################### -->
+        <hr><h2 id=dbg>Debugging</h2>
+        <p>As with other languages, debugging is key to understanding where your code is incorrect. There are two key features to help you debug your code: <b>alert</b> boxes, and your browser's JavaScript <b>console</b>. These are analogous to the many types of print statements that you've seen in other languages.</p>
+        <h3 id=dbg#alerts>Alert Boxes:</h3>
+<pre><code class="language-js">var x = "Hello, world!"      
+alert(x);       // On execution, opens an `alert()` box saying "Hello, world!".
+</code></pre>
+
+        <h3 id=dbg#console>Console Logging:</h3>
+<pre><code class="language-js">var x = "Hello, world!"
+console.log(x); // On execution, logs "Hello, world!" to your browser's JS console.
+</code></pre>
+
+   <!-- ################################################################################### -->
+        <hr><h2 id=vars>Variables</h2>
+        <p>Like Python, variables types are inferred by the interpreter. For brevity, we won't cover casting here as you will not need to use it in your work. The following is borrowed from <a href="https://htmlcheatsheet.com/js/">HTMLCheatSheet.com</a>.</p>
+        <h3 id=vars#init>Initializing:</h3>
+<pre><code class="language-js">var a;                          // Variable.
+var b = "init";                 // String
+var c = "Hi" + " " + "Joe";     // c = "Hi Joe"
+var d = 1 + 2 + "3";            // d = "33"
+var e = [2,3,5,8];              // Array.
+var f = false;                  // Boolean.
+var g = function(){};           // Function.
+var h = 1, b = 2, c = a + b;    // One line.
+</code></pre>        
+
+        <h3 id=vars#types>Data types:</h3>
+<pre><code class="language-js">var age = 18;                           // Number.
+var name = "Jane";                      // String.
+var name = {first:"Jane", last:"Doe"};  // Object.
+var truth = false;                      // Boolean.
+var sheets = ["HTML","CSS","JS"];       // Array.
+var a = null;                           // Null.
+</code></pre>
+
+   <!-- ################################################################################### -->
+        <hr><h2 id=strs>String Manipulation</h2>
+        <h3 id=strs#length>Length of a String:</h3>
+<pre><code class="language-js">var x = "cs4440";
+var y = x.length;       // y = 6
+</code></pre>
+ 
+        <h3 id=strs#append>Appending to a String:</h3>
+<pre><code class="language-js">var x = "cs4440"
+var y = x + " is cool"  // y = "cs4440 is cool"
+</code></pre>
+
+        <h3 id=strs#substrs>Substrings:</h3>
+<pre><code class="language-js">var x = "cs4440";
+x.indexOf("4440");            // Find the substring's first index; -1 if not found.
+x.lastIndexOf("4440");        // Find the index of the substring's last occurrence.
+x.slice(0, 2);                // Grabs the substring "cs" from "cs4440".
+x.replace("4440","3500");     // Replaces substring "4440" with substring "3500". 
+x.charAt(0);                  // Return character at the index (in this case, "c").
+</code></pre>
+
+        <h3 id=strs#split>Splitting by a Delimiter:</h3>
+<pre><code class="language-js">var x = "cs4440";
+var y = x.split("cs");        // Splits string by delimiter 'cs' into array ['','4440'].
+</code></pre>
+
+   <!-- ################################################################################### -->
+        <hr><h2 id=arrs>Array Manipulation</h2>
+        <h3 id=arrs#index>Indexing:</h3>
+<pre><code class="language-js">var courses = ['cs4440', 'cs3500', 'cs3810']
+var x = courses[0]                  // Accesses the item at index 0 ('cs4440').
+var x = courses[courses.length-1]   // Accesses the last array item ('cs3810').
+</code></pre>
+
+    <!-- ################################################################################### -->
+
+        <hr><h2 id=reqs>Requests</h2>
+        <p>We recommend the following API calls for issuing <code>GET</code> and <code>POST</code> requests.</p>
+
+        <h3 id=reqs#get>GET:</h3>
+<pre><code class="language-js">$.get('http://url.com', {param1: (p1_value), param1: (p2_value)});
+</code></pre> 
+        
+        <h3 id=reqs#post>POST:</h3>
+<pre><code class="language-js">$.post('http://url.com/form?', {
+    param1: p1_value,
+    param2: p2_value,
+});
+</code></pre> 
+
+   <!-- ################################################################################### -->
+        <hr><h2 id=elems>Accessing Site Elements</h2>
+        <h3 id=elems#domtree>DOM Elements:</h3>
+        <p>The <code>document</code> object refers to the page DOM tree, where you'll be able to access all page objects. We recommend using the <code>getElementById()</code> function.</p>
+<pre><code class="language-js">var x = document.getElementById("eID").innerHTML;             // Grab an element.
+var y = document.getElementById("eID").children[0].innerHTML; // Grab 1st item of an array.
+</code></pre>
+
+        <h3 id=elems#cookies>Cookies:</h3>
+        <p>You can also access the website's <code>cookie</code> in a similar fashion. Note that the above code only accesses the raw cookie <i>in full</i> (i.e., the entire <b>site cookie</b> that you can see in Firefox's <b>Developer Tools</b>). If you want to access <i>specific fields</i> of this cookie, you'll need to add some additional parsing code!</p>
+<pre><code class="language-js">var z = document.cookie; // Grab the full site cookie.
+</code></pre>
+
+    </div>
+
+    <!-- ################################################################################### -->
+    
+    <div class="col-md-2 text-left" style="position:static;">
+        <div class="col-md-12 text-left" style="position:fixed;">
+            <h4><b>Table of Contents:</b></h4>
+                <ul>
+                    <li><a href="#exec">Execution</a></li>
+                    <ul>
+                        <li><a href="#exec#scripts">Scripts</a></li>
+                        <li><a href="#exec#funcs">Functions</a></li>
+                        <li><a href="#exec#events">Events</a></li>
+                    </ul>
+
+                    <li style="margin-top:1ex"><a href="#dbg">Debugging</a></li>
+                    <ul>
+                        <li><a href="#dbg#alerts">Alerts</a></li>
+                        <li><a href="#dbg#console">Console</a></li>
+                    </ul>
+
+                    <li style="margin-top:1ex"><a href="#vars">Variables</a></li>
+                    <ul>
+                        <li><a href="#vars#init">Initialization</a></li>
+                        <li><a href="#vars#types">Data Typing</a></li>
+                    </ul>
+
+                    <li style="margin-top:1ex"><a href="#strs">Strings</a></li>
+                    <ul>
+                        <li><a href="#strs#length">Length</a></li>
+                        <li><a href="#strs#append">Appending</a></li>
+                        <li><a href="#strs#substrs">Substrings</a></li>
+                        <li><a href="#strs#split">Splitting</a></li>
+                    </ul>
+
+                    <li style="margin-top:1ex"><a href="#arrs">Arrays</a></li>
+                    <ul>
+                        <li><a href="#arrs#index">Indexing</a></li>
+                    </ul>
+
+                    <li style="margin-top:1ex"><a href="#reqs">Requests</a></li>
+                    <ul>
+                        <li><a href="#reqs#get">GET requests</a></li>
+                        <li><a href="#reqs#post">POST requests</a></li>
+                    </ul>
+
+                    <li style="margin-top:1ex"><a href="#elems">Access Elements</a></li>
+                    <ul>
+                        <li><a href="#elems#domtree">DOM tree</a></li>
+                        <li><a href="#elems#cookies">Cookies</a></li>
+                    </ul>
+                </ul>
+            </h4>
+        </div>
+    </div>
+</div>
+
+<!-- ################################################################################### -->
+
+<footer class="bg-light text-center text-lg-start">
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); font-size: 0.75em;">
+        Copyright © Stefan Nagy. All rights reserved.
+    </div>
+</footer>
+
+<!-- ################################################################################### -->
+
+</body>
+
+</html>

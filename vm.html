@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CS 4440</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons/css/academicons.min.css">
+    <link rel="stylesheet" href="../css/main.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
+    <script src="https://kit.fontawesome.com/982c2a20d7.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse">
+    <a class="navbar-brand" href="http://cs.utah.edu">
+        <img class="button" width="185px" src="../../../img/ksoclogo_white.png" style="margin-top:1.3%">
+    </a>
+
+    <div class="ml-auto">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav" style="margin-top: 1px;">
+                <li><a href="../">Syllabus</a></li>
+                <li><a href="../schedule">Schedule</a></li>
+                <li><a href="../assignments">Assignments</a></li>
+                <li><a href="../wiki">Wiki</a></li>
+                <li><a href="../redirect_piazza">Piazza</a></li>
+                <li><a href="../redirect_canvas">Canvas</a></li>
+                <li><a href="../redirect_pollev">PollEv</a></li>
+                <li><a href="../redirect_taqueue">TA&nbsp;Queue</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ################################################################################### -->
+
+<div class="container main-container">
+    <div class="col-md-10">
+        <h1>CS 4440 Wiki: <br class="on-narrow"><b style="color:dodgerblue">VM Setup & Troubleshooting</b></h1><br>
+
+    <!-- ################################################################################### -->
+
+        <p>To ensure consistency in project environments, we provide a virtual machine (VM) running versions of Linux and Firefox specially configured to never auto-update. Follow the instructions below, depending on which architecture your computer runs. You must work on all project code within the course VM; we will grade your assignments <b>in the same VM environment</b>.</p>
+
+        <p>It is your responsibility to <b>set aside enough disk space</b> on your personal device for all course material, including this VM. If disk space is scarce, you may want to consider migrating your data to the OneDrive or to an external storage medium. Except in the most extenuating circumstances, the course staff are not able to provide accommodations due to a lack of space and/or loss of data.</p>
+
+        <p>If you run into any problems while reading this guide, the last section offers some troubleshooting tips. We will update this page as we encounter new problems or parts where students are struggling.</p>
+
+    <!-- ################################################################################### -->
+
+        <hr><h2 id=vbox>VirtualBox: Windows, Linux, and Intel Macs</h2>
+        <p>The following setup is intended for Windows, Linux, and Intel-based Macs. If you are using an Apple Silicon Mac (M1, M2, or newer), please instead jump to the <a href="#utm">UTM Setup</a>.</p>
+
+        <br><br>
+
+        <h3>Step 0: Download and Install VirtualBox</h3>
+        <p>You will use VirtualBox to run the aforementioned VM. Download the latest version for your host operating system here: <a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a>.</p>
+
+        <br><br>
+
+        <h3>Step 1: Download the VM Appliance</h3>
+        <p>Download the VirtualBox VM appliance from <a href="https://drive.google.com/file/d/1QYPum8nOpKTvptcn2EtTYX5E25vVVVlu/view?usp=sharing">here</a>, and extract it to a directory of your choice. You'll soon see a file <code>CS 4440 VM.ova</code>—this is the VM appliance. Do <b>not</b> further extract the <code>.ova</code> file!</p>
+
+        <br><br>
+
+        <h3>Step 2: Import the VM Appliance into VirtualBox</h3>
+        <p>In VirtualBox’s menu, navigate to <code>Tools</code> and then <code>Import Appliance</code>. Select the VM appliance file (<code>CS 4440 VM.ova</code>), and continue to click the <code>Next</code> button until you are no longer prompted. You should not need to modify any settings—just verify that your default settings look like the image below:</p>
+
+        <p><img class="button wikiimage" src="img/vbox.png"/></p>
+
+        <p>The import process may take several minutes. Once complete, click <code>Start</code> to run the VM. Upon successfully booting, you should be greeted with the Linux login screen.</p>
+
+        <br><br>
+
+        <h3>Optional: Save a Snapshot</h3>
+
+        <p>VirtualBox "snapshots" allow you save the state of a running VM at any point in time. Should you make an irrevocable mistake, you can always revert to this snapshot instead of having to re-setup your VM. Note that any files created or edited in the VM since the last snapshot will be lost.</p> 
+
+        <p>To take a snapshot, open the VirtualBox VM manager and select <code>Snapshots</code> as shown in the image below. In the panel that appears, click <code>Take</code> to save a snapshot.</p>
+
+        <p><img class="button wikiimage" src="img/vbox-snap.png" style="max-width:70%"/></p>
+
+        <br>
+
+    <!-- ################################################################################### -->
+
+        <hr><h2 id=utm>UTM: M1/M2 Macs</h2>
+        <p>The following setup is intended for Apple Silicon Macs (M1, M2, or newer).</p>
+
+        <br><br>
+
+        <h3>Step 0 - Download and Install UTM</h3>
+        <p>You'll use UTM to run the VM on an M1/M2 Mac. Download UTM from here: <a href="https://mac.getutm.app/">https://mac.getutm.app/</a> and move the application to your Applications folder (<code>/Applications</code>) for future use.</p>
+
+        <br><br>
+
+        <h3>Step 1: Download the VM Appliance</h3>
+        <p>Download the UTM VM appliance from <a href="https://drive.google.com/file/d/1EH1zFeqX1eHn9pwNdDjkzgUoB0NWluPL/view?usp=sharing">here</a>, and extract it to a directory of your choice. After extracting, you should see a file <code>CS 4440 VM.utm</code>—this is the VM appliance.</p>
+
+        <br><br>
+
+        <h3>Step 2: Import the VM Appliance into UTM</h3>
+        <p>Double-click the <code>CS 4440 VM.utm</code> file, which should open UTM to a screen similar to the following:</p>
+
+        <p><img class="button wikiimage" src="img/utm.png"/></p>
+
+        <p>The architecture being <code>x86_64</code> is expected, even if you are on an ARM-based Mac! This reflects the architecture of the VM, which will always be based on x86.</p>
+
+        <p>After clicking <code>Run</code> (any of the three &#9658; buttons in the above screenshot will work), you should see some text flash across the screen. If successful, you will soon be greeted with the Linux login screen.</p>
+
+        <br>
+
+    <!-- ################################################################################### -->
+
+        <hr><h2 id=login>Logging-in and Using the VM</h2><br>
+
+        <div class="panel panel-default">
+            <div class="panel-heading" style="background-color: cornsilk;">
+                The username and password are both <code>cs4440</code> (though we've configured the VM to not require you to enter these on startup). You may need to enter this password when issuing commands as <code>sudo</code>.
+            </div>
+        </div>
+
+        <p>On login, you should be greeted with the UofU Desktop. Notice the <code>Terminal</code> and <code>File Browser</code> shortcuts in the bottom task-bar, as well as the <code>Firefox</code> shortcut on your Desktop.</p>
+
+        <p><img class="button wikiimage" src="img/vm.png"/></p>
+
+        <p>For some Project exercises, everything you need will be pre-installed in your VM. For others, you'll need to download some files from the CS 4440 web server; you can use Firefox, or <code>wget</code> in your <code>Terminal</code>.</p>
+
+        <p><b>Spend some time getting familiar with your new VM</b>—you'll be using it all semester!</p>
+
+    <!-- ################################################################################### -->
+
+        <hr><h2 id=help>Troubleshooting</h2>
+        <p>See the below suggestions for troubleshooting common VM issues. If you are encountering a different issue (and none of our tips have helped you solve it), <b>please let us know on <a href="../redirect_piazza">Piazza</a></b>!</p>
+
+        <br><br>
+
+        <h3 id=download>Downloading the VM Appliance</h3>
+        <p>While we have tried to create the smallest-possible VMs, they are inevitably a few gigabytes in size. We recommend that you download the VMs on a fast internet connection (e.g., UofU campus WiFi).</p>
+        <p>Depending on your web browser’s configuration such as extensions or add-ons geared towards privacy, the VM Appliance download from may fail in the middle. If this happens repeatedly, we recommend downloading from incognito mode with all extensions disabled, or downloading another web browser.</p>
+
+        <br><br>
+
+        <h3 id=display>Display Resolution is Small</h3>
+
+        <p>Generally, rebooting from within the VM (just run <code>sudo reboot</code> in your VM's <code>Terminal</code>) will resize your display to a larger resolution. In some cases, you may need to adjust your VirtualBox or UTM settings.</p>
+
+        <br><br>
+
+        <h3 id=copypaste>Copying and Pasting To/From Host</h3>
+        <p>To help make your workflow easier, both VirtualBox and UTM support copying and pasting from host to VM (and vice-versa). To enable this, see the following steps.</p>
+
+        <p><b>VirtualBox:</b> with your VM off, click on <code>Settings</code> and then then <code>General</code>. Under the <code>Advanced</code> tab, make sure that <code>Shared Clipboard</code> is set to <code>Bidirectional</code>.</p>
+
+        <p><img class="button wikiimage" src="img/vbox-clip.png" style="max-width:70%"/></p>
+
+        <p><b>UTM:</b> with your VM off, select your VM and click on the top-right <code>Edit selected VM</code> button (<i class="fas fa-sliders"></i>). Under <code>Sharing</code>, toggle <code>Enable Clipboard Sharing</code>.</p>
+
+        <p><img class="button wikiimage" src="img/utm-clip.png" style="max-width:80%"/></p>
+
+        <br><br>
+
+        <h3 id=startup>Crashes or Black Screen on VM Startup</h3>
+        <p>In some cases, your VM may be using <i>too much</i> or <i>too little</i> memory depending on your host system's resources. This often causes VirtualBox and UTM to either crash on VM startup, or indefinitely hang on a black screen. We recommend that you try adjusting your VM's settings to either increase or decrease the amount of RAM (memory) and/or VRAM (video memory) used. This may require some trial and error!</p>
+
+        <p><b>VirtualBox:</b> first make sure that your VM is turned off, and then click on the <code>Settings</code> button. Select the <code>System</code> tab and adjust your RAM (<code>Base Memory</code>) accordingly:</p>
+
+        <p><img class="button wikiimage" src="img/vbox-ram.png" style="max-width:70%"/></p>
+
+        <p>You can also adjust the VRAM (<code>Video Memory</code>) within the <code>Display</code> tab:</p>
+
+        <p><img class="button wikiimage" src="img/vbox-vram.png" style="max-width:70%"/></p>
+
+        <p><b>UTM:</b> first turn off your VM, and then select your VM and click on the top-right <code>Edit selected VM</code> button (<i class="fas fa-sliders"></i>). From there, click the <code>System</code> tab and adjust your RAM accordingly:
+
+        <p><img class="button wikiimage" src="img/utm-ram.png" style="max-width:80%"/></p>
+
+        <br><br>
+
+        <h3 id=firefox>Firefox Crashes</h3>
+        <p>We've seen RAM / VRAM also affect the VM's Firefox web browser, causing it to unexpectedly crash. We recommend trying to adjust your RAM / VRAM levels using the above steps.</p>
+
+        <br><br>
+
+        <h3 id=vbox_cpu>VirtualBox: CPU Virtualization Setup</h3>
+        <p>VirtualBox requires an x86(-64) processor with hardware-assisted virtualization; such feature is called <b>VT-x</b> on Intel processors and <b>AMD-V</b> on AMD processors. If you have a Mac, virtualization should be enabled by default in firmware. If you have a PC, chances are the feature will be enabled from the factory, yet this is not always the case.</p>
+
+        <p>In order to enable virtualization, you will need to enter the setup menu of your BIOS or UEFI on your PC. The key combination to press immediately after startup differs by PC manufacturer, but oftentimes it is one of <code>F2</code>, <code>Delete</code>, <code>F10</code>, <code>F12</code>, or <code>Esc</code>. Consult your manufacturer’s documentation if you are unsure. The location of the setting will also differ by manufacturer. However, the name will almost always include "virtualization" or "virtualization technology".</p>
+
+        <br><br>
+
+        <h3 id=vbox_import>VirtualBox: Error While Importing</h3>
+        <p>If you have a previous installation of VirtualBox 6, you may encounter an error saying <code>Invalid value 'WAS' in AudioAdapter/@driver attribute</code> when importing the VM appliance, causing the import operation to fail. Please update to the latest version of VirtualBox using the download link above.</p>
+
+        <br><br>
+
+        <h3 id=vbox_macos>VirtualBox: MacOS Hosts</h3>
+        <p>You might have trouble running the VM with VirtualBox on an Intel Mac if you didn't choose the correct security settings when installing VirtualBox. Take a look at the suggested answer <a href="https://stackoverflow.com/questions/52689672/virtualbox-ns-error-failure-0x80004005-macos">here</a>.</p>
+
+        <br><br>
+
+        <h3 id=vbox_win11>VirtualBox: Windows 11 Hosts</h3>
+        <p>On some Windows 11 hosts, VirtualBox may fail to install, asking for Microsoft Visual C++ 2019 to be installed beforehand. You can download this <a href="https://aka.ms/vs/17/release/vc_redist.x64.exe">here</a>.</p>
+
+    <!-- ################################################################################### -->
+    </div>
+    <div class="col-md-2 text-left" style="position:static;">
+        <div class="col-md-12 text-left" style="position:fixed;">
+            <h4><b>Table of Contents:</b></h4>
+                <ul>
+                    <li><a href="#vbox">VirtualBox Setup</a></li>
+                    <li><a href="#utm">UTM Setup</a></li>
+                    <li><a href="#login">Logging In</a></li>
+                    <li><a href="#help">Troubleshooting</a></li>
+                        <ul>
+                            <li><a href="#download">Download Errors</a></li>
+                            <li><a href="#display">Display Resolution</a></li>
+                            <li><a href="#copypaste">Copy/Paste Support</a></li> 
+                            <li><a href="#startup">Crashes on Startup</a></li>
+                            <li><a href="#firefox">Firefox Crashes</a></li>
+                            <li><a href="#vbox_cpu">VirtualBox: CPU Setup</a></li>
+                            <li><a href="#vbox_import">VirtualBox: Importing</a></li>
+                            <li><a href="#vbox_macos">VirtualBox: MacOS</a></li>
+                            <li><a href="#vbox_win11">VirtualBox: Win11</a></li>
+                        </ul>
+                </ul>
+            </h4>
+        </div>
+    </div>
+
+</div>
+
+<!-- ################################################################################### -->
+
+<footer class="bg-light text-center text-lg-start">
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); font-size: 0.75em;">
+        Copyright © Stefan Nagy. All rights reserved.
+    </div>
+</footer>
+
+<!-- ################################################################################### -->
+
+</body>
+
+</html>
