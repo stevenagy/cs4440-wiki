@@ -2,6 +2,8 @@
 
 This repository contains the source materials for the [CS 4440 Course Wiki](http://cs.utah.edu/~snagy/courses/cs4440/wiki/). The aim of this wiki is to lower the learning curve of CS 4440's various prerequsite topics, while also providing other helpful resources (e.g., textbooks, documentation) to help you succeed in the course. 
 
+![Wiki Main](img/wiki-main.png)
+
 ## Contributions
 
 We welcome contributions! Please open a pull request with new pages or suggestions for changes to existing pages.
