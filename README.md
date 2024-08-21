@@ -1,6 +1,6 @@
 # Course Wiki for CS 4440: Intro to Computer Security
 
-This repository contains the source materials for the [CS 4440 Course Wiki](http://cs.utah.edu/~snagy/courses/cs4440/wiki/). The aim of this wiki is to lower the learning curve of CS 4440's various prerequsite topics, while also providing other helpful resources (e.g., textbooks, software documentation) to help you succeed in the course. 
+This repository contains the source materials for the [CS 4440 Course Wiki](http://cs.utah.edu/~snagy/courses/cs4440/wiki/). The aim of this wiki is to lower the learning curve of CS 4440's various prerequsite topics, while also providing other helpful resources (e.g., textbooks, documentation) to help you succeed in the course. 
 
 ## Contributions
 
