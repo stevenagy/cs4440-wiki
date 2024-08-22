@@ -203,8 +203,13 @@
 
         <br><br>
 
-        <h3 id=vbox_import>VirtualBox: Error While Importing</h3>
+        <h3 id=vbox_import>VirtualBox: Error while Importing</h3>
         <p>If you have a previous installation of VirtualBox 6, you may encounter an error saying <code>Invalid value 'WAS' in AudioAdapter/@driver attribute</code> when importing the VM appliance, causing the import operation to fail. Please update to the latest version of VirtualBox using the download link above.</p>
+
+        <br><br>
+
+        <h3 id=vbox_bootup>VirtualBox: Error while Booting Up</h3>
+        <p>We've seen some laptops where, upon booting the VM, VirtualBox throws errors such as <code>VERR_ACCESS_DENIED</code> or <code>VbglR3InitUser</code>. We recommend just rebooting your computer (not the VM—your <i>entire</i> laptop) and trying again. Alternatively, we've seen some successes where users just clicked-through those errors to get to the working VM.</p>
 
         <br><br>
 
@@ -238,7 +243,8 @@
                             <li><a href="#startup">Crashes on Startup</a></li>
                             <li><a href="#firefox">Firefox Crashes</a></li>
                             <li><a href="#vbox_cpu">VirtualBox: CPU Setup</a></li>
-                            <li><a href="#vbox_import">VirtualBox: Importing</a></li>
+                            <li><a href="#vbox_import">VirtualBox: Import Errors</a></li>
+                            <li><a href="#vbox_bootup">VirtualBox: Bootup Errors</a></li>
                             <li><a href="#vbox_cpu">VirtualBox: Dependencies</a></li>
                             <li><a href="#vbox_macos">VirtualBox: MacOS</a></li>
                             <li><a href="#vbox_win11">VirtualBox: Win11</a></li>
