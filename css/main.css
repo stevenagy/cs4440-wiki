@@ -495,3 +495,9 @@ button.detailsButton{
 i.fa-solid{
 	margin-top:1pt; margin-right:1pt
 }
+
+.scrollable {
+	max-height: 90vh;
+	overflow: auto;
+	padding-bottom:40px;
+}
