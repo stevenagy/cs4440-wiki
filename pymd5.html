@@ -103,7 +103,7 @@ f2bc5b1d869870d7688f71b2d87030bd
 </code></pre>
 
     <h3 id=padding>Function <code>padding(msg_bits)</code></h3>
-        <p>Given a message size (in bits), returns the number of padding bytes that should be appended to the end of a message to reach a multiple of the block size.</p>
+        <p>Given a message size (in bits), returns the full padding byte string that should be appended to the end of a message to reach a multiple of the block size.</p>
     </li>
 <pre><code class="language-python"
 >>>> p = pymd5.padding(8)  # 8 bits (1 byte)
