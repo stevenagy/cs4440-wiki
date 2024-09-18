@@ -13,6 +13,24 @@
     <script src="https://kit.fontawesome.com/982c2a20d7.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+        .SQL_Example_Data table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .SQL_Example_Data th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            padding-left: 10px;
+        }
+        .SQL_Example_Data th {
+            background-color: #f2f2f2;
+        }
+        .SQL_Example_Data td {
+            padding-left: 10px;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -67,19 +85,94 @@
 
         <hr><h2 id=>Fundamental Operations</h2>
             <p>Here are SQL operations and examples with the following data tables.</p>
-            <pre><code class="language-sql">SELECT ID, Name from CourseStaff;</code></pre> 
+            <h3>CourseStaff</h3>
+                <table class ="SQL_Example_Data">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Role</th>
+                            <th>City</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0</td>
+                            <td>Stefan Nagy</td>
+                            <td>Professor</td>
+                            <td>Salt Lake</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Bella Miller</td>
+                            <td>TA</td>
+                            <td>Salt Lake</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Alishia Seo</td>
+                            <td>TA</td>
+                            <td>Salt Lake</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Ethan Quinlan</td>
+                            <td>TA</td>
+                            <td>Salt Lake</td>
+                        </tr>
+                    </tbody>
+                </table>
+            <br>
+            <h3>Professors</h3>
+                <table class ="SQL_Example_Data">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Role</th>
+                            <th>City</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>10</td>
+                            <td>Stefan Nagy</td>
+                            <td>Professor</td>
+                            <td>Salt Lake</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>Daniel Kopta</td>
+                            <td>Professor</td>
+                            <td>Salt Lake</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>Jim Germain</td>
+                            <td>Professor</td>
+                            <td>Salt Lake</td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td>David Johnson</td>
+                            <td>Professor</td>
+                            <td>Salt Lake</td>
+                        </tr>
+                    </tbody>
+                </table>
+            
+        <br>
+
+        <pre><code class="language-sql">SELECT ID, Name from CourseStaff;</code></pre> 
 
         <!--<p><img class="button wikiimage" src="img/" style="max-width:70%"/></p>-->
 
         <br>
 
     <!-- ################################################################################### -->
-        <hr><h2 id=exec>Fundamental Operations</h2>
-            <p>Here are SQL operations and examples with the following data tables.</p>
+        <hr><h2 id=exec>Syntactical Tips</h2>
+            <p>Here are SQL syntax tips to keep in mind.</p>
 
-            <h3 id=exec#scripts>On-page Scripts:</h3>
-
-            <h3 id=exec#funcs>Functions:</h3>
         <pre><code class="language-js">function foo(){
             /* Code to be executed when this function is called. */
         }
