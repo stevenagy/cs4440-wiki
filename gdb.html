@@ -67,9 +67,11 @@
         <p id=running#start><b>Starting a GDB session:</b></p>
 <pre>
 $ gdb --args /path/to/program arg1 arg2 arg3 ...
+$ gdb --args program $(python3 script.py)
+    ► run program in current directory using output of script.py as an arg 
 </pre>
 
-        <p id=running#run><b><code>&#10092;r&#10093;un</code>: run the program to be debugged:</b></p>
+        <p id=running#run><b><code>&#10092;r&#10093;un</code>: run or rerun the program to be debugged:</b></p>
 <pre>
 (gdb) run
 </pre>
@@ -90,6 +92,7 @@ $ gdb --args /path/to/program arg1 arg2 arg3 ...
         <hr><h2 id=breakpoints>Breakpoints</h2>
  
         <p id=breakpoints#break><b><code>&#10092;b&#10093;reak</code>: set a breakpoint:</b></p>
+<p style="font-size: small;">breakpoins are preserved when rerunning within the current gdb environment</p>
 <pre>
 (gdb) break *main        # A function's entry point.
 Breakpoint 1 at 0x804a1db: file src.c, line 6.
@@ -106,7 +109,7 @@ Breakpoint 4 at 0x804a213: file src.c, line 14.
 
         <p id=breakpoints#delete><b><code>&#10092;d&#10093;elete</code>: delete breakpoints:</b></p>
 <pre>
-(gdb) delete    # Delete breakpoint #1.
+(gdb) delete 1  # Delete breakpoint #1.
 (gdb) delete    # Delete all breakpoints.
 </pre>
 
@@ -200,6 +203,11 @@ $6 = 0xfff6d958
 (gdb) x/-6xw 0xfff6d958     # Examine 6 hex words backwards from 0xfff6d958.
 0xfff6d940:     0x00000000      0x00000000      0x00000000      0x00000000
 0xfff6d950:     0x00000000      0x00000000
+
+(gdb) x/8x $sp             # Examine 8 hex words on the current stack from top of the stack down
+0xfff6bd2c:     0x00000000      0x00000000      0x00000000      0x00000000
+0xfff6bd3c:     0x00000000      0x00000000      0x00000000      0x00000000
+
 </pre>
 
     <!-- ################################################################################### -->
