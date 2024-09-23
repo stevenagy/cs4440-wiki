@@ -29,6 +29,9 @@
         .SQL_Example_Data td {
             padding-left: 10px;
         }
+        .plist p {
+            display: block;
+        }
 
     </style>
 </head>
@@ -75,108 +78,125 @@
         <p>Below is an abridged cheat sheet of SQL fundamentals that you'll use in this course.</p>
 
         <p><b>This page is by no means comprehensive—we encourage you to bookmark and familiarize yourself with one of the many in-depth SQL tutorials on the web.</b> Some great examples are:</p>
-
+        
         <ul>
             <li> <a href="https://www.w3schools.com/sql/" >W3 Schools' SQL Introduction</a></li> 
+            <li> <a href="https://www.programiz.com/sql/online-compiler/" >Online SQL Complier</a></li> 
             
         </ul>
-
-    <!-- ################################################################################### -->
-
+        
+        <!-- ################################################################################### -->
+        
         <hr><h2 id=>Fundamental Operations</h2>
-            <p>Here are SQL operations and examples with the following data tables.</p>
-            <h3>CourseStaff</h3>
-                <table class ="SQL_Example_Data">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Role</th>
-                            <th>City</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>0</td>
-                            <td>Stefan Nagy</td>
-                            <td>Professor</td>
-                            <td>Salt Lake</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Bella Miller</td>
-                            <td>TA</td>
-                            <td>Salt Lake</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Alishia Seo</td>
-                            <td>TA</td>
-                            <td>Salt Lake</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Ethan Quinlan</td>
-                            <td>TA</td>
-                            <td>Salt Lake</td>
-                        </tr>
-                    </tbody>
-                </table>
-            <br>
-            <h3>Professors</h3>
-                <table class ="SQL_Example_Data">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Role</th>
-                            <th>City</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>10</td>
-                            <td>Stefan Nagy</td>
-                            <td>Professor</td>
-                            <td>Salt Lake</td>
-                        </tr>
-                        <tr>
-                            <td>11</td>
-                            <td>Daniel Kopta</td>
-                            <td>Professor</td>
-                            <td>Salt Lake</td>
-                        </tr>
-                        <tr>
-                            <td>12</td>
-                            <td>Jim Germain</td>
-                            <td>Professor</td>
-                            <td>Salt Lake</td>
-                        </tr>
-                        <tr>
-                            <td>13</td>
-                            <td>David Johnson</td>
-                            <td>Professor</td>
-                            <td>Salt Lake</td>
-                        </tr>
-                    </tbody>
-                </table>
-            
-        <br>
-
-        <pre><code class="language-sql">SELECT ID, Name from CourseStaff;</code></pre> 
-
-        <!--<p><img class="button wikiimage" src="img/" style="max-width:70%"/></p>-->
+        <p>Here are SQL operations and below are examples of them in use using the SQL data tables at the bottom.</p>
+        <div class="plist"> 
+            <p><b><code>SELECT</code></b> : return a result set of rows, from one or more tables</p>
+            <pre><code>SELECT ID, Name from CourseStaff;</code></pre> 
+            <p><b><code>INSERT</code></b>: insert data into table</p>
+            <pre><code>INSERT INTO CourseStaff (Name, Role, City) VALUES (“Jane Doe”, “TA”, “Chicago”);</code></pre> 
+            <p><b><code>UPDATE</code></b>: update data in table </p>
+            <pre><code>UPDATE CourseStaff SET Name = “Prof Nagy”, City = “New York City” WHERE id = 0; </code></pre> 
+            <p><b><code>DELETE</code></b>: delete existing records </p>
+            <pre><code>DELETE FROM CourseStaff WHERE City="Salt Lake"</code></pre> 
+            <p><b><code>UNION</code></b>: combine results of multiple queries</p>
+            <pre><code>SELECT Name FROM CourseStaff UNION SELECT Name FROM Professors;</code></pre> 
+            <p><b><code>WHERE/AND/OR</code></b>: conditional operations to find data in table</p>
+            <pre><code>SELECT * FROM CourseStaff WHERE Name = “Ethan Quinlan”
+SELECT * FROM CourseStaff WHERE City = “Salt Lake” AND Role = “TA”
+SELECT * FROM Courses WHERE City = “Salt Lake” OR CourseID = "CS4440"</code></pre> 
+        </div>
 
         <br>
+        <br>
+
+        <h3>CourseStaff</h3>
+            <table class ="SQL_Example_Data">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>City</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0</td>
+                        <td>Stefan Nagy</td>
+                        <td>Professor</td>
+                        <td>Salt Lake</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Bella Miller</td>
+                        <td>TA</td>
+                        <td>Salt Lake</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Alishia Seo</td>
+                        <td>TA</td>
+                        <td>Salt Lake</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Ethan Quinlan</td>
+                        <td>TA</td>
+                        <td>Salt Lake</td>
+                    </tr>
+                </tbody>
+            </table>
+        <br>
+        <h3>Professors</h3>
+            <table class ="SQL_Example_Data">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>City</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>10</td>
+                        <td>Stefan Nagy</td>
+                        <td>Professor</td>
+                        <td>Salt Lake</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>Daniel Kopta</td>
+                        <td>Professor</td>
+                        <td>Salt Lake</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>Jim Germain</td>
+                        <td>Professor</td>
+                        <td>Salt Lake</td>
+                    </tr>
+                </tbody>
+            </table>        
+        <br>
+        
 
     <!-- ################################################################################### -->
         <hr><h2 id=exec>Syntactical Tips</h2>
             <p>Here are SQL syntax tips to keep in mind.</p>
 
-        <pre><code class="language-js">function foo(){
-            /* Code to be executed when this function is called. */
-        }
-        </code></pre>
+        <ul>
+            <li><code>*</code> : all</li>
+            <li><code>NULL</code> : nothing</li>
+            <li><code>-- </code> : comment-out the rest of the line (note the space at the end)</li>
+            <li><code>=</code> : equal (comparison) operator</li>
+            <li><code>TRUE</code> : true keyword</li>
+            <li><code>FALSE</code> : false keyword</li>
+            <li><code>“1” = 1</code> : will result as FALSE</li>
+            <li><code>1 = 1</code> : will result as TRUE</li>
+            <li><code>“1” = 1 OR 1</code> : will result in TRUE</li>
+        </ul>
+        
 
        
 
