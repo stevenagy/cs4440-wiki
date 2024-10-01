@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CS 4440</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons/css/academicons.min.css">
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
+    <script src="https://kit.fontawesome.com/982c2a20d7.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+        .SQL_Example_Data table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .SQL_Example_Data th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            padding-left: 10px;
+        }
+        .SQL_Example_Data th {
+            background-color: #f2f2f2;
+        }
+        .SQL_Example_Data td {
+            padding-left: 10px;
+        }
+        .plist p {
+            display: block;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse">
+    <a class="navbar-brand" href="http://cs.utah.edu">
+        <img class="button" width="185px" src="../../../img/ksoclogo_white.png" style="margin-top:1.3%">
+    </a>
+
+    <div class="ml-auto">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav" style="margin-top: 1px;">
+                <li><a href="../">Syllabus</a></li>
+                <li><a href="../schedule">Schedule</a></li>
+                <li><a href="../assignments">Assignments</a></li>
+                <li><a href="../wiki">Wiki</a></li>
+                <li><a href="../redirect_piazza">Piazza</a></li>
+                <li><a href="../redirect_canvas">Canvas</a></li>
+                <li><a href="../redirect_pollev">PollEv</a></li>
+                <li><a href="../redirect_taqueue">TA&nbsp;Queue</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ################################################################################### -->
+
+<div class="container main-container">
+    <div class="col-md-10">
+        <h1>The CS 4440 Wiki:<br> <b style="color:dodgerblue">SQL Cheat Sheet</b></h1><br>
+
+    <!-- ################################################################################### -->
+
+        <p>Below is an abridged cheat sheet of SQL fundamentals that you'll use in this course.</p>
+
+        <p><b>This page is by no means comprehensive—we encourage you to bookmark and familiarize yourself with one of the many in-depth SQL tutorials on the web.</b> Some great examples are:</p>
+        
+        <ul>
+            <li> <a href="https://www.w3schools.com/sql/" >W3 Schools' SQL Introduction</a></li> 
+            <li> <a href="https://www.programiz.com/sql/online-compiler/" >Online SQL Complier</a></li> 
+            
+        </ul>
+        
+        <!-- ################################################################################### -->
+        
+        <hr><h2 id="ops">Fundamental Operations</h2>
+        <p>Here are SQL operations and below are examples of them in use using the SQL data tables at the bottom.</p>
+        <div class="plist"> 
+            <p><b><code>SELECT</code></b> : return a result set of rows, from one or more tables</p>
+            <pre><code>SELECT ID, Name from CourseStaff;</code></pre> 
+            <p><b><code>INSERT</code></b>: insert data into table</p>
+            <pre><code>INSERT INTO CourseStaff (Name, Role, City) VALUES (“Jane Doe”, “TA”, “Chicago”);</code></pre> 
+            <p><b><code>UPDATE</code></b>: update data in table </p>
+            <pre><code>UPDATE CourseStaff SET Name = “Prof Nagy”, City = “New York City” WHERE id = 0; </code></pre> 
+            <p><b><code>DELETE</code></b>: delete existing records </p>
+            <pre><code>DELETE FROM CourseStaff WHERE City="Salt Lake"</code></pre> 
+            <p><b><code>UNION</code></b>: combine results of multiple queries</p>
+            <pre><code>SELECT Name FROM CourseStaff UNION SELECT Name FROM Professors;</code></pre> 
+            <p><b><code>WHERE/AND/OR</code></b>: conditional operations to find data in table</p>
+            <pre><code>SELECT * FROM CourseStaff WHERE Name = “Ethan Quinlan”
+SELECT * FROM CourseStaff WHERE City = “Salt Lake” AND Role = “TA”
+SELECT * FROM Courses WHERE City = “Salt Lake” OR CourseID = "CS4440"</code></pre> 
+        </div>
+
+        <br>
+        <br>
+
+        <h3>CourseStaff</h3>
+            <table class ="SQL_Example_Data">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>City</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0</td>
+                        <td>Stefan Nagy</td>
+                        <td>Professor</td>
+                        <td>Salt Lake</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Bella Miller</td>
+                        <td>TA</td>
+                        <td>Salt Lake</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Alishia Seo</td>
+                        <td>TA</td>
+                        <td>Salt Lake</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Ethan Quinlan</td>
+                        <td>TA</td>
+                        <td>Salt Lake</td>
+                    </tr>
+                </tbody>
+            </table>
+        <br>
+        <h3>Professors</h3>
+            <table class ="SQL_Example_Data">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>City</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>10</td>
+                        <td>Stefan Nagy</td>
+                        <td>Professor</td>
+                        <td>Salt Lake</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>Daniel Kopta</td>
+                        <td>Professor</td>
+                        <td>Salt Lake</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>Jim Germain</td>
+                        <td>Professor</td>
+                        <td>Salt Lake</td>
+                    </tr>
+                </tbody>
+            </table>        
+        <br>
+        
+
+    <!-- ################################################################################### -->
+        <hr><h2 id="tips">Syntactical Tips</h2>
+            <p>Here are SQL syntax tips to keep in mind.</p>
+
+        <ul>
+            <li><code>*</code> : all</li>
+            <li><code>NULL</code> : nothing</li>
+            <li><code>-- </code> : comment-out the rest of the line (note the space at the end)</li>
+            <li><code>=</code> : equal (comparison) operator</li>
+            <li><code>TRUE</code> : true keyword</li>
+            <li><code>FALSE</code> : false keyword</li>
+            <li><code>“1” = 1</code> : will result as FALSE</li>
+            <li><code>1 = 1</code> : will result as TRUE</li>
+            <li><code>“1” = 1 OR 1</code> : will result in TRUE</li>
+        </ul>
+        
+
+       
+
+    <!-- ################################################################################### -->
+    </div>
+    <div class="col-md-2 text-left scrollable" style="position:static;">
+        <div class="col-md-12 text-left scrollable" style="position:fixed;">
+            <h4><b>Table of Contents:</b></h4>
+                <ul>
+                    <li><a href="#ops">Fundamental Operations</a></li>
+                        <li><a href="#tips">Syntactical Tips</a></li>
+                </ul>
+            </h4>
+        </div>
+    </div>
+
+</div>
+
+<!-- ################################################################################### -->
+
+<footer class="bg-light text-center text-lg-start">
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); font-size: 0.75em;">
+        Copyright © Stefan Nagy. All rights reserved.
+    </div>
+</footer>
+
+<!-- ################################################################################### -->
+
+</body>
+
+</html>
