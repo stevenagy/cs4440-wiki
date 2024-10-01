@@ -32,7 +32,6 @@
         .plist p {
             display: block;
         }
-
     </style>
 </head>
 
@@ -71,119 +70,96 @@
 
 <div class="container main-container">
     <div class="col-md-10">
-        <h1>The CS 4440 Wiki:<br> <b style="color:dodgerblue">SQL Cheat Sheet</b></h1><br>
+        <h1>CS 4440 Wiki: <br class="on-narrow"><b style="color:dodgerblue">SQL Cheat Sheet</b></h1><br>
 
     <!-- ################################################################################### -->
 
-        <p>Below is an abridged cheat sheet of SQL fundamentals that you'll use in this course.</p>
+        <p>Below is an abridged cheat sheet of SQL (Structured Query Language) fundamentals that you'll use in this course.</p>
 
         <p><b>This page is by no means comprehensive—we encourage you to bookmark and familiarize yourself with one of the many in-depth SQL tutorials on the web.</b> Some great examples are:</p>
         
         <ul>
             <li> <a href="https://www.w3schools.com/sql/" >W3 Schools' SQL Introduction</a></li> 
             <li> <a href="https://www.programiz.com/sql/online-compiler/" >Online SQL Complier</a></li> 
-            
         </ul>
         
         <!-- ################################################################################### -->
         
-        <hr><h2 id="ops">Fundamental Operations</h2>
-        <p>Here are SQL operations and below are examples of them in use using the SQL data tables at the bottom.</p>
-        <div class="plist"> 
-            <p><b><code>SELECT</code></b> : return a result set of rows, from one or more tables</p>
+        <hr><h2 id="ops">Basic SQL Commands</h2>
+       
+        <p>Consider an SQL table named <code>CourseStaff</code> comprised of the following data records shown below:</p>
+
+        <table class="SQL_Example_Data">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th>City</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>0</td>
+                    <td>Stefan Nagy</td>
+                    <td>Professor</td>
+                    <td>Salt Lake City, UT</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Bella Miller</td>
+                    <td>TA</td>
+                    <td>Salt Lake City, UT</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Alishia Seo</td>
+                    <td>TA</td>
+                    <td>Salt Lake City, UT</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Ethan Quinlan</td>
+                    <td>TA</td>
+                    <td>Salt Lake City, UT</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br>
+
+        <p>Below are examples of common SQL commands interacting with the data contained in the above table.</p>
+
+        <br><br>
+
+        <h3 id="basics#select">Selecting Records:</h3>
+            <p><b><code>SELECT</code></b>: return a result set of rows, from one or more tables.</p>
             <pre><code>SELECT ID, Name from CourseStaff;</code></pre> 
-            <p><b><code>INSERT</code></b>: insert data into table</p>
-            <pre><code>INSERT INTO CourseStaff (Name, Role, City) VALUES (“Jane Doe”, “TA”, “Chicago”);</code></pre> 
-            <p><b><code>UPDATE</code></b>: update data in table </p>
-            <pre><code>UPDATE CourseStaff SET Name = “Prof Nagy”, City = “New York City” WHERE id = 0; </code></pre> 
-            <p><b><code>DELETE</code></b>: delete existing records </p>
-            <pre><code>DELETE FROM CourseStaff WHERE City="Salt Lake"</code></pre> 
-            <p><b><code>UNION</code></b>: combine results of multiple queries</p>
-            <pre><code>SELECT Name FROM CourseStaff UNION SELECT Name FROM Professors;</code></pre> 
-            <p><b><code>WHERE/AND/OR</code></b>: conditional operations to find data in table</p>
+
+        <h3 id="basics#insert">Inserting Records:</h3>
+            <p><b><code>INSERT</code></b>: insert data records into the table.</p>
+            <pre><code>INSERT INTO CourseStaff (Name, Role, City) VALUES (“Hokie Bird”, “TA”, “Blacksburg, VA”);</code></pre> 
+
+        <h3 id="basics#update">Updating Records:</h3>
+            <p><b><code>UPDATE</code></b>: update data records within table.</p>
+            <pre><code>UPDATE CourseStaff SET Name = “C&#8203;ount Chocula”, City = “Hershey, PA” WHERE id = 0; </code></pre> 
+
+        <h3 id="basics#delete">Deleting Records:</h3>
+            <p><b><code>DELETE</code></b>: delete existing records.</p>
+            <pre><code>DELETE FROM CourseStaff WHERE City="Salt Lake City, UT"</code></pre> 
+ 
+        <h3 id="basics#union">Union of Multiple Selections:</h3>
+            <p><b><code>UNION</code></b>: combine results of multiple queries.</p>
+            <pre><code>SELECT Name FROM CourseStaff UNION SELECT Name FROM SomeOtherTable;</code></pre> 
+
+        <h3 id="basics#conditionals">Conditional Operators:</h3>
+            <p><b><code>WHERE/AND/OR</code></b>: conditional operations to find data in table.</p>
             <pre><code>SELECT * FROM CourseStaff WHERE Name = “Ethan Quinlan”
-SELECT * FROM CourseStaff WHERE City = “Salt Lake” AND Role = “TA”
-SELECT * FROM Courses WHERE City = “Salt Lake” OR CourseID = "CS4440"</code></pre> 
-        </div>
-
-        <br>
-        <br>
-
-        <h3>CourseStaff</h3>
-            <table class ="SQL_Example_Data">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Role</th>
-                        <th>City</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>0</td>
-                        <td>Stefan Nagy</td>
-                        <td>Professor</td>
-                        <td>Salt Lake</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Bella Miller</td>
-                        <td>TA</td>
-                        <td>Salt Lake</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Alishia Seo</td>
-                        <td>TA</td>
-                        <td>Salt Lake</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Ethan Quinlan</td>
-                        <td>TA</td>
-                        <td>Salt Lake</td>
-                    </tr>
-                </tbody>
-            </table>
-        <br>
-        <h3>Professors</h3>
-            <table class ="SQL_Example_Data">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Role</th>
-                        <th>City</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>10</td>
-                        <td>Stefan Nagy</td>
-                        <td>Professor</td>
-                        <td>Salt Lake</td>
-                    </tr>
-                    <tr>
-                        <td>11</td>
-                        <td>Daniel Kopta</td>
-                        <td>Professor</td>
-                        <td>Salt Lake</td>
-                    </tr>
-                    <tr>
-                        <td>12</td>
-                        <td>Jim Germain</td>
-                        <td>Professor</td>
-                        <td>Salt Lake</td>
-                    </tr>
-                </tbody>
-            </table>        
-        <br>
-        
+SELECT * FROM CourseStaff WHERE City = “Salt Lake City, UT” AND Role = “TA”</code></pre> 
 
     <!-- ################################################################################### -->
         <hr><h2 id="tips">Syntactical Tips</h2>
-            <p>Here are SQL syntax tips to keep in mind.</p>
+            <p>Here are some SQL syntax tips to keep in mind.</p>
 
         <ul>
             <li><code>*</code> : all</li>
@@ -196,9 +172,6 @@ SELECT * FROM Courses WHERE City = “Salt Lake” OR CourseID = "CS4440"</code>
             <li><code>1 = 1</code> : will result as TRUE</li>
             <li><code>“1” = 1 OR 1</code> : will result in TRUE</li>
         </ul>
-        
-
-       
 
     <!-- ################################################################################### -->
     </div>
@@ -206,8 +179,16 @@ SELECT * FROM Courses WHERE City = “Salt Lake” OR CourseID = "CS4440"</code>
         <div class="col-md-12 text-left scrollable" style="position:fixed;">
             <h4><b>Table of Contents:</b></h4>
                 <ul>
-                    <li><a href="#ops">Fundamental Operations</a></li>
-                        <li><a href="#tips">Syntactical Tips</a></li>
+                    <li><a href="#basics">Basic Commands</a></li>
+                    <ul>
+                        <li><a href="#basics#select">SELECT</a></li>
+                        <li><a href="#basics#insert">INSERT</a></li>
+                        <li><a href="#basics#update">UPDATE</a></li>
+                        <li><a href="#basics#delete">DELETE</a></li>
+                        <li><a href="#basics#union">UNION</a></li>
+                        <li><a href="#basics#conditionals">WHERE/AND/OR</a></li>
+                    </ul>
+                    <li style="margin-top:1ex"><a href="#tips">Syntax Tips</a></li>
                 </ul>
             </h4>
         </div>
