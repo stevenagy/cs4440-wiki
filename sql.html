@@ -15,7 +15,7 @@
     <script>hljs.initHighlightingOnLoad();</script>
     <style>
         .SQL_Example_Data table {
-            width: 100%;
+            width: auto;
             border-collapse: collapse;
         }
         .SQL_Example_Data th, td {
@@ -134,34 +134,58 @@
 
         <h3 id="basics#select">Selecting Records:</h3>
             <p><b><code>SELECT</code></b>: return a result set of rows, from one or more tables.</p>
-            <pre><code>SELECT ID, Name from CourseStaff;</code></pre> 
+<pre><code>SELECT ID, Name from CourseStaff;
+</code> Number of records: 4
+ {ID, Name}
+ {0, Stefan Nagy}
+ {1, Bella Miller}
+ {2, Alishia Seo}
+ {3, Ethan Quinlan}
+</pre> 
+            
+            <br>
 
         <h3 id="basics#insert">Inserting Records:</h3>
             <p><b><code>INSERT</code></b>: insert data records into the table.</p>
-            <pre><code>INSERT INTO CourseStaff (Name, Role, City) VALUES (“Hokie Bird”, “TA”, “Blacksburg, VA”);</code></pre> 
+<pre><code>INSERT INTO CourseStaff (Name, Role, City) VALUES (“Hokie Bird”, “TA”, “Blacksburg, VA”);
+</code> Inserted row: {4, Hokie Bird, TA, Blacksburg VA}
+</pre> 
 
         <h3 id="basics#update">Updating Records:</h3>
             <p><b><code>UPDATE</code></b>: update data records within table.</p>
-            <pre><code>UPDATE CourseStaff SET Name = “C&#8203;ount Chocula”, City = “Hershey, PA” WHERE id = 0; </code></pre> 
+<pre><code>UPDATE CourseStaff SET Name = “C&#8203;ount Chocula”, City = “Hershey, PA” WHERE id = 0; 
+</code> Updated row: {0, Count Chocula, Professor, Hershey PA}
+</pre> 
 
         <h3 id="basics#delete">Deleting Records:</h3>
             <p><b><code>DELETE</code></b>: delete existing records.</p>
-            <pre><code>DELETE FROM CourseStaff WHERE City="Salt Lake City, UT"</code></pre> 
+<pre><code>DELETE FROM CourseStaff WHERE City="Salt Lake City, UT"
+</code> Deleted 4 rows.</pre> 
  
         <h3 id="basics#union">Union of Multiple Selections:</h3>
             <p><b><code>UNION</code></b>: combine results of multiple queries.</p>
-            <pre><code>SELECT Name FROM CourseStaff UNION SELECT Name FROM SomeOtherTable;</code></pre> 
+<pre><code>SELECT Name FROM CourseStaff UNION SELECT Name FROM SomeOtherTable;
+</code> Results in a list of all <b>unique</b> names in Name column from CourseStaff and all names from SomeOtherTable.
+</pre> 
 
         <h3 id="basics#conditionals">Conditional Operators:</h3>
             <p><b><code>WHERE/AND/OR</code></b>: conditional operations to find data in table.</p>
-            <pre><code>SELECT * FROM CourseStaff WHERE Name = “Ethan Quinlan”
-SELECT * FROM CourseStaff WHERE City = “Salt Lake City, UT” AND Role = “TA”</code></pre> 
+<pre><code>SELECT * FROM CourseStaff WHERE Name = “Ethan Quinlan”
+</code> Number of records: 1
+ {3, Ethan Quinlan, TA, Salt Lake City UT}
+<code>SELECT * FROM CourseStaff WHERE City = “Salt Lake City, UT” AND Role = “TA”
+</code> Number of records: 4
+ {1, Bella Miller, TA, Salt Lake City UT}
+ {2, Alishia Seo, TA, Salt Lake City UT}
+ {3, Ethan Quinlan, TA, Salt Lake City UT}
+</pre> 
 
     <!-- ################################################################################### -->
         <hr><h2 id="tips">Syntactical Tips</h2>
             <p>Here are some SQL syntax tips to keep in mind.</p>
 
         <ul>
+            <h3 id="tips#operations">Operators:</h3> //TODO
             <li><code>*</code> : all</li>
             <li><code>NULL</code> : nothing</li>
             <li><code>-- </code> : comment-out the rest of the line (note the space at the end)</li>
