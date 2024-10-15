@@ -184,18 +184,43 @@
         <hr><h2 id="tips">Syntactical Tips</h2>
             <p>Here are some SQL syntax tips to keep in mind.</p>
 
-        <ul>
-            <h3 id="tips#operations">Operators:</h3> //TODO
-            <li><code>*</code> : all</li>
-            <li><code>NULL</code> : nothing</li>
-            <li><code>-- </code> : comment-out the rest of the line (note the space at the end)</li>
-            <li><code>=</code> : equal (comparison) operator</li>
-            <li><code>TRUE</code> : true keyword</li>
-            <li><code>FALSE</code> : false keyword</li>
-            <li><code>“1” = 1</code> : will result as FALSE</li>
-            <li><code>1 = 1</code> : will result as TRUE</li>
-            <li><code>“1” = 1 OR 1</code> : will result in TRUE</li>
-        </ul>
+            <div>
+                <h3 id="tips#operations">Operators:</h3>
+                <p id="operators#all"><b><code>*</code> :</b> all</p>
+                <pre><code>SELECT * from CourseStaff</code> Returns every column for every row in the table CourseStaff.</pre>
+        
+                <p id="operators#null"><b><code>NULL</code> : </b>nothing. Reports a missing or undefined value in a database. Not equivalent to an empty string or zero, indicates a value is unknown.</p>
+                <pre><code>NULL = NULL</code> Returns false because NULL is considered unknown. <code>SELECT * FROM CourseStaff WHERE Role IS NULL;</code> To check for NULL you must use IS NULL or IS NOT NULL operators.
+ This query will return 0 rows as each row in CourseStaff has a value for role.</pre>
+            
+                <p id="operators#equal"><b><code>=</code> : </b>equal (comparison) operator. Checks if two expressions or values are equal. Returns True or False.</p>
+                <pre><code>SELECT * from CourseStaff where id = 0;</code> Number of records: 1
+                {0, Stefan Nagy, Professor, Salt Lake City UT}</pre>
+            
+                <h3 id="tips#booleans">Booleans:</h3>
+                <p id="booleans#true"><b><code>TRUE</code> : </b>true keyword</p>
+                <pre><code>SELECT 1 = 1;</code> Returns TRUE.</pre>
+            
+                <p id="booleans#false"><b><code>FALSE</code> : </b>false keyword</p>
+                <pre><code>SELECT 1 = 4;</code> Returns FALSE.</pre>
+            
+                <p id="booleans#type"><b><code>“1” = 1</code> : </b>type mismatch</p>
+                <pre><code>SELECT '1' = 1;</code> Returns FALSE.
+ A string is not equal to an integer, type mismatch results in FALSE.</pre>
+            
+                <p><b><code>1 = 1</code> : </b>integer comparison</p>
+                <pre> Comparison of two equal integer values results in TRUE. </pre>
+            
+                <p><b><code>“1” = 1 OR 1</code> : </b>will result in TRUE</p>
+                <pre> "1" = 1 returns FALSE but the second part is OR 1. 
+ In SQL, any non-zero number is evaluated as true. So 1 is considered TRUE.</pre>
+            
+                <h3 id="tips#comments">Code Commenting:</h3>
+                <p><b><code>-- </code> : </b>comment-out the rest of the line (note the space at the end)</p>
+                <pre><code>SELECT '1' = 1 -- OR 1;</code> Returns FALSE. 
+ Everything after the comment is ignored by the SQL interpreter, so it is the comparison of a string to an integer.</pre>
+            </div>
+            
 
     <!-- ################################################################################### -->
     </div>
@@ -213,6 +238,21 @@
                         <li><a href="#basics#conditionals">WHERE/AND/OR</a></li>
                     </ul>
                     <li style="margin-top:1ex"><a href="#tips">Syntax Tips</a></li>
+                    <ul>
+                        <li><a href="#tips#operations">Operators</a></li>
+                        <ul>
+                            <li><a href="#operators#all">ALL</a></li>
+                            <li><a href="#operators#null">NULL</a></li>
+                            <li><a href="#operators#equal">=</a></li>
+                        </ul>
+                        <li><a href="#tips#booleans">Booleans</a></li>
+                        <ul>
+                            <li><a href="#booleans#true">TRUE</a></li>
+                            <li><a href="#booleans#false">FALSE</a></li>
+                            <li><a href="#booleans#type">type mismatch</a></li>
+                        </ul>
+                        <li><a href="#tips#comments">Commenting</a></li>
+                    </ul>
                 </ul>
             </h4>
         </div>
