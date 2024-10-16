@@ -273,6 +273,20 @@ es             0x2b                43
 fs             0x0                 0
 gs             0x63                99
 </pre>
+        <p id="info#function"><b><code>info function (regex)</code>: prints the functions matching the regex with their associated addresses:</b></p>
+<pre>
+(gdb) info function exit
+All functions matching regular expression "exit":
+
+Non-debugging symbols:
+0x08050810  __run_exit_handlers
+0x08050b00  exit
+0x08050b30  __new_exitfn
+0x08050c30  __internal_atexit
+0x08050d60  __cxa_atexit
+0x08079a4a  _exit
+0x080ac410  _dl_call_pltexit
+</pre>
 
     <!-- ################################################################################### -->
     </div>
@@ -316,6 +330,7 @@ gs             0x63                99
                             <li><a href="#info#args">info args</a></li>
                             <li><a href="#info#locals">info locals</a></li>
                             <li><a href="#info#regs">info reg</a></li>
+                            <li><a href="#info#function">info function</a></li>
                         </ul>
                 </ul>
             </h4>
