@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CS 4440</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons/css/academicons.min.css">
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
+    <script src="https://kit.fontawesome.com/982c2a20d7.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse">
+    <a class="navbar-brand" href="http://cs.utah.edu">
+        <img class="button" width="185px" src="../../../img/ksoclogo_white.png" style="margin-top:1.3%">
+    </a>
+
+    <div class="ml-auto">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav" style="margin-top: 1px;">
+                <li><a href="../">Syllabus</a></li>
+                <li><a href="../schedule">Schedule</a></li>
+                <li><a href="../assignments">Assignments</a></li>
+                <li><a href="../wiki">Wiki</a></li>
+                <li><a href="../redirect_piazza">Piazza</a></li>
+                <li><a href="../redirect_canvas">Canvas</a></li>
+                <li><a href="../redirect_pollev">PollEv</a></li>
+                <li><a href="../redirect_taqueue">TA&nbsp;Queue</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ################################################################################### -->
+
+<div class="container main-container">
+    <div class="col-md-10">
+        <h1>CS 4440 Wiki: <br class="on-narrow"><b style="color:dodgerblue">Scapy Cheat Sheet</b></h1><br>
+
+    <!-- ################################################################################### -->
+
+        <p>Below is an abridged cheat sheet of Scapy fundamentals that you'll use in this course.</p>
+
+        <p><b>This page is by no means comprehensive—we encourage you to bookmark and familiarize yourself with one of the many in-depth Scapy tutorials on the web.</b> Some great examples are:</p>
+
+        <ul>
+            <li><a href="https://scapy.readthedocs.io/en/latest/api/scapy.html">Scapy Library</a></li>
+            <li><a href="https://scapy.readthedocs.io/en/latest/usage.html">Scapy Usage</a></li>
+        </ul>
+
+    <!-- ################################################################################### -->
+
+        <hr><h2 id=basics>Scapy Basics</h2>
+
+        <p id=basics#install>In case Scapy is not installed on your VM, just run <code>$ pip3 install scapy</code> in your VM's terminal. Once installed, here's how you can import Scapy in Python:</p> 
+        <pre>from scapy.all import *</pre>
+
+        <p id=basics#pcap><b><code>rdpcap('&#10092;pcap&#10093;')</code> : </b> Retrieve packets from a packet capture file.</p>
+        <pre>
+>>> packets = rdpcap('crack0.pcap')
+>>> packet = packets[0]</pre>
+
+        <p id=basics#layers><b><code>packet.show()</code> : </b> Show available protocols and fields for a packet.</p>
+        <pre>
+>>> packet.show()
+###[ Ethernet ]###
+    dst       = 08:00:27:6e:cf:4a
+    src       = 0a:00:27:00:00:00
+    ...
+###[ IP ]###
+        version   = 4
+        ihl       = 5
+        ...
+###[ TCP ]###
+            sport     = 54017
+            dport     = ftp
+            ...</pre>
+
+        <p id=basics#haslayer><b><code>packet.haslayer('&#10092;protocol&#10093;')</code> : </b>Check if packet contains the given protocol.</p>
+        <pre>
+>>> packet.haslayer('TCP') 
+True</pre>
+
+        <p id=basics#payload><b><code>packet['&#10092;protocol&#10093;'].payload</code> : </b> Retrieve the protocol's <b>payload</b>.</p>
+        <pre>
+>>> packet['TCP'].payload
+&lt;Raw  load=b'220 redmint FTP server (Version 6.4/OpenBSD/Linux-ftpd-0.17) ready.\r\n' |></pre>
+
+    <!-- ################################################################################### -->
+
+        <hr><h2 id=link>Link-Layer</h2>
+
+        <p id=link#src><b><code>packet['&#10092;protocol&#10093;'].src</code> : </b>The packet's <b>source address</b> for the <b>link-layer</b>.</p>
+        <pre>
+>>> packet['Ethernet'].src
+'0a:00:27:00:00:00'</pre>
+
+        <p id=link#dst><b><code>packet['&#10092;protocol&#10093;'].dst</code> : </b>The packet's <b>destination address</b> for the <b>link-layer</b>.</p>
+        <pre>
+>>> packet['Ethernet'].dst
+'08:00:27:6e:cf:4a'</pre>
+
+    <!-- ################################################################################### -->
+
+        <hr><h2 id=network>Network-Layer</h2>
+
+        <p id=network#version><b><code>packet['&#10092;protocol&#10093;'].version</code> : </b>The packet's protocol <b>version</b>. For example, IPv4 or IPv6.</p>
+        <pre>
+>>> packet['IP'].version
+4</pre>
+
+        <p id=network#src><b><code>packet['&#10092;protocol&#10093;'].src</code> : </b>The packet's <b>source address</b> for the <b>network-layer</b>.</p>
+        <pre>
+>>> packet['IP'].src
+'192.168.56.1'</pre>
+
+        <p id=network#dst><b><code>packet['&#10092;protocol&#10093;'].dst</code> : </b>The packet's <b>destination address</b> for the <b>network-layer</b>.</p>
+        <pre>
+>>> packet['IP'].dst
+'192.168.56.101'</pre>
+
+    <!-- ################################################################################### -->
+
+        <hr><h2 id=transport>Transport-Layer</h2>
+
+        <p id=transport#sport><b><code>packet['&#10092;protocol&#10093;'].sport</code> : </b>The packet's <b>source port</b> for the <b>transport-layer</b>.</p>
+        <pre>
+>>> packet['TCP'].sport
+54017</pre>
+
+        <p id=transport#dport><b><code>packet['&#10092;protocol&#10093;'].dport</code> : </b>The packet's <b>destination port</b> for the <b>transport-layer</b>.</p>
+        <pre>
+>>> packet['TCP'].dport
+21</pre>
+
+        <p id=transport#flags><b><code>packet['&#10092;protocol&#10093;'].flags</code> : </b>Inspect a packet's <b>flags</b>.</p>
+        <pre>
+>>> packet["TCP"].flags == 'S'  # Check for SYN flag
+True
+
+>>> packet["TCP"].flags.S   # Check for SYN flag
+True</pre>
+
+    <!-- ################################################################################### -->
+
+        <hr><h2 id=app>Application-Layer</h2>
+
+        <p id=app#data>You can use the <code>payload</code> to grab a packet's <b>application-layer</b> data from the transport-layer.</p>
+        <pre>
+>>> bytes(packet["TCP"].payload).decode("utf-8", "replace")
+'220 redmint FTP server (Version 6.4/OpenBSD/Linux-ftpd-0.17) ready.\r\n'</pre>
+
+        <br>
+
+    <!-- ################################################################################### -->
+
+
+    <!-- ################################################################################### -->
+    </div>
+    <div class="col-md-2 text-left scrollable" style="position:static;">
+        <div class="col-md-12 text-left scrollable" style="position:fixed;">
+            <h4><b>Table of Contents:</b></h4>
+                <ul>
+                    <li><a href="#basics">Scapy Basics</a></li>
+                    <ul>
+                        <li><a href="#basics#install">Installing Scapy</a></li>
+                        <li><a href="#basics#pcap">PCAP</a></li>
+                        <li><a href="#basics#layers">Show Layers</a></li>
+                        <li><a href="#basics#haslayer">Has Layer</a></li>
+                        <li><a href="#basics#payload">Payload</a></li>
+                    </ul>
+                    <li style="margin-top:1ex"><a href="#link">Link-Layer</a></li>
+                    <ul>
+                        <li><a href="#link#src">Source</a></li>
+                        <li><a href="#link#dst">Destination</a></li>
+                    </ul>
+                    <li style="margin-top:1ex"><a href="#network">Network-Layer</a></li>
+                    <ul>
+                        <li><a href="#network#version">Version</a></li>
+                        <li><a href="#network#src">Source</a></li>
+                        <li><a href="#network#dst">Destination</a></li>
+                    </ul>
+                    <li style="margin-top:1ex"><a href="#transport">Transport-Layer</a></li>
+                    <ul>
+                        <li><a href="#transport#sport">Source Port</a></li>
+                        <li><a href="#transport#dport">Destination Port</a></li>
+                        <li><a href="#transport#dport">Flags</a></li>
+                    </ul>
+                    <li style="margin-top:1ex"><a href="#app">Application-Layer</a></li>
+                    <ul>
+                        <li><a href="#app#data">Data</a></li>
+                    </ul>
+                </ul>
+            </h4>
+        </div>
+    </div>
+
+</div>
+
+<!-- ################################################################################### -->
+
+<footer class="bg-light text-center text-lg-start">
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); font-size: 0.75em;">
+        Copyright © Stefan Nagy. All rights reserved.
+    </div>
+</footer>
+
+<!-- ################################################################################### -->
+
+</body>
+
+</html>
