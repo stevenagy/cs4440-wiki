@@ -83,13 +83,13 @@
     src       = 0a:00:27:00:00:00
     ...
 ###[ IP ]###
-        version   = 4
-        ihl       = 5
-        ...
+    version   = 4
+    ihl       = 5
+    ...
 ###[ TCP ]###
-            sport     = 54017
-            dport     = ftp
-            ...</pre>
+    sport     = 54017
+    dport     = ftp
+    ...</pre>
 
         <p id=basics#haslayer><b><code>packet.haslayer('&#10092;protocol&#10093;')</code> : </b>Check if packet contains the given protocol.</p>
         <pre>
@@ -103,47 +103,47 @@ True</pre>
 
     <!-- ################################################################################### -->
 
-        <hr><h2 id=link>Link-Layer</h2>
+        <hr><h2 id=link>Link Layer</h2>
 
-        <p id=link#src><b><code>packet['&#10092;protocol&#10093;'].src</code> : </b>The packet's <b>source address</b> for the <b>link-layer</b>.</p>
+        <p id=link#src><b><code>packet['&#10092;protocol&#10093;'].src</code> : </b>The packet's <b>source address</b> for the <b>link layer</b>.</p>
         <pre>
 >>> packet['Ethernet'].src
 '0a:00:27:00:00:00'</pre>
 
-        <p id=link#dst><b><code>packet['&#10092;protocol&#10093;'].dst</code> : </b>The packet's <b>destination address</b> for the <b>link-layer</b>.</p>
+        <p id=link#dst><b><code>packet['&#10092;protocol&#10093;'].dst</code> : </b>The packet's <b>destination address</b> for the <b>link layer</b>.</p>
         <pre>
 >>> packet['Ethernet'].dst
 '08:00:27:6e:cf:4a'</pre>
 
     <!-- ################################################################################### -->
 
-        <hr><h2 id=network>Network-Layer</h2>
+        <hr><h2 id=network>Network Layer</h2>
 
         <p id=network#version><b><code>packet['&#10092;protocol&#10093;'].version</code> : </b>The packet's protocol <b>version</b>. For example, IPv4 or IPv6.</p>
         <pre>
 >>> packet['IP'].version
 4</pre>
 
-        <p id=network#src><b><code>packet['&#10092;protocol&#10093;'].src</code> : </b>The packet's <b>source address</b> for the <b>network-layer</b>.</p>
+        <p id=network#src><b><code>packet['&#10092;protocol&#10093;'].src</code> : </b>The packet's <b>source address</b> for the <b>network layer</b>.</p>
         <pre>
 >>> packet['IP'].src
 '192.168.56.1'</pre>
 
-        <p id=network#dst><b><code>packet['&#10092;protocol&#10093;'].dst</code> : </b>The packet's <b>destination address</b> for the <b>network-layer</b>.</p>
+        <p id=network#dst><b><code>packet['&#10092;protocol&#10093;'].dst</code> : </b>The packet's <b>destination address</b> for the <b>network layer</b>.</p>
         <pre>
 >>> packet['IP'].dst
 '192.168.56.101'</pre>
 
     <!-- ################################################################################### -->
 
-        <hr><h2 id=transport>Transport-Layer</h2>
+        <hr><h2 id=transport>Transport Layer</h2>
 
-        <p id=transport#sport><b><code>packet['&#10092;protocol&#10093;'].sport</code> : </b>The packet's <b>source port</b> for the <b>transport-layer</b>.</p>
+        <p id=transport#sport><b><code>packet['&#10092;protocol&#10093;'].sport</code> : </b>The packet's <b>source port</b> for the <b>transport layer</b>.</p>
         <pre>
 >>> packet['TCP'].sport
 54017</pre>
 
-        <p id=transport#dport><b><code>packet['&#10092;protocol&#10093;'].dport</code> : </b>The packet's <b>destination port</b> for the <b>transport-layer</b>.</p>
+        <p id=transport#dport><b><code>packet['&#10092;protocol&#10093;'].dport</code> : </b>The packet's <b>destination port</b> for the <b>transport layer</b>.</p>
         <pre>
 >>> packet['TCP'].dport
 21</pre>
@@ -158,9 +158,9 @@ True</pre>
 
     <!-- ################################################################################### -->
 
-        <hr><h2 id=app>Application-Layer</h2>
+        <hr><h2 id=app>Application Layer</h2>
 
-        <p id=app#data>You can use the <code>payload</code> to grab a packet's <b>application-layer</b> data from the transport-layer.</p>
+        <p id=app#data>You can use the <code>payload</code> to grab a packet's <b>application layer</b> data from the transport layer.</p>
         <pre>
 >>> bytes(packet["TCP"].payload).decode("utf-8", "replace")
 '220 redmint FTP server (Version 6.4/OpenBSD/Linux-ftpd-0.17) ready.\r\n'</pre>
@@ -184,24 +184,24 @@ True</pre>
                         <li><a href="#basics#haslayer">Has Layer</a></li>
                         <li><a href="#basics#payload">Payload</a></li>
                     </ul>
-                    <li style="margin-top:1ex"><a href="#link">Link-Layer</a></li>
+                    <li style="margin-top:1ex"><a href="#link">Link Layer</a></li>
                     <ul>
                         <li><a href="#link#src">Source</a></li>
                         <li><a href="#link#dst">Destination</a></li>
                     </ul>
-                    <li style="margin-top:1ex"><a href="#network">Network-Layer</a></li>
+                    <li style="margin-top:1ex"><a href="#network">Network Layer</a></li>
                     <ul>
                         <li><a href="#network#version">Version</a></li>
                         <li><a href="#network#src">Source</a></li>
                         <li><a href="#network#dst">Destination</a></li>
                     </ul>
-                    <li style="margin-top:1ex"><a href="#transport">Transport-Layer</a></li>
+                    <li style="margin-top:1ex"><a href="#transport">Transport Layer</a></li>
                     <ul>
                         <li><a href="#transport#sport">Source Port</a></li>
                         <li><a href="#transport#dport">Destination Port</a></li>
                         <li><a href="#transport#dport">Flags</a></li>
                     </ul>
-                    <li style="margin-top:1ex"><a href="#app">Application-Layer</a></li>
+                    <li style="margin-top:1ex"><a href="#app">Application Layer</a></li>
                     <ul>
                         <li><a href="#app#data">Data</a></li>
                     </ul>
