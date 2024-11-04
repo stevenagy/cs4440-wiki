@@ -143,6 +143,32 @@ $ tar -c dst.tar.gz src # Create archive dst.tar.gz containing src
 </pre>
 
     <!-- ################################################################################### -->
+
+    <hr><h2 id=arguments>Bad Arguments</h2>
+<p> Certain bytes corresponding to specific characters are handled differently by bash. These can cause issues when used as arguments, leading to frustration. </p>
+    <p id=null-byte><b>Null Bytes: <code>b'\x00'</code></b></p>
+<pre>
+payload = pack('&lt;', 0xFFFF00FF)     # Payload containing byte \x00 after packing in python 
+$ ./target# $(python3 sol#.py)         # Inputting payload into target
+bash: warning: command substitution: ignored null byte in input
+</pre>
+<p> Bash is written in C which uses a 0 byte as a null terminator to know when a string ends. Bash originally 'stripped' bytes when parsing data by failing to read characters after a null terminator. Now, you get this warning instead. </p>
+
+    <p id=whitespace><b>Whitespace: <code>b'\x0A' b'\x09' b'\x20' </code></b></p>
+<pre>
+payload = pack('&lt;', 0xFFFF0AFF)     # Payload containing byte \x0A after packing in python 
+$ ./target# $(python3 sol#.py)         # Inputting payload into target
+Error: need a command-line argument
+
+payload = pack('&lt;', 0xFFFFFF0A)     # Payload containing byte \x0A after packing in python 
+$ gdb --args target# $(python3 sol#.py)# Inputting payload into target
+(gdb) x/wx &lt;input address&gt;
+&lt;input address&gt;:     0x00ffffff  # Not what the payload was!
+</pre>
+
+<p> Bash specifies three characters as 'whitespace', which is spaces (\x20), new lines (\x0A), and horizontal tabs (\x09). By default bash splits these arguments on whitespace characters. If this byte appears in the middle of a string, it will be parsed as two arguments. If the byte is at the front or end of a string, the argument will be shorter than anticipated.</p>
+<p> While there are ways of avoiding these issues, they are out of the scope for project2. If your target address contains one of these bytes, check your math!</p>
+    <!-- ################################################################################### -->
     </div>
     <div class="col-md-2 text-left scrollable" style="position:static;">
         <div class="col-md-12 text-left scrollable" style="position:fixed;">
@@ -167,6 +193,11 @@ $ tar -c dst.tar.gz src # Create archive dst.tar.gz containing src
                         <ul>
                             <li><a href="#tarx">tar -x (extract)</a></li>
                             <li><a href="#tarc">tar -c (compress)</a></li>
+                        </ul>
+                    <li style="margin-top:1ex"><a href="#arguments">Bad Arguments</a></li>
+                        <ul>
+                            <li><a href="#null-byte">Null Bytes</a></li>
+                            <li><a href="#whitespace">Whitespace</a></li>
                         </ul>
                 </ul>
             </h4>
