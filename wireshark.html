@@ -111,23 +111,23 @@
         <br><br>
 
         <h3 id=navigation#details>Packet Details</h3>
-        <p> After selecting a packet, you can explore the fields and information contained in each of the packet's layers. The <b>Packet Details</b> pane begins with the packet's link-layer <i>frame</i> and ends with its app-layer <i>application protocol</i> (if applicable for the packet).</p>
+        <p> After selecting a packet, you can explore the fields and information contained in each of the packet's layers. The <b>Packet Details</b> pane begins with the packet's link layer <i>frame</i> and ends with its app layer <i>application protocol</i> (if applicable for the packet).</p>
         <p><img class="button wikiimage" src="img/wireshark-details.png" style="max-width:70%"/></p><br><br>
 
         <p> Select a layer to inspect: </p>
         <ul>
-            <li id=details#link><b>Link-Layer : </b>Includes the source and destination <b>MAC</b> addresses, as well as the network protocol.</li>
+            <li id=details#link><b>Link Layer: </b>Includes the source and destination <b>MAC</b> addresses, as well as the network protocol.</li>
             <p><img class="button wikiimage" src="img/wireshark-details-link.png" style="max-width:70%"/></p><br><br>
 
-            <li id=details#network><b>Network-Layer : </b>Includes the network protocol, <b>source address</b>, and <b>destination address</b>. These match the corresponding columns in the <b>Packet List</b>.</li>
+            <li id=details#network><b>Network Layer: </b>Includes the network protocol, <b>source address</b>, and <b>destination address</b>. These match the corresponding columns in the <b>Packet List</b>.</li>
             <p><img class="button wikiimage" src="img/wireshark-details-network.png" style="max-width:70%"/></p><br><br>
 
-            <li id=details#transport><b>Transport-Layer : </b>Includes the <b>source port</b>, <b>destination port</b>, and relative sequence and acknowledgment numbers which help track the order of packets in TCP connections.</li>
+            <li id=details#transport><b>Transport Layer: </b>Includes the <b>source port</b>, <b>destination port</b>, and relative sequence and acknowledgment numbers which help track the order of packets in TCP connections.</li>
             <p><img class="button wikiimage" src="img/wireshark-details-transport.png" style="max-width:70%"/></p><br><br>
-            <p> The transport-layer also contains relative <b>flags</b> for the specific packet and protocol. </p>
+            <p> The transport layer also contains relative <b>flags</b> for the specific packet and protocol. </p>
             <p><img class="button wikiimage" src="img/wireshark-details-flags.png" style="max-width:70%"/></p><br><br>
 
-            <li id=details#app><b>Application-Layer : </b>Includes details specific to the application protocol.</li>
+            <li id=details#app><b>Application Layer: </b>Includes details specific to the application protocol.</li>
             <p><img class="button wikiimage" src="img/wireshark-details-app.png" style="max-width:70%"/></p><br><br>
         </ul>
 
@@ -141,7 +141,7 @@
 
     <!-- ################################################################################### -->
 
-        <hr><h2 id=tips>Wireshark Tips</h2>
+        <hr><h2 id=tips>Helpful Tips & Tricks</h2>
 
         <h3 id=tips#filters>Filter Toolbar</h3>
         <p>The <b>Filter</b> toolbar can help you quickly apply <b>display filters</b> to the <b>Packet List</b>.</p>
@@ -213,8 +213,8 @@
                 <ul>
                     <li><a href="#basics">Wireshark Basics</a></li>
                     <ul>
-                        <li><a href="#basics#run">Running Wireshark Inside the VM</a></li>
-                        <li><a href="#basics#open">Opening Packet Capture Files</a></li>
+                        <li><a href="#basics#run">Running Wireshark</a></li>
+                        <li><a href="#basics#open">Opening PCAP Files</a></li>
                     </ul>
                     <li style="margin-top:1ex"><a href="#navigation">Navigating Wireshark</a></li>
                     <ul>
@@ -222,21 +222,21 @@
                         <li><a href="#navigation#list">Packet List</a></li>
                         <li><a href="#navigation#details">Packet Details</a></li>
                         <ul>
-                            <li><a href="#details#link">Link-Layer</a></li>
-                            <li><a href="#details#network">Network-Layer</a></li>
-                            <li><a href="#details#transport">Transport-Layer</a></li>
-                            <li><a href="#details#app">Application-Layer</a></li>
+                            <li><a href="#details#link">Link Layer</a></li>
+                            <li><a href="#details#network">Network Layer</a></li>
+                            <li><a href="#details#transport">Transport Layer</a></li>
+                            <li><a href="#details#app">Application Layer</a></li>
                         </ul>
                         <li style="margin-top:1ex"><a href="#navigation#bytes">Packet Bytes</a></li>
                     </ul>
-                    <li style="margin-top:1ex"><a href="#tips">Wireshark Tips</a></li>
+                    <li style="margin-top:1ex"><a href="#tips">Helpful Tips & Tricks</a></li>
                     <ul>
                         <li><a href="#tips#filters">Filter Toolbar</a></li>
                         <ul>
                             <li><a href="#filters#operators">Filter Operators</a></li>
                             <li><a href="#filters#examples">Filter Examples</a></li>
                         </ul>
-                        <li style="margin-top:1ex"><a href="#tips#follow">Follow Specific Protocol Stream</a></li>
+                        <li style="margin-top:1ex"><a href="#tips#follow">Following Streams</a></li>
                     </ul>
                 </ul>
             </h4>
