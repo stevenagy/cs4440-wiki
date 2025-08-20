@@ -200,6 +200,16 @@
 
         <p>This will apply a display filter to the <b>Packet List</b>, showing only packets from the selected stream (as an example, it may apply a filter like <code>tcp.stream eq &#10092;stream number&#10093;</code>). <i>Additionally</i>, a separate window will open displaying the stream content in a more readable format.</p>
 
+        <br><br>
+
+        <h3 id=tips#capture>Capture Additional Packets</h3>
+        <p>The <b>Capture</b> tab can help you sniff for additional packets and produce .pcap files for further testing.</p>
+        <p><img class="button wikiimage" src="img/wireshark-capture-dropdown.png" style="max-width:70%"/></p>
+
+        <p>Within capture, select <b>options</b> and then <b>choose your active internet connection</b> (most likely Wi-Fi or Ethernet) under the input tab. On the <b>output tab</b>, change the default file setting of <b>.pcapng to .pcap</b>. Press start and a temporary file will be produced based on network traffic. Click the red square button on the left side of the icon bar to stop capturing.</p>
+        <p><img class="button wikiimage" src="img/wireshark-capture-options.png" style="max-width:70%"/></p>
+        
+        <p>You can visit HTTPS sites, such as <a href="https://users.cs.utah.edu/~snagy/courses/cs4440/">https://users.cs.utah.edu/~snagy/courses/cs4440/</a>, to view encrypted transmissions or HTTP sites, such as <a href="http://cs4440.eng.utah.edu/project3/sqlinject0/"> http://cs4440.eng.utah.edu/project3/sqlinject0/</a>, to compare the differences. This is especially useful if you are wanting to test your solutions to assignment 4 with additional .pcap files.</p>
         <br>
 
     <!-- ################################################################################### -->
@@ -237,6 +247,7 @@
                             <li><a href="#filters#examples">Filter Examples</a></li>
                         </ul>
                         <li style="margin-top:1ex"><a href="#tips#follow">Following Streams</a></li>
+                        <li style="margin-top:1ex"><a href="#tips#capture">Capture Additional Packets</a></li>
                     </ul>
                 </ul>
             </h4>
