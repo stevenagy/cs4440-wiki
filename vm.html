@@ -57,7 +57,7 @@
 
         <p>To ensure consistency in project environments, we provide a virtual machine (VM) running versions of Linux and Firefox specially configured to never auto-update. Follow the instructions below, depending on which architecture your computer runs. You must work on all project code within the course VM; we will grade your assignments <b>in the same VM environment</b>.</p>
 
-        <p>It is your responsibility to <b>set aside enough disk space</b> on your personal device for all course material, including this VM. If disk space is scarce, you may want to consider migrating your data to the OneDrive or to an external storage medium. Except in the most extenuating circumstances, the course staff are not able to provide accommodations due to a lack of space and/or loss of data.</p>
+        <p>It is your responsibility to <b>set aside enough disk space</b> on your personal device for all course material, including this VM. Be sure to <b>download your VM files only to your computer's <i>permanent</i> hard disk</b>—NOT <i>cloud</i> storage (e.g., iCloud, OneDrive) as this will corrupt your VM! If disk space is scarce, you may want to consider migrating non-course data to the cloud or to an external storage medium. Except in the most extenuating circumstances, the course staff are not able to provide accommodations due to a lack of space and/or loss of data.</p>
 
         <p>If you run into any problems while reading this guide, the last section offers some troubleshooting tips. We will update this page as we encounter new problems or parts where students are struggling.</p>
 
@@ -176,7 +176,9 @@
         <br><br>
 
         <h3 id=startup>Crashes or Black Screen on VM Startup</h3>
-        <p>In some cases, your VM may be using <i>too much</i> or <i>too little</i> memory depending on your host system's resources. This often causes VirtualBox and UTM to either crash on VM startup, or indefinitely hang on a black screen. We recommend that you try adjusting your VM's settings to either increase or decrease the amount of RAM (memory) and/or VRAM (video memory) used. This may require some trial and error!</p>
+        <p>In most cases, non-bootable VMs are caused by either corrupted downloads or corrupted VM appliances. Often, this will happen when your computer's hard disk is too full, leaving insufficient space for the VM tarball and/or the extracted VM appliance. If you're seeing such errors, be sure to <b>(1) free enough space on your hard drive</b>, before <b>(2) re-downloading, re-extracting, and re-loading the VM appliance</b>. Be sure to delete any non-working VM appliances from before, as these also take up unnecessary disk space!</p>
+
+        <p>In other cases, your VM may be using <i>too much</i> or <i>too little</i> memory depending on your host system's resources. This often causes VirtualBox and UTM to either crash on VM startup, or indefinitely hang on a black screen. We recommend that you try adjusting your VM's settings to either increase or decrease the amount of RAM (memory) and/or VRAM (video memory) used. This may require some trial and error!</p>
 
         <p><b>VirtualBox:</b> first make sure that your VM is turned off, and then click on the <code>Settings</code> button. Select the <code>System</code> tab and adjust your RAM (<code>Base Memory</code>) accordingly:</p>
 
