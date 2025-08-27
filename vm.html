@@ -143,6 +143,31 @@
 
         <p><b>Spend some time getting familiar with your new VM</b>—you'll be using it all semester!</p>
 
+        <h3 id=ssh>[Optional] Setting up VSCode SSH with VB</h3>
+        <p> The VSCode SSH gives you the ability to work on the VM directly from your local machine's VSCode. It allows execution and editing of files on the VM from your local machine. To set up SSH access to your VM from VSCode, you'll need to follow these steps:</p>
+
+        <h4 id=virtualmachine>Virtual Machine:</h4>
+        <ol>
+            <li>Before opening your VM, open the Settings within VirtualBox.</li>
+            <li>Under Network > Advanced > Port Forwarding, find 'add a new rule'</li>
+            <li>Leave the Name as SSH, Protocol as TCP, and set Host Port: <code>2222</code>(or any port you remember), Guest Port: <code>22</code> (same deal)</li>
+            <li>Now launch and open a terminal in your VM.</li>
+            <li>Install the OpenSSH server, usually done with <code>sudo apt install openssh-server</code>.</li>
+            <li>Check that the server is running with <code>sudo systemctl status ssh</code>.</li>
+            <li>If it is not running, start it with <code>sudo systemctl start ssh</code>, once it is, move on to your local machine.</li>
+        </ol>
+
+        <h4 id=localmachine>Local Machine:</h4>   
+        <ol>
+            <li>Open VSCode and open the extensions view.</li>
+            <li>Search for the "Remote Development" <a href=https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack>extension package</a> through Microsoft and install it.</li>
+            <li>After installing open the command search with <code>ctrl+shift+p</code>, and find <code>Remote-SSH: Add New SSH Host</code>.</li>
+            <li>Select the first file, usually : <code>C:users/username/.ssh/config</code></li>
+            <li>Paste the following configuration:<br><code>Host *PREFERRED_NAME*<br>&nbsp;&nbsp;HostName localhost<br>&nbsp;&nbsp;Port 2222<br>&nbsp;&nbsp;User cs4440</code></li>
+            <li>Once you've added the SSH host, you should find the option within the Remote Explorer view.</li>
+            <li>You can now click the arrow next to the connection to tunnel in, opening files to edit and the terminal to run commands like normal.</li>
+        </ol>
+
     <!-- ################################################################################### -->
 
         <hr><h2 id=help>Troubleshooting</h2>
