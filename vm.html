@@ -150,9 +150,36 @@
         <ol>
             <li>Before starting your VM, open VirtualBox and select your VM.</li>
             <li>Click Settings → Network → Ensure Attached to: "NAT" → Advanced → Port Forwarding.</li>
-            <li>Click the "+" icon to add a new rule and configure: Name as "SSH", Protocol as "TCP", Host Port as <code>2222</code> (or any unused port), and Guest Port as <code>22</code> (same deal).</li>
+            <li>Click the "+" icon to add a new rule and configure:
+                <ul>
+                    <li>Name: "SSH"</li>
+                    <li>Protocol: "TCP"</li>
+                    <li>Host Port: <code>2222</code> (or any unused port)</li>
+                    <li>Guest Port: <code>22</code></li>
+                </ul>
+                Click 'OK' when done.
+            </li>
             <li>Start your VM and open a terminal.</li>
-            <li>Install the OpenSSH server by running: <code>sudo apt install openssh-server</code>.</li>
+            <li>To install the SSH server, we need to temporarily update the package lists. Run these commands in order:
+                <ul>
+                    <li>First, backup the current sources:
+                        <br><code>sudo cp /etc/apt/sources.list /etc/apt/sources.list.snapshot</code>
+                    </li>
+                    <li>Update package sources (copy and paste the entire command):
+                        <br><code>sudo cp /etc/apt/sources.list /etc/apt/sources.list.temp && \
+echo "deb http://archive.ubuntu.com/ubuntu focal main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu focal-updates main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu focal-security main restricted universe multiverse" | sudo tee /etc/apt/sources.list
+</code>
+                    </li>
+                    <li>Install OpenSSH server:
+                        <br><code>sudo apt update && sudo apt install -y openssh-server</code>
+                    </li>
+                    <li>Restore original sources:
+                        <br><code>sudo mv /etc/apt/sources.list.snapshot /etc/apt/sources.list && sudo apt update</code>
+                    </li>
+                </ul>
+            </li>
             <li>Verify the SSH service status with: <code>sudo systemctl status ssh</code>.</li>
             <li>If the service is not running, start it with: <code>sudo systemctl start ssh</code>.</li>
         </ol>
@@ -161,13 +188,13 @@
         <ol>
             <li>Open VSCode and click the Extensions icon in the sidebar (or press Ctrl+Shift+X).</li>
             <li>Search for and install the "Remote Development" <a href=https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack>extension package</a> by Microsoft.</li>
-            <li>Open the command palette (press <code>Ctrl+Shift+P</code>) and enter <code>Remote-SSH: Add New SSH Host</code>.</li>
-            <li>When prompted, enter the path to your SSH config file (typically <code>C:\Users\[YourUsername]\.ssh\config</code>).</li>
-            <li>Paste the following configuration:<br><code>Host *PREFERRED_NAME*<br>&nbsp;&nbsp;HostName localhost<br>&nbsp;&nbsp;Port 2222<br>&nbsp;&nbsp;User cs4440</code></li>
-            <li>Click the Remote Explorer icon in the sidebar and look for your newly added SSH host.</li>
+            <li>Open the command palette (press <code>Ctrl+Shift+P</code>) and enter <code>Remote-SSH: Open SSH Configuration File</code>.</li>
+            <li>Select the first file option, typically <code>C:\Users\[YourUsername]\.ssh\config</code>.</li>
+            <li>Paste the following configuration:<br><code>Host *PREFERRED_NAME*<br>&nbsp;&nbsp;HostName localhost<br>&nbsp;&nbsp;Port 2222<br>&nbsp;&nbsp;User cs4440<br></code></li>
+            <li>Click the Remote Explorer icon in the sidebar (monitor icon) and look for your newly added SSH host.</li>
             <li>Click the "Connect to Host in New Window" button (arrow icon) next to your host name to open a new VSCode window connected to your VM.</li>
-            <li>You may be prompted to enter your SSH password, which is the same as the login password (cs4440).</li>
-            <li>You can now connect a folder from the files tab, and open a terminal to start executing commands on your VM.</li>
+            <li>You may be prompted to enter the system type (linux) and your SSH password (cs4440).</li>
+            <li>You are now connected to your VM! You can connect a folder from the files tab, and open a terminal to start executing commands on your VM.</li>
         </ol>
 
     <!-- ################################################################################### -->
