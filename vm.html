@@ -143,6 +143,83 @@
 
         <p><b>Spend some time getting familiar with your new VM</b>—you'll be using it all semester!</p>
 
+        <h3 id=ssh>[Optional] Setting up VSCode Remote SSH with VirtualBox</h3>
+        <p>Using VSCode's Remote SSH feature, you can work on your VirtualBox VM directly from your local machine's VSCode editor. This allows you to edit files and run terminal commands on the VM without leaving your local VSCode environment. Follow these steps to set up the connection:</p>
+
+        <h4 id=virtualmachine style="font-weight: bold;">Virtual Machine:</h4>
+        <ol>
+            <li>Before starting your VM, open the VM software (VirtualBox or UTM) and select your working VM.</li>
+        </ol>
+        <h4>For Windows (VirtualBox):</h4>
+        <div style="margin-left:2em;">
+            <ul>
+            <li>Click Settings → Network → Ensure 'Attached to: "NAT"' → Advanced → Port Forwarding.</li>
+            <li>Click the "+" icon to add a new rule and configure:
+                <ul>
+                <li>Name: "SSH"</li>
+                <li>Protocol: "TCP"</li>
+                <li>Host Port: <code>2222</code> (or any unused port)</li>
+                <li>Guest Port: <code>22</code></li>
+                </ul>
+            </li>
+            <li>Click 'OK' when done.</li>
+            </ul>
+        </div>
+        <h4>For Mac (UTM):</h4>
+        <div style="margin-left:2em; margin-bottom: 1em">
+            <ul>
+            <li>Click the settings button (sliders icon) → Network → Change the dropbox to 'Emulated VLAN'.</li>
+            <li>Leaving the rest of the settings the same, select the newly created Port Forwarding on the sidebar.</li>
+            <li>Click the 'New' button to add a new rule and configure:
+                <ul>
+                <li>Protocol: "TCP"</li>
+                <li>Host Port (bottom box): <code>2222</code> (or any unused port)</li>
+                <li>Guest Port (2nd from the top): <code>22</code></li>
+                </ul>
+            </li>
+            <li>Click 'OK' when done.</li>
+            </ul>
+        </div>
+
+        <ol start="2">
+            <li>Start your VM and open a terminal.</li>
+            <li>To install the SSH server, we need to temporarily update the package lists. Run these commands in order:
+            <ul>
+                <li>First, backup the current sources:
+                <br><code>sudo cp /etc/apt/sources.list /etc/apt/sources.list.snapshot</code>
+                </li>
+                <li>Update package sources (copy and paste the entire command):
+                <br><code>sudo cp /etc/apt/sources.list /etc/apt/sources.list.temp && \
+    echo "deb http://archive.ubuntu.com/ubuntu focal main restricted universe multiverse
+    deb http://archive.ubuntu.com/ubuntu focal-updates main restricted universe multiverse
+    deb http://archive.ubuntu.com/ubuntu focal-security main restricted universe multiverse" | sudo tee /etc/apt/sources.list
+    </code>
+                </li>
+                <li>Install OpenSSH server:
+                <br><code>sudo apt update && sudo apt install -y openssh-server</code>
+                </li>
+                <li>Restore original sources:
+                <br><code>sudo mv /etc/apt/sources.list.snapshot /etc/apt/sources.list && sudo apt update</code>
+                </li>
+            </ul>
+            </li>
+            <li>Verify the SSH service status with: <code>sudo systemctl status ssh</code>.</li>
+            <li>If the service is not running, start it with: <code>sudo systemctl start ssh</code>.</li>
+        </ol>
+
+        <h4 id=localmachine style="font-weight: bold;">Local Machine:</h4>   
+        <ol>
+            <li>Open VSCode and click the Extensions icon in the sidebar (or press <code>Ctrl+Shift+X</code>).</li>
+            <li>Search for and install the "Remote Development" <a href=https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack>extension package</a> by Microsoft.</li>
+            <li>Open the command palette (press <code>Ctrl+Shift+P</code>) and enter <code>Remote-SSH: Open SSH Configuration File</code>.</li>
+            <li>Select the first file option, typically <code>C:\Users\[YourUsername]\.ssh\config</code>.</li>
+            <li>Paste the following configuration:<br><code>Host *REPLACE WITH PREFERRED NAME*<br>&nbsp;&nbsp;HostName localhost<br>&nbsp;&nbsp;Port 2222<br>&nbsp;&nbsp;User cs4440<br></code></li>
+            <li>Click the Remote Explorer icon in the sidebar (monitor icon) and select 'Remote (Tunnels/SSH)' from the dropdown up top.</li>
+            <li>Look for your newly added SSH host name and click the "Connect to Host" button (arrow icon) to open a new VSCode window connected to your VM.</li>
+            <li>You may be prompted to enter the system type (linux) and your SSH password (cs4440).</li>
+            <li>You are now connected to your VM! You can connect a folder from the files tab, and open a terminal to start executing commands on your VM.</li>
+        </ol>
+
     <!-- ################################################################################### -->
 
         <hr><h2 id=help>Troubleshooting</h2>
