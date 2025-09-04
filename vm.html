@@ -63,8 +63,8 @@
 
     <!-- ################################################################################### -->
 
-        <hr><h2 id=vbox>VirtualBox: Intel-based Windows, Linux, and Mac Machines</h2>
-        <p>The following setup is intended for Windows, Linux, and Intel-based Macs. If you are using an Apple Silicon Mac (M1, M2, or newer), please instead jump to the <a href="#utm">UTM Setup</a>.</p>
+        <hr><h2 id=vbox>VirtualBox: Intel-based Windows, Linux, and Macs</h2>
+        <p>The following setup instructions are intended for only <i>Intel</i>-based Windows, Linux, and Mac machines. If you are using an <b>ARM-based Mac</b> (i.e., M1/M2, or newer), please instead jump to the <a href="#utm">UTM setup</a>. If you are using an <b>ARM-based Windows machine</b>, please make sure to instead follow the <a href="#qemu">QEMU setup</a>.</p>
 
         <br><br>
 
@@ -99,8 +99,8 @@
 
     <!-- ################################################################################### -->
 
-        <hr><h2 id=utm>UTM: M1/M2/newer Macs</h2>
-        <p>The following setup is intended for Apple Silicon Macs (M1, M2, or newer).</p>
+        <hr><h2 id=utm>UTM: ARM-based Macs</h2>
+        <p>The following setup is intended for Apple Silicon Macs (M1, M2, or newer). <b>Make sure to verify that your processor is indeed <i>not</i> an Intel processor</b>, as you would instead need to follow the <a href="#vbox">VirtualBox setup</a>!</p>
 
         <br><br>
 
@@ -110,7 +110,7 @@
         <br><br>
 
         <h3>Step 1: Download the VM Appliance</h3>
-        <p>Download the UTM VM appliance from <a href="https://drive.google.com/file/d/1EH1zFeqX1eHn9pwNdDjkzgUoB0NWluPL/view?usp=sharing">here</a>, and extract it (i.e., launch a terminal or shell and run <code>tar -xf cs4440vm.utm.tar.gz</code> from within the same directory as the file) to your directory of choice. After extracting, you should see a file <code>CS 4440 VM.utm</code>—this is the VM appliance.</p>
+        <p>Download the UTM VM appliance from <a href="https://drive.google.com/file/d/1EH1zFeqX1eHn9pwNdDjkzgUoB0NWluPL/view?usp=sharing">here</a>, and extract it (i.e., launch a terminal or shell and run <code>tar -xf cs4440vm.utm.tar.gz</code> from within the same directory as the file) to your directory of choice. After extracting, you should see a file <code>CS 4440 VM.utm</code>—this is the VM appliance. Do <b>not</b> further extract the <code>.utm</code> file!</p></p>
 
         <br><br>
 
@@ -127,7 +127,42 @@
 
     <!-- ################################################################################### -->
 
-        <hr><h2 id=login>Logging-in and Using the VM</h2><br>
+        <hr><h2 id=qemu>QEMU: ARM-based Windows Surface Pros</h2>
+        <p>The following setup is intended for ARM-based Windows Surface Pros. <b>Make sure to verify that your processor is indeed <i>not</i> an Intel processor</b>, as you would instead need to follow the <a href="#vbox">VirtualBox setup</a>!</p>
+
+        <br><br>
+
+        <h3>Step 0: Download and Install QEMU</h3>
+        <p>You will use QEMU to run the aforementioned VM. First, download and install QEMU's via its latest installer from here (one of the <code>.exe</code> files): <a href="https://qemu.weilnetz.de/aarch64/">https://qemu.weilnetz.de/aarch64/</a>.</p>
+
+        <br><br>
+
+        <h3>Step 1: Download the VM Appliance</h3>
+        <p>Download the VirtualBox VM appliance from <a href="https://drive.google.com/file/d/1-ZODZmB2GujXwmcSuADZz0tsck7STqSe/view?usp=sharing">here</a>, and extract it (i.e., launch a terminal or shell and run <code>tar -xf cs4440vm.qcow2.tar.gz</code> from within the same directory as the file) to your directory of choice. You'll soon see file <code>CS 4440 VM.qcow2</code>—this is the VM appliance. Do <b>not</b> further extract the <code>.qcow2</code> file!</p>
+
+        <br><br>
+
+        <h3>Step 2: Setup QEMU Launcher Script</h3>
+        <p>Normally, you'd need to run QEMU via command-line, but we'll instead create a handy <code>.bat</code> shortcut that you can double-click. To do so, open up <code>Notepad</code> and copy-paste the entirety of the following:</p>
+
+        <pre><code>@echo off
+"C:\Program Files\qemu\qemu-system-x86_64.exe" ^
+  -cpu qemu64 ^
+  -m 8192 ^
+  -drive file="C:\[PATH_TO_VM_DIRECTORY]\CS 4440 VM.qcow2" ^
+  -display sdl ^
+  -device virtio-vga,ram_size=4096
+pause</code></pre>
+
+        <p>Be sure to swap the above placeholder <code>[PATH_TO_VM_DIRECTORY]</code> with <b>the correct path</b> to the directory where your <code>CS 4440 VM.qcow2</code> appliance is stored (e.g., your <code>\%USERNAME%\Downloads</code> folder or somewhere else).</p>
+
+        <p>Next, <b>save</b> this file as <code>StartVM.bat</code> in a convenient directory of your choosing (e.g., your <code>Desktop</code> folder). If prompted, be sure to choose the file type <b>UTF-8 without BOM</b>.</p>
+
+        <p>To launch your VM, simply double-click on shortcut <code>StartVM.bat</code>. QEMU will then attempt to boot (<b>note that this may take a little while</b>, depending on your machine), but afterwards, your VM should be up and running!</p>
+
+    <!-- ################################################################################### -->
+
+        <hr><h2 id=login>Logging-in and Using the VM</h2>
 
         <div class="panel panel-default">
             <div class="panel-heading" style="background-color: cornsilk;">
@@ -145,15 +180,15 @@
 
     <!-- ################################################################################### -->
 
-        <hr><h2 id=ssh>Optional: Working Outside the VM via VSCode</h2>
+        <hr><h2 id=vscode>Optional: Working Outside the VM via VSCode</h2>
 
-        <p>If you prefer using <a href="https://code.visualstudio.com/">Microsoft's Visual Studio Code (VSCode)</a> as your primary code editor, you may optionally use its <a href="https://code.visualstudio.com/docs/remote/ssh">remote connection</a> feature to edit code and run terminal commands within your VM <b>directly from your local machine's VSCode environment</b> (i.e., from <i>outside</i> your VM). Note that, to receive full credit on the course projects, all of your solutions must work entirely inside of the VM without VSCode!</p>
+        <p>If you prefer using <a href="https://code.visualstudio.com/">Microsoft's Visual Studio Code (VSCode)</a> as your primary code editor, you may optionally use its <a href="https://code.visualstudio.com/docs/remote/ssh">remote SSH connection</a> feature to edit code and run terminal commands within your VM <b>directly from your local machine's VSCode environment</b> (i.e., from <i>outside</i> your VM). Note that, to receive full credit on the course projects, all of your solutions must work entirely inside of the VM without VSCode!</p>
 
         <p>Before continuing, <b>ensure that your CS 4440 VM boots as intended</b> (see <a href=#login>Logging-in and Using the VM</a> above). Within your host's corresponding VM software (i.e., VirtualBox or UTM), select your working CS 4440 VM appliance, and proceed with the relevant set of instructions below:</p>
 
         <br><br>
 
-        <h3 id=ssh#vbox>SSH Setup for VirtualBox:</h3>
+        <h3 id=vscode#vbox>SSH Setup for VirtualBox:</h3>
         <p>First, click <code>Settings</code> <i style="vertical-align: middle;" class="fa fa-arrow-right"></i> <code>Network</code>, and ensure <code>Attached to</code> is set to <code>NAT</code>.</p>
         
         <p>Then, click <code>Advanced</code> <i style="vertical-align: middle;" class="fa fa-arrow-right"></i> <code>Port Forwarding</code>, and select the <code>+</code> icon to add a new rule and configure as follows:</p>
@@ -169,7 +204,7 @@
 
         <br><br>
 
-        <h3 id=ssh#utm>SSH Setup for UTM:</h3>
+        <h3 id=vscode#utm>SSH Setup for UTM:</h3>
         
         <p>First, click the settings button ( <i style="vertical-align: middle;" class="fa fa-sliders"></i> ), followed by <code>Network</code>, and ensure the drop-down is set to <code>Emulated VLAN</code>.</p>
         
@@ -185,7 +220,17 @@
 
         <br><br>
 
-        <h3 id=ssh#vm>Final Steps: VM Configuration</h3>
+        <h3 id="vscode#qemu">SSH Setup for QEMU:</h3>
+
+        <p>First, we must modify your original QEMU launcher script to forward a host port (e.g., <code>2222</code>, or any other unused port of your choosing) to the guest’s SSH port (<code>22</code>). If you followed our <a href="#qemu">QEMU setup</a>, add the following line inside of your <code>StartVM.bat</code> launcher command, <b>as a new line right after the line beginning with</b> <code>-display</code>:</p>
+
+        <pre><code>-nic user,model=virtio-net-pci,hostfwd=tcp:127.0.0.1:2222-:22 ^</code></pre>
+
+        <p>Leave all other settings as-is, and overwrite your existing <code>StartVM.bat</code> launcher with this new script.</p>
+
+        <br><br>
+
+        <h3 id=vscode#vm>Final Steps: VM Configuration</h3>
 
         <p>With your VM's network settings now finalized, boot into your VM and open a terminal. Then, run the following terminal commands one at a time (copy and paste each into your terminal and hit <code>Enter</code>):</p>
 
@@ -210,7 +255,7 @@
         
         <br>
 
-        <h3 id="ssh#host">Final Steps: Host Configuration</h3>
+        <h3 id="vscode#host">Final Steps: Host Configuration</h3>
 
         <p>With your VM's SSH now configured, launch VSCode on your local machine and click the <code>Extensions</code> icon in the sidebar (or press <code>Ctrl+Shift+X</code>).
         Search for and install Microsoft's <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack">Remote Development</a> extension package.</p>
@@ -218,11 +263,13 @@
         <p>Afterwards, open VSCode's command palette (press <code>Ctrl+Shift+P</code>) and enter the following:</p><br>
         <pre><code>Remote-SSH: Open SSH Configuration File</code></pre>
 
-        <p>Select the first file option: typically <code>C:\Users\[YourUsername]\.ssh\config</code> for Windows hosts, or <code>/Users/[YourUsername]/.ssh/config</code> for MacOS hosts. Then, paste the following configuration:</p><br>
+        <p>Select the first file option: typically <code>C:\Users\%USERNAME%\.ssh\config</code> for Windows hosts, or <code>/Users/$USER/.ssh/config</code> for Mac/Linux hosts. Then, paste the following configuration:</p><br>
         <pre><code>Host cs4440vm<br>
 &nbsp;&nbsp;HostName localhost<br>
 &nbsp;&nbsp;Port 2222<br>
 &nbsp;&nbsp;User cs4440<br></code></pre>
+
+        <p>Note that if you chose a different unused port than <code>2222</code>, make sure to update that in the above configuration!</p>
 
         <p>Afterwards, click the <code>Remote Explorer</code> icon in the sidebar ( <i style="vertical-align: middle;" class="fas fa-desktop"></i> ) and select <code>Remote (Tunnels/SSH)</code> from the dropdown up top. Find your newly added SSH host name (<code>cs4440vm</code>), and then click <code>Connect to Host</code> to open a new VSCode window connected to your VM.
         Upon attempting to connect, you may be prompted to choose the system type (select <code>Linux</code>) and to enter your VM's account password (<code>cs4440</code>).
@@ -325,10 +372,11 @@
         <div class="col-md-12 text-left scrollable" style="position:fixed;">
             <h4><b>Table of Contents:</b></h4>
                 <ul>
-                    <li><a href="#vbox">VirtualBox Setup</a></li>
-                    <li><a href="#utm">UTM Setup</a></li>
-                    <li><a href="#login">Logging In</a></li>
-                    <li><a href="#ssh">VSCode via SSH</a></li>
+                    <li><a href="#vbox">Setup via VirtualBox</a></li>
+                    <li><a href="#utm">Setup via UTM</a></li>
+                    <li><a href="#qemu">Setup via QEMU</a></li>
+                    <li><a href="#login">Logging-in the VM</a></li>
+                    <li><a href="#vscode">Using VSCode</a></li>
                     <li><a href="#help">Troubleshooting</a></li>
                         <ul>
                             <li><a href="#download">Download Errors</a></li>
