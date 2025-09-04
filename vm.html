@@ -63,7 +63,7 @@
 
     <!-- ################################################################################### -->
 
-        <hr><h2 id=vbox>VirtualBox: Windows, Linux, and Intel Macs</h2>
+        <hr><h2 id=vbox>VirtualBox: Intel-based Windows, Linux, and Mac Machines</h2>
         <p>The following setup is intended for Windows, Linux, and Intel-based Macs. If you are using an Apple Silicon Mac (M1, M2, or newer), please instead jump to the <a href="#utm">UTM Setup</a>.</p>
 
         <br><br>
@@ -99,7 +99,7 @@
 
     <!-- ################################################################################### -->
 
-        <hr><h2 id=utm>UTM: M1/M2 Macs</h2>
+        <hr><h2 id=utm>UTM: M1/M2/newer Macs</h2>
         <p>The following setup is intended for Apple Silicon Macs (M1, M2, or newer).</p>
 
         <br><br>
@@ -143,82 +143,92 @@
 
         <p><b>Spend some time getting familiar with your new VM</b>—you'll be using it all semester!</p>
 
-        <h3 id=ssh>[Optional] Setting up VSCode Remote SSH with VirtualBox</h3>
-        <p>Using VSCode's Remote SSH feature, you can work on your VirtualBox VM directly from your local machine's VSCode editor. This allows you to edit files and run terminal commands on the VM without leaving your local VSCode environment. Follow these steps to set up the connection:</p>
+    <!-- ################################################################################### -->
 
-        <h4 id=virtualmachine style="font-weight: bold;">Virtual Machine:</h4>
-        <ol>
-            <li>Before starting your VM, open the VM software (VirtualBox or UTM) and select your working VM.</li>
-        </ol>
-        <h4>For Windows (VirtualBox):</h4>
-        <div style="margin-left:2em;">
-            <ul>
-            <li>Click Settings → Network → Ensure 'Attached to: "NAT"' → Advanced → Port Forwarding.</li>
-            <li>Click the "+" icon to add a new rule and configure:
-                <ul>
-                <li>Name: "SSH"</li>
-                <li>Protocol: "TCP"</li>
-                <li>Host Port: <code>2222</code> (or any unused port)</li>
-                <li>Guest Port: <code>22</code></li>
-                </ul>
-            </li>
-            <li>Click 'OK' when done.</li>
-            </ul>
-        </div>
-        <h4>For Mac (UTM):</h4>
-        <div style="margin-left:2em; margin-bottom: 1em">
-            <ul>
-            <li>Click the settings button (sliders icon) → Network → Change the dropbox to 'Emulated VLAN'.</li>
-            <li>Leaving the rest of the settings the same, select the newly created Port Forwarding on the sidebar.</li>
-            <li>Click the 'New' button to add a new rule and configure:
-                <ul>
-                <li>Protocol: "TCP"</li>
-                <li>Host Port (bottom box): <code>2222</code> (or any unused port)</li>
-                <li>Guest Port (2nd from the top): <code>22</code></li>
-                </ul>
-            </li>
-            <li>Click 'OK' when done.</li>
-            </ul>
-        </div>
+        <hr><h2 id=ssh>Optional: Working Outside the VM via VSCode</h2>
 
-        <ol start="2">
-            <li>Start your VM and open a terminal.</li>
-            <li>To install the SSH server, we need to temporarily update the package lists. Run these commands in order:
-            <ul>
-                <li>First, backup the current sources:
-                <br><code>sudo cp /etc/apt/sources.list /etc/apt/sources.list.snapshot</code>
-                </li>
-                <li>Update package sources (copy and paste the entire command):
-                <br><code>sudo cp /etc/apt/sources.list /etc/apt/sources.list.temp && \
-    echo "deb http://archive.ubuntu.com/ubuntu focal main restricted universe multiverse
-    deb http://archive.ubuntu.com/ubuntu focal-updates main restricted universe multiverse
-    deb http://archive.ubuntu.com/ubuntu focal-security main restricted universe multiverse" | sudo tee /etc/apt/sources.list
-    </code>
-                </li>
-                <li>Install OpenSSH server:
-                <br><code>sudo apt update && sudo apt install -y openssh-server</code>
-                </li>
-                <li>Restore original sources:
-                <br><code>sudo mv /etc/apt/sources.list.snapshot /etc/apt/sources.list && sudo apt update</code>
-                </li>
-            </ul>
-            </li>
-            <li>Verify the SSH service status with: <code>sudo systemctl status ssh</code>.</li>
-            <li>If the service is not running, start it with: <code>sudo systemctl start ssh</code>.</li>
-        </ol>
+        <p>If you prefer using <a href="https://code.visualstudio.com/">Microsoft's Visual Studio Code (VSCode)</a> as your primary code editor, you may optionally use its <a href="https://code.visualstudio.com/docs/remote/ssh">remote connection</a> feature to edit code and run terminal commands within your VM <b>directly from your local machine's VSCode environment</b> (i.e., from <i>outside</i> your VM). Note that, to receive full credit on the course projects, all of your solutions must work entirely inside of the VM without VSCode!</p>
 
-        <h4 id=localmachine style="font-weight: bold;">Local Machine:</h4>   
-        <ol>
-            <li>Open VSCode and click the Extensions icon in the sidebar (or press <code>Ctrl+Shift+X</code>).</li>
-            <li>Search for and install the "Remote Development" <a href=https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack>extension package</a> by Microsoft.</li>
-            <li>Open the command palette (press <code>Ctrl+Shift+P</code>) and enter <code>Remote-SSH: Open SSH Configuration File</code>.</li>
-            <li>Select the first file option, typically <code>C:\Users\[YourUsername]\.ssh\config</code>.</li>
-            <li>Paste the following configuration:<br><code>Host *REPLACE WITH PREFERRED NAME*<br>&nbsp;&nbsp;HostName localhost<br>&nbsp;&nbsp;Port 2222<br>&nbsp;&nbsp;User cs4440<br></code></li>
-            <li>Click the Remote Explorer icon in the sidebar (monitor icon) and select 'Remote (Tunnels/SSH)' from the dropdown up top.</li>
-            <li>Look for your newly added SSH host name and click the "Connect to Host" button (arrow icon) to open a new VSCode window connected to your VM.</li>
-            <li>You may be prompted to enter the system type (linux) and your SSH password (cs4440).</li>
-            <li>You are now connected to your VM! You can connect a folder from the files tab, and open a terminal to start executing commands on your VM.</li>
-        </ol>
+        <p>Before continuing, <b>ensure that your CS 4440 VM boots as intended</b> (see <a href=#login>Logging-in and Using the VM</a> above). Within your host's corresponding VM software (i.e., VirtualBox or UTM), select your working CS 4440 VM appliance, and proceed with the relevant set of instructions below:</p>
+
+        <br><br>
+
+        <h3 id=ssh#vbox>SSH Setup for VirtualBox:</h3>
+        <p>First, click <code>Settings</code> <i style="vertical-align: middle;" class="fa fa-arrow-right"></i> <code>Network</code>, and ensure <code>Attached to</code> is set to <code>NAT</code>.</p>
+        
+        <p>Then, click <code>Advanced</code> <i style="vertical-align: middle;" class="fa fa-arrow-right"></i> <code>Port Forwarding</code>, and select the <code>+</code> icon to add a new rule and configure as follows:</p>
+
+        <ul>
+            <li><b>Name:</b> <code>SSH</code>.</li>
+            <li><b>Protocol:</b> <code>TCP</code>.</li>
+            <li><b>Host Port:</b> <code>2222</code> (or any other unused port of your choosing).</li>
+            <li><b>Guest Port:</b> <code>22</code>.</li>
+        </ul><br>
+
+        <p>Lastly, click <code>OK</code> when finished.</p>
+
+        <br><br>
+
+        <h3 id=ssh#utm>SSH Setup for UTM:</h3>
+        
+        <p>First, click the settings button ( <i style="vertical-align: middle;" class="fa fa-sliders"></i> ), followed by <code>Network</code>, and ensure the drop-down is set to <code>Emulated VLAN</code>.</p>
+        
+        <p>Then, select the newly created <code>Port Forwarding</code> tab on the left-hand sidebar. Then, click the <code>New</code> button to add a new rule and configure as follows:</p>
+
+        <ul>
+            <li><b>Protocol:</b> <code>TCP</code>.</li>
+            <li><b>Host Port</b> (the bottom-most box)<b>:</b> <code>2222</code> (or any other unused port of your choosing).</li>
+            <li><b>Guest Port</b> (the second box from the top)<b>:</b> <code>22</code></li>
+        </ul><br>
+        
+        <p>Leave all other settings as-is, before finally clicking <code>OK</code> when finished.</p>
+
+        <br><br>
+
+        <h3 id=ssh#vm>Final Steps: VM Configuration</h3>
+
+        <p>With your VM's network settings now finalized, boot into your VM and open a terminal. Then, run the following terminal commands one at a time (copy and paste each into your terminal and hit <code>Enter</code>):</p>
+
+        <p><b>1. Backup the current sources:</b></p><br>
+        <pre><code>sudo cp /etc/apt/sources.list /etc/apt/sources.list.snapshot</code></pre>
+
+        <p><b>2. Update package sources</b> (copy and paste the entire command)<b>:</b></p><br>
+        <pre><code>sudo cp /etc/apt/sources.list /etc/apt/sources.list.temp && \
+        echo "deb http://archive.ubuntu.com/ubuntu focal main restricted universe multiverse
+        deb http://archive.ubuntu.com/ubuntu focal-updates main restricted universe multiverse
+        deb http://archive.ubuntu.com/ubuntu focal-security main restricted universe multiverse" | sudo tee /etc/apt/sources.list</code></pre>
+
+        <p><b>3. Install OpenSSH server:</b></p><br>
+        <pre><code>sudo apt update && sudo apt install -y openssh-server</code></pre>
+
+        <p><b>4. Restore original sources:</b></p><br>
+        <pre><code>sudo mv /etc/apt/sources.list.snapshot /etc/apt/sources.list && sudo apt update</code></pre>
+        </p>
+
+        <p><b>5. Start the SSH service:</b></p><br>
+        <pre><code>sudo systemctl start ssh</code></pre>
+        
+        <br>
+
+        <h3 id="ssh#host">Final Steps: Host Configuration</h3>
+
+        <p>With your VM's SSH now configured, launch VSCode on your local machine and click the <code>Extensions</code> icon in the sidebar (or press <code>Ctrl+Shift+X</code>).
+        Search for and install Microsoft's <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack">Remote Development</a> extension package.</p>
+
+        <p>Afterwards, open VSCode's command palette (press <code>Ctrl+Shift+P</code>) and enter the following:</p><br>
+        <pre><code>Remote-SSH: Open SSH Configuration File</code></pre>
+
+        <p>Select the first file option: typically <code>C:\Users\[YourUsername]\.ssh\config</code> for Windows hosts, or <code>/Users/[YourUsername]/.ssh/config</code> for MacOS hosts. Then, paste the following configuration:</p><br>
+        <pre><code>Host cs4440vm<br>
+&nbsp;&nbsp;HostName localhost<br>
+&nbsp;&nbsp;Port 2222<br>
+&nbsp;&nbsp;User cs4440<br></code></pre>
+
+        <p>Afterwards, click the <code>Remote Explorer</code> icon in the sidebar ( <i style="vertical-align: middle;" class="fas fa-desktop"></i> ) and select <code>Remote (Tunnels/SSH)</code> from the dropdown up top. Find your newly added SSH host name (<code>cs4440vm</code>), and then click <code>Connect to Host</code> to open a new VSCode window connected to your VM.
+        Upon attempting to connect, you may be prompted to choose the system type (select <code>Linux</code>) and to enter your VM's account password (<code>cs4440</code>).
+        </p>
+
+        <p><b>If this all worked, you're now connected to your VM!</b> You should notice a green <code>SSH</code> tab in the bottom-left of your screen during your active connection. Now that you've SSH'd in, you can connect into any VM folder of your choosing from the files tab, or open a local terminal to begin executing commands on your VM.</p>
 
     <!-- ################################################################################### -->
 
@@ -246,7 +256,7 @@
 
         <p><img class="button wikiimage" src="img/vbox-clip.png" style="max-width:70%"/></p>
 
-        <p><b>UTM:</b> with your VM off, select your VM and click on the top-right <code>Edit selected VM</code> button (<i class="fas fa-sliders"></i>). Under <code>Sharing</code>, toggle <code>Enable Clipboard Sharing</code>.</p>
+        <p><b>UTM:</b> with your VM off, select your VM and click on the top-right <code>Edit selected VM</code> button ( <i style="vertical-align: middle;" class="fas fa-sliders"></i> ). Under <code>Sharing</code>, toggle <code>Enable Clipboard Sharing</code>.</p>
 
         <p>Note that Mac's standard copy/pasting keyboard shortcuts (<code>⌘</code>+<code>c</code> and <code>⌘</code>+<code>v</code>, respectively) <b>will not work</b> within the VM, as Linux does not support Mac's <code>⌘</code> key! However, your VM does have built-in copy/paste shortcuts: <b>for copying</b>, <code>control</code>+<code>shift</code>+<code>c</code>, and <b>for pasting</b>, <code>control</code>+<code>shift</code>+<code>v</code>. Note that when outside the VM (e.g., on a non-UTM window), you'll need to default back to Mac's standard <code>⌘</code>-based shortcuts.</p>
 
@@ -268,7 +278,7 @@
 
         <p><img class="button wikiimage" src="img/vbox-vram.png" style="max-width:70%"/></p>
 
-        <p><b>UTM:</b> first turn off your VM, and then select your VM and click on the top-right <code>Edit selected VM</code> button (<i class="fas fa-sliders"></i>). From there, click the <code>System</code> tab and adjust your RAM accordingly:
+        <p><b>UTM:</b> first turn off your VM, and then select your VM and click on the top-right <code>Edit selected VM</code> button ( <i style="vertical-align: middle;" class="fas fa-sliders"></i> ). From there, click the <code>System</code> tab and adjust your RAM accordingly:
 
         <p><img class="button wikiimage" src="img/utm-ram.png" style="max-width:80%"/></p>
 
@@ -318,6 +328,7 @@
                     <li><a href="#vbox">VirtualBox Setup</a></li>
                     <li><a href="#utm">UTM Setup</a></li>
                     <li><a href="#login">Logging In</a></li>
+                    <li><a href="#ssh">VSCode via SSH</a></li>
                     <li><a href="#help">Troubleshooting</a></li>
                         <ul>
                             <li><a href="#download">Download Errors</a></li>
