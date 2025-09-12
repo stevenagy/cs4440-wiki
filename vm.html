@@ -179,6 +179,45 @@ pause</code></pre>
         <p><b>Spend some time getting familiar with your new VM</b>—you'll be using it all semester!</p>
 
     <!-- ################################################################################### -->
+        <hr><h2 id=shared-folder>Setting up a Shared Folder</h2>
+
+        <p>
+            Shared Folders can be a great way to quickly access any files from your main machine and the VM. To get started, navigate to your VirtualBox Manager and click on <code>Settings</code>. From there, find <code>Shared Folders</code> at the bottom left corner or scroll all the way down until you see this menu.
+        </p>
+
+        <p><img class="button wikiimage" src="img/sf-settings.png" style="max-width:70%"/></p>
+
+        <p>Click on the <b>Folder with the Green +</b> button on the right side to create a Shared Folder. Use these Settings to set up your folder:</p>
+
+        <div class="panel panel-default">
+            <div class="panel-heading" style="background-color: cornsilk;">
+                <ul>
+                <li><b>Folder Path:</b> Select "Other" to choose a folder on your local machine.</li>
+                <li><b>Folder Name:</b> Anything to identify it. (Note: on the VM, it will show as <code>sf_NAME</code>)</li>
+                <li><b>Read-Only:</b> Unchecked (Checked will mean you can only pull files from your local machine into the VM)</li>
+                <li><b>Auto-Mount:</b> Checked (This will make sure it always shows up.)</li>
+                <li><b>Mount Point:</b> Leave Blank</p></li>
+                </ul>
+            </div>
+        </div>
+
+        <p>Next time you start your VM, you should be able to see your Shared Folder under "Devices" in the File Manager. If you click into the Shared Folder, you may receive this error.</p>
+        
+        <br><br>
+        
+        <p><img class="button wikiimage" src="img/sf-reject.png" style="max-width:80%"/></p>
+        
+        <br><br>
+        
+        <p>If so, do not worry - we are just a step away! In order to give your user (<code>cs4440</code>) permissions, <b>launch your Terminal inside the VM and copy and paste this code:</b></p>
+        
+        <br><br>
+        
+        <pre><code>sudo adduser cs4440 vboxsf</code></pre>
+
+        <p><b>Restart your VM</b> and your Shared Folder should now be set up!</p>
+
+    <!-- ################################################################################### -->
 
         <hr><h2 id=vscode>Optional: Working Outside the VM via VSCode</h2>
 
@@ -376,6 +415,7 @@ pause</code></pre>
                     <li><a href="#utm">Setup via UTM</a></li>
                     <li><a href="#qemu">Setup via QEMU</a></li>
                     <li><a href="#login">Logging-in the VM</a></li>
+                    <li><a href="#shared-folder">Setting up a Shared Folder</a></li>
                     <li><a href="#vscode">Using VSCode</a></li>
                     <li><a href="#help">Troubleshooting</a></li>
                         <ul>
