@@ -31,10 +31,10 @@
                 <span class="icon-bar"></span>
             </button>
         </div>
-        
+
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav" style="margin-top: 1px;">
-                <li><a href="../">Syllabus</a></li>
+                <li><a href="">Syllabus</a></li>
                 <li><a href="../schedule">Schedule</a></li>
                 <li><a href="../assignments">Assignments</a></li>
                 <li><a href="../wiki">Wiki</a></li>
@@ -68,7 +68,7 @@
     <!-- ################################################################################### -->
 
         <hr><h2 id=run>Running Python Code</h2>
- 
+
         <h3 id=run#interactive><b>Interactive Mode:</b></h3>
         <p>In some course exercises, we'll walk you through examples demonstrated in Python's <b>interactive mode</b>. Think of interactive mode as a Python "session", where you write programs line-by-line (rather than all at once) and get feedback as each line is processed and executed.</p>
 
@@ -116,7 +116,7 @@ NameError: name 'os' is not defined
 >>> print(os.name)          # To access objects, we use prefix "os.OBJNAME".
 posix
 
->>> print(os.uname())       # This applies to all objects. E.g., `uname()`. 
+>>> print(os.uname())       # This applies to all objects. E.g., `uname()`.
 posix.uname_result(sysname='Linux', ...)
 </code></pre>
 
@@ -126,7 +126,7 @@ posix.uname_result(sysname='Linux', ...)
 >>> print(name)             # We no longer need a prefix to access `name`!
 posix
 
->>> print(uname())          # This fails. Why? We've only imported `name`! 
+>>> print(uname())          # This fails. Why? We've only imported `name`!
 NameError: name 'uname' is not defined. Did you mean: 'name'?
 
 >>> print(os.uname())       # Also fails. Why? We didn't import the module!
@@ -153,7 +153,7 @@ posix.uname_result(sysname='Linux', ...)
 >>> print(type(x))  # Python correctly infers it is an integer!
 <&#8203;c&#8203;lass 'int'>
 
->>> x = "cs4440"    # Let's now overwrite `x` with a string. 
+>>> x = "cs4440"    # Let's now overwrite `x` with a string.
 >>> print(type(x))  # Notice how its type changes accordingly!
 <&#8203;c&#8203;lass 'str'>
 </code></pre>
@@ -163,7 +163,7 @@ posix.uname_result(sysname='Linux', ...)
 >>>> x = int(5)      # Let's cast `x` as an `int` (integer).
 >>> print(x)        # Now print it — it's indeed an integer!
 5
-    
+
 >>> x = float(5)    # Now cast it as a `float` type!
 >>> print(x)        # Here we go — it is indeed a float!
 5.0
@@ -187,6 +187,16 @@ posix.uname_result(sysname='Linux', ...)
 cs4440 i&#8203;s cool
 </code></pre>
 
+
+        <h3 id="strs#search"><b>Searching a String:</b></h3>
+<pre><code class="language-python"
+>>>> x = "lotsandlotsoftext"     # Find the first index in the string where "and" appears.
+>>> print(x.find("and"))
+4
+>>> print(x.find("notfound"))    # Returns -1, since "notfound" is not in the string
+-1
+</code></pre>
+
         <h3 id="strs#substrs"><b>Substrings:</b></h3>
 <pre><code class="language-python"
 >>>> x = "cs4440 is cool"    # Check if substring 'cool' is present.
@@ -195,6 +205,12 @@ T&#8203;rue
 
 >>> print("4440" not in x)  # Check if substring '4440' not present.
 F&#8203;alse
+
+>>> print(x[2:6])           # Print the substring from index 2 to 5.
+4440
+
+>>> print(x[7:])            # Print the substring starting at index 7.
+is cool                     # A blank substring bound defaults to the start/end of the string.
 </code></pre>
 
         <h3 id="strs#split"><b>Splitting by a Delimiter:</b></h3>
@@ -217,7 +233,7 @@ cs
 
         <h3 id="strs#repeat"><b>Repeating Characters:</b></h3>
 <pre><code class="language-python"
->>>> x = "A"*10            # You can use multiplication to quickly  
+>>>> x = "A"*10            # You can use multiplication to quickly
 >>> print(x)              # generate strings of repeated characters.
 AAAAAAAAAA
 </code></pre>
@@ -238,13 +254,20 @@ b'cs4440'
 
         <h3 id="lists#index"><b>Indexing:</b></h3>
 <pre><code class="language-python"
->>>> x = ['cs4440', 'is', 'cool']    # Print the 0th item of our list.
+>>>> x = ['cs4440', 'is', 'cool']               # Print the 0th item of our list.
 >>> print(x[0])
 cs4440
 
->>> x = ['cs4440', 'is', 'cool']    # Print the last item of our list.
+>>> x = ['cs4440', 'is', 'cool']                # Print the last item of our list.
 >>> print(x[-1])
 cool
+
+>>> x = ['cs4440', 'is', 'super', 'cool']       # Print the sublist from index 1 to 2.
+>>> print(x[1:3])
+['is', 'super']
+
+>>> print(x[:2])                                # Print the sublist ending at index 1.
+['cs4440', 'is']                                # A blank sublist bound defaults to the start/end of the list.
 </code></pre>
 
         <h3 id="lists#insert"><b>Inserting:</b></h3>
@@ -261,7 +284,7 @@ cool
 
         <h3 id="lists#join"><b>Joining:</b></h3>
 <pre><code class="language-python"
->>>> x = ['cs4440', 'is', 'cool']    # Join items into a space-delimited string. 
+>>>> x = ['cs4440', 'is', 'cool']    # Join items into a space-delimited string.
 >>> print(' '.join(x))
 cs4440 i&#8203;s cool
 
@@ -286,8 +309,8 @@ Yes!
 >>>> x = 5
 >>> if (x % 3 == 1):    # Evaluates to True if x modulo 3 equals 1.
 ...     print("Yes!")
-... else:               # Prints "Nope!" if the condition is False. 
-...     print("Nope!")  
+... else:               # Prints "Nope!" if the condition is False.
+...     print("Nope!")
 Nope!
 </code></pre>
 
@@ -302,6 +325,13 @@ Nope!
 a
 b
 c
+
+>>> for i in range(4):     # Python's version of "for(int i = 0; i < 4; i++)"
+...     print(i)
+0
+1
+2
+3
 </code></pre>
         <h3 id="loops#while"><b>While Loops:</b></h3>
 <pre><code class="language-python"
@@ -365,6 +395,7 @@ Hello!
                     <ul>
                         <li><a href="#strs#length">Length</a></li>
                         <li><a href="#strs#append">Appending</a></li>
+                        <li><a href="#strs#search">Searching</a></li>
                         <li><a href="#strs#substrs">Substrings</a></li>
                         <li><a href="#strs#split">Splitting</a></li>
                         <li><a href="#strs#strip">Stripping</a></li>
