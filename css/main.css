@@ -1,5 +1,15 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,600,600italic");
 
+:root {
+  --color-hint: cornsilk;
+  --color-link: #306b7d;
+  --color-lightblue: #C3EEEE;
+  --color-blue: #006bdf;
+  --color-orange: #D0430B;
+  --color-green: #218721;
+  --color-purple: #9932CC;
+}
+
 /* ------------------------------- */
 /* Responsive sizing 
 /* ------------------------------- */
@@ -321,7 +331,7 @@ b {
 }
 
 a {
-	color: /*4AB4D0 2AA0D0*/ #5592cf;
+	color: /*4AB4D0 2AA0D0*/ var(--color-link);
 	font-weight: 500;
 	-moz-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 	-webkit-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
