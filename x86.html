@@ -4,60 +4,33 @@
     <title>CS 4440</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons/css/academicons.min.css">
     <link rel="stylesheet" href="css/main.css"/>
-    <link rel="icon" type="image/x-icon" href="../../../img/favicon.ico">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
     <script src="https://kit.fontawesome.com/982c2a20d7.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 </head>
 
 <body>
 
-<nav class="navbar navbar-inverse">
-    <a class="navbar-brand" href="http://cs.utah.edu">
-        <img class="button" width="185px" src="../../../img/ksoclogo_white.png" style="margin-top:1.3%">
-    </a>
-
-    <div class="ml-auto">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav" style="margin-top: 1px;">
-                <li><a href="../">Syllabus</a></li>
-                <li><a href="../schedule">Schedule</a></li>
-                <li><a href="../assignments">Assignments</a></li>
-                <li><a href="../wiki">Wiki</a></li>
-                <li><a href="../redirect_piazza">Piazza</a></li>
-                <li><a href="../redirect_canvas">Canvas</a></li>
-                <li><a href="../redirect_pollev">PollEv</a></li>
-                <li><a href="../redirect_taqueue">TA&nbsp;Queue</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<div id="navbar-placeholder" data-wiki-root="" data-site-root="../"></div>
+<script src="js/navbar.js"></script>
 
 <!-- ################################################################################### -->
 
-<div class="container main-container">
-    <div class="col-md-10">
-        <h1>CS 4440 Wiki: <br class="on-narrow"><b style="color:dodgerblue">x86 Cheat Sheet</b></h1><br>
+<div class="container main-container" role="main">
+    <div class="row">
+    <div class="col-lg-9">
+        <h1>CS 4440 Wiki: <br class="on-narrow"><strong style="color:dodgerblue">x86 Cheat Sheet</strong></h1><br>
 
     <!-- ################################################################################### -->
 
         <p>This page offers a brief cheat sheet of x86 Assembly fundamentals relevant to Project 2.</p>
 
-        <p><b>This page is by no means comprehensive—we encourage you to bookmark and familiarize yourself with one of the many in-depth x86 tutorials on the web.</b> Some great examples are:</p>
+        <p><strong>This page is by no means comprehensive—we encourage you to bookmark and familiarize yourself with one of the many in-depth x86 tutorials on the web.</strong> Some great examples are:</p>
 
         <ul>
             <li><a href="https://flint.cs.yale.edu/cs421/papers/x86-asm/asm.html">Guide to x86 Assembly</a></li>
@@ -70,7 +43,7 @@
         <hr><h2 id=registers>Registers</h2>
 
         <h3 id=registers#general>General-purpose Registers</h3>
-        <p>The following are <b>general-purpose registers</b>: quickly-accessible locations that the CPU utilizes any time data is being operated on (e.g., for storing or reading data from).</p>
+        <p>The following are <strong>general-purpose registers</strong>: quickly-accessible locations that the CPU utilizes any time data is being operated on (e.g., for storing or reading data from).</p>
 <pre><code class="language-assembly">%eax 
 %ecx
 %edx
@@ -102,16 +75,16 @@ not dst        // dst = ~dst
 </code></pre>     
         
         <h3 id=instructions#copying>Copying Data</h3>
-        <p>The following data copying operations are shown in <b>AT&T</b> syntax (GDB's default syntax). In <b>Intel</b> syntax, the <code>src</code> and <code>dst</code> operands are simply swapped.</p>
+        <p>The following data copying operations are shown in <strong>AT&T</strong> syntax (GDB's default syntax). In <strong>Intel</strong> syntax, the <code>src</code> and <code>dst</code> operands are simply swapped.</p>
 
-        <p>Operands <code>src</code> or <code>dst</code> can be <b>immediates</b> (e.g., <code>$0x10</code>), <b>registers</b> (e.g., <code>eax</code>), or memory <b>addresses</b>.</p>
+        <p>Operands <code>src</code> or <code>dst</code> can be <strong>immediates</strong> (e.g., <code>$0x10</code>), <strong>registers</strong> (e.g., <code>eax</code>), or memory <strong>addresses</strong>.</p>
 
 <pre><code class="language-assembly">mov src, dst   // Copies the contents of src into dst
 lea src, dst   // Copies the address of src into dst
 </code></pre>     
 
         <h3 id=instructions#jumps>Jumps</h3>
-        <p>Aside from function calls and returns, <b>jumps</b> are the other way of transferring control from one program location to another. Below discusses two types of jumps: <b>unconditional</b> (equivalent to "just go there") and <b>conditional</b> (equivalent to "jump there if condition X is met").</p>
+        <p>Aside from function calls and returns, <strong>jumps</strong> are the other way of transferring control from one program location to another. Below discusses two types of jumps: <strong>unconditional</strong> (equivalent to "just go there") and <strong>conditional</strong> (equivalent to "jump there if condition X is met").</p>
 <pre><code class="language-assembly">jmp label      // Unconditional jump to label
 jmp *reg       // Unconditional jump to contents of register reg
 
@@ -136,12 +109,12 @@ pop reg        // Pop item from stack into register reg.
         <hr><h2 id=functions>Functions</h2>
         
         <h3 id=functions#calls>Calling</h3>
-        <p>Function <b>calls</b> transfer control from the call-<b><i>er</i></b> (the current active function) to a call-<b><i>ee</i></b> (the function being invoked by the caller). When the callee returns, execution transfers back to the caller.</p>
+        <p>Function <strong>calls</strong> transfer control from the call-<strong><em>er</em></strong> (the current active function) to a call-<strong><em>ee</em></strong> (the function being invoked by the caller). When the callee returns, execution transfers back to the caller.</p>
 <pre><code class="language-assembly">cal&#8203;l label     // Transfer control to the callee fun&#8203;ction named label.
 </code></pre>     
 
         <h3 id=functions#prologues>Prologue Routines</h3>
-        <p>The following is a common function <b>prologue</b>—the initial set of callee instructions that happen immediately after a <code>call</code> instruction transfers control from the caller.</p>
+        <p>The following is a common function <strong>prologue</strong>—the initial set of callee instructions that happen immediately after a <code>call</code> instruction transfers control from the caller.</p>
 <pre><code class="language-assembly">push ebp       // Save the previous (i.e., the caller's) value of ebp.
                // When callee returns, ebp will res&#8203;et to the caller ebp.
 mov esp, ebp   // U&#8203;pdate ebp to now point to the top of the stack.
@@ -149,7 +122,7 @@ sub X, esp     // Allocate X bytes of stack space for local variables.
 </code></pre>       
 
         <h3 id=functions#epilogues>Epilogue Routines</h3>
-        <p>The following is a common function <b>epilogue</b>—the final set of callee instructions that cleans-up its stack frame (i.e., de-allocates the space used by local variables) immediately before a <code>ret</code> transfers control back to the caller. Often, this epilogue procedure is represented as the single instruction <code>leave</code>.</p>
+        <p>The following is a common function <strong>epilogue</strong>—the final set of callee instructions that cleans-up its stack frame (i.e., de-allocates the space used by local variables) immediately before a <code>ret</code> transfers control back to the caller. Often, this epilogue procedure is represented as the single instruction <code>leave</code>.</p>
 <pre><code class="language-assembly">mov ebp, esp   // Reset the stack pointer to the top of the callee's frame. 
                // In other words, esp is now back to its pre-callee (caller) state.
 pop ebp        // Pop frame pointer off the stack, restoring to the caller's saved ebp.
@@ -157,15 +130,15 @@ pop ebp        // Pop frame pointer off the stack, restoring to the caller's sav
 </code></pre>    
 
         <h3 id=functions#returns>Returning</h3>
-        <p>Following the epilogue, a <b>return</b> instruction is executed, transferring control from the callee back to the caller. Execution resumes in the caller at the instructiom immediately following the preceding <code>call</code>.</p>
+        <p>Following the epilogue, a <strong>return</strong> instruction is executed, transferring control from the callee back to the caller. Execution resumes in the caller at the instructiom immediately following the preceding <code>call</code>.</p>
 <pre><code class="language-assembly">ret            // Transfer control back to the caller's next (post-call) instruction.
 </code></pre>     
 
     <!-- ################################################################################### -->
     </div>
-    <div class="col-md-2 text-left scrollable" style="position:static;">
-        <div class="col-md-12 text-left scrollable" style="position:fixed;">
-            <h4><b>Table of Contents:</b></h4>
+    <div class="col-lg-3">
+        <nav class="sidebar-toc" aria-label="Table of Contents">
+            <h4><strong>Table of Contents:</strong></h4>
                 <ul>
                     <li><a href="#registers">Registers</a></li>
                     <ul>
@@ -190,21 +163,24 @@ pop ebp        // Pop frame pointer off the stack, restoring to the caller's sav
                     </ul>
                 </ul>
             </h4>
-        </div>
+        </nav>
     </div>
 
+</div>
 </div>
 
 <!-- ################################################################################### -->
 
-<footer class="bg-light text-center text-lg-start">
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); font-size: 0.75em;">
+<footer class="bg-light text-center text-lg-start" role="contentinfo">
+    <div class="text-center p-3">
         Copyright © Stefan Nagy. All rights reserved.
     </div>
 </footer>
 
 <!-- ################################################################################### -->
 
+<script>document.querySelectorAll('pre').forEach(el => el.setAttribute('tabindex', '0'));</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

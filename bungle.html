@@ -4,58 +4,31 @@
     <title>CS 4440</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons/css/academicons.min.css">
     <link rel="stylesheet" href="css/main.css"/>
-    <link rel="icon" type="image/x-icon" href="../../../img/favicon.ico">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
     <script src="https://kit.fontawesome.com/982c2a20d7.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 </head>
 
 <body>
 
-<nav class="navbar navbar-inverse">
-    <a class="navbar-brand" href="http://cs.utah.edu">
-        <img class="button" width="185px" src="../../../img/ksoclogo_white.png" style="margin-top:1.3%">
-    </a>
-
-    <div class="ml-auto">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav" style="margin-top: 1px;">
-                <li><a href="../">Syllabus</a></li>
-                <li><a href="../schedule">Schedule</a></li>
-                <li><a href="../assignments">Assignments</a></li>
-                <li><a href="../wiki">Wiki</a></li>
-                <li><a href="../redirect_piazza">Piazza</a></li>
-                <li><a href="../redirect_canvas">Canvas</a></li>
-                <li><a href="../redirect_pollev">PollEv</a></li>
-                <li><a href="../redirect_taqueue">TA&nbsp;Queue</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<div id="navbar-placeholder" data-wiki-root="" data-site-root="../"></div>
+<script src="js/navbar.js"></script>
 
 <!-- ################################################################################### -->
 
-<div class="container main-container">
-    <div class="col-md-10">
-        <h1>CS 4440 Wiki: <br class="on-narrow"><b style="color:dodgerblue">BUNGLE Site Documentation</b></h1><br>
+<div class="container main-container" role="main">
+    <div class="row">
+    <div class="col-lg-9">
+        <h1>CS 4440 Wiki: <br class="on-narrow"><strong style="color:dodgerblue">BUNGLE Site Documentation</strong></h1><br>
 
     <!-- ################################################################################### -->
 
-        <p>A startup named <b>BUNGLE</b> is about to launch its first product—a web search engine—but their investors are nervous about security problems. The site is written in Python using the Bottle web framework. Although Bottle has built-in mechanisms that help guard against some common vulnerabilities, the Bunglers have circumvented or ignored these mechanisms in several places. In addition to providing search results, the site accepts logins and tracks users’ search histories. Usernames, passwords, and search histories are stored in a MySQL database.</p>
+        <p>A startup named <strong>BUNGLE</strong> is about to launch its first product—a web search engine—but their investors are nervous about security problems. The site is written in Python using the Bottle web framework. Although Bottle has built-in mechanisms that help guard against some common vulnerabilities, the Bunglers have circumvented or ignored these mechanisms in several places. In addition to providing search results, the site accepts logins and tracks users' search histories. Usernames, passwords, and search histories are stored in a MySQL database.</p>
 
     <!-- ################################################################################### -->
 
@@ -63,33 +36,33 @@
 
         <p>The website repies to five main URLs: <code>/</code>, <code>/search</code>, <code>/login</code>, <code>/logout</code>, and <code>/create</code>.</p>
 
-        <h3 id=main><b>Main Page</b> (<code>/</code>)</h3>
-        <p>The main page accepts <code>GET</code> requests and displays a search form. When submitted, this form issues a <code>GET</code> request to <code>/search</code>, sending the search string as parameter <code>q</code> (i.e., <code>/search?<b>q</b>=HelloWorld]</code>).</p> 
+        <h3 id=main><strong>Main Page</strong> (<code>/</code>)</h3>
+        <p>The main page accepts <code>GET</code> requests and displays a search form. When submitted, this form issues a <code>GET</code> request to <code>/search</code>, sending the search string as parameter <code>q</code> (i.e., <code>/search?<strong>q</strong>=HelloWorld]</code>).</p> 
 
         <p>If no user is logged in, the main page also displays a form that gives the user the option of logging in or creating an account. The form issues <code>POST</code> requests to <code>/login</code> and <code>/create</code>.</p>
 
-        <h3 id=search><b>Search Results</b> (<code>/search</code>)</h3>
-        <p>The search results page accepts <code>GET</code> requests and prints the search string, supplied in the <code>q</code> query parameter, along with the search results. If the user is logged in, the page also displays the user’s recent search history in a sidebar.</p>
+        <h3 id=search><strong>Search Results</strong> (<code>/search</code>)</h3>
+        <p>The search results page accepts <code>GET</code> requests and prints the search string, supplied in the <code>q</code> query parameter, along with the search results. If the user is logged in, the page also displays the user's recent search history in a sidebar.</p>
 
-        <p><i>Note:</i> Since actual search is not relevant to this project, you might not receive any results.
+        <p><em>Note:</em> Since actual search is not relevant to this project, you might not receive any results.
 
-        <h3 id=login><b>Login Handler</b> (<code>/login</code>)</h3> 
-        <p>The login handler accepts <code>POST</code> requests and takes plaintext <code>username</code> and <code>password</code> query parameters. It checks the user database to see if a user with those credentials exists. If so, it sets a login cookie and redirects the browser to the main page. The cookie tracks which user is logged in; manipulating or forging it is <b>not</b> part of this project.</p>
+        <h3 id=login><strong>Login Handler</strong> (<code>/login</code>)</h3> 
+        <p>The login handler accepts <code>POST</code> requests and takes plaintext <code>username</code> and <code>password</code> query parameters. It checks the user database to see if a user with those credentials exists. If so, it sets a login cookie and redirects the browser to the main page. The cookie tracks which user is logged in; manipulating or forging it is <strong>not</strong> part of this project.</p>
 
-        <h3 id=logout><b>Logout Handler</b> (<code>/logout</code>)</h3>
+        <h3 id=logout><strong>Logout Handler</strong> (<code>/logout</code>)</h3>
         <p>The logout handler accepts <code>POST</code> requests. It deletes the login cookie (if one is set) and redirects the browser to the main page.</p>
 
-        <h3 id=create><b>Account Creation Handler</b> (<code>/create</code>)</h3>
+        <h3 id=create><strong>Account Creation Handler</strong> (<code>/create</code>)</h3>
         <p>The create account handler accepts <code>POST</code> requests and receives plaintext <code>username</code> and <code>password</code> query parameters. It inserts the username and password into the database of users, unless a user with that username already exists. It then logs the user in and redirects the browser to the main page.</p>
         
-        <p><i>Note:</i> The password is neither sent nor stored securely; however, none of the attacks you implement should depend on this behavior. You should choose a password that other groups will not guess, but <b>never</b> use an important password (e.g., your UID password) to test an insecure site!</p>
+        <p><em>Note:</em> The password is neither sent nor stored securely; however, none of the attacks you implement should depend on this behavior. You should choose a password that other groups will not guess, but <strong>never</strong> use an important password (e.g., your UID password) to test an insecure site!</p>
     <!-- ################################################################################### -->
 
         <h2 id=defenses>Defenses</code></h2>
 
         <p>The following shows the source code for every CSRF and XSS defense level available in the site.</p>
 
-        <h3 id=csrf0><b>CSRF Level 0</b> (no defense)</h3>
+        <h3 id=csrf0><strong>CSRF Level 0</strong> (no defense)</h3>
 <pre><code>class CSRFNone(object):
     @staticmethod
     def init(request, response):
@@ -102,7 +75,7 @@
         pass
 </code></pre>
 
-        <h3 id=csrf1><b>CSRF Level 1</b> (token validation)</h3>
+        <h3 id=csrf1><strong>CSRF Level 1</strong> (token validation)</h3>
 <pre><code>class CSRFToken(object):
     @staticmethod
     def init(request, response):
@@ -120,7 +93,7 @@
             raise HTTPError(403, output="CSRF Attack Detected (bad or missing token)")    
 </code></pre>
 
-        <h3 id=xss0><b>XSS Level 0</b> (no defense)</h3>
+        <h3 id=xss0><strong>XSS Level 0</strong> (no defense)</h3>
 <pre><code>class XSSNone(object):
     @staticmethod
     def init(response):
@@ -130,7 +103,7 @@
         return input
 </code></pre>
 
-        <h3 id=xss1><b>XSS Level 1</b> (remove <code>script</code> tags)</h3>
+        <h3 id=xss1><strong>XSS Level 1</strong> (remove <code>script</code> tags)</h3>
 <pre><code>class XSSRemoveScript(object):
     @staticmethod
     def init(response):
@@ -140,7 +113,7 @@
         return re.sub(r"(?i)script", "", input)
 </code></pre>
 
-        <h3 id=xss2><b>XSS Level 2</b> (remove several tags)</h3>
+        <h3 id=xss2><strong>XSS Level 2</strong> (remove several tags)</h3>
 <pre><code>class XSSRemoveSeveralTags(object):
     @staticmethod
     def init(response):
@@ -150,7 +123,7 @@
         return re.sub(r"(?i)script|&lt;img|&lt;body|&lt;style|&lt;meta|&lt;embed|&lt;object", "", input)
 </code></pre>
 
-        <h3 id=xss3><b>XSS Level 3</b> (remove <code>"</code>, <code>'</code>, and <code>;</code>)</h3>
+        <h3 id=xss3><strong>XSS Level 3</strong> (remove <code>"</code>, <code>'</code>, and <code>;</code>)</h3>
 <pre><code>class XSSRemovePunctuation(object):
     @staticmethod
     def init(response):
@@ -160,7 +133,7 @@
         return re.sub(r"[;'\"]", "", input)
 </code></pre>
 
-        <h3 id=xss4><b>XSS Level 4</b> (encode <code>&lt; and &gt;</code>)</h3>
+        <h3 id=xss4><strong>XSS Level 4</strong> (encode <code>&lt; and &gt;</code>)</h3>
 <pre><code>class XSSEncodeAngles(object):
     @staticmethod
     def init(response):
@@ -172,9 +145,9 @@
 
     <!-- ################################################################################### -->
     </div>
-    <div class="col-md-2 text-left scrollable" style="position:static;">
-        <div class="col-md-12 text-left scrollable" style="position:fixed;">
-            <h4><b>Table of Contents:</b></h4>
+    <div class="col-lg-3">
+        <nav class="sidebar-toc" aria-label="Table of Contents">
+            <h4><strong>Table of Contents:</strong></h4>
                 <ul>
                     <li><a href="#urls">Site URLs</a></li>
                     <ul>
@@ -196,21 +169,24 @@
                     </ul>
                 </ul>
             </h4>
-        </div>
+        </nav>
     </div>
 
+</div>
 </div>
 
 <!-- ################################################################################### -->
 
-<footer class="bg-light text-center text-lg-start">
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); font-size: 0.75em;">
+<footer class="bg-light text-center text-lg-start" role="contentinfo">
+    <div class="text-center p-3">
         Copyright © Stefan Nagy. All rights reserved.
     </div>
 </footer>
 
 <!-- ################################################################################### -->
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>document.querySelectorAll('pre').forEach(el => el.setAttribute('tabindex', '0'));</script>
 </body>
 
 </html>

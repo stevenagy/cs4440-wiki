@@ -4,67 +4,40 @@
     <title>CS 4440</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons/css/academicons.min.css">
     <link rel="stylesheet" href="css/main.css"/>
-    <link rel="icon" type="image/x-icon" href="../../../img/favicon.ico">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
     <script src="https://kit.fontawesome.com/982c2a20d7.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 </head>
 
 <body>
 
-<nav class="navbar navbar-inverse">
-    <a class="navbar-brand" href="http://cs.utah.edu">
-        <img class="button" width="185px" src="../../../img/ksoclogo_white.png" style="margin-top:1.3%">
-    </a>
-
-    <div class="ml-auto">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav" style="margin-top: 1px;">
-                <li><a href="../">Syllabus</a></li>
-                <li><a href="../schedule">Schedule</a></li>
-                <li><a href="../assignments">Assignments</a></li>
-                <li><a href="../wiki">Wiki</a></li>
-                <li><a href="../redirect_piazza">Piazza</a></li>
-                <li><a href="../redirect_canvas">Canvas</a></li>
-                <li><a href="../redirect_pollev">PollEv</a></li>
-                <li><a href="../redirect_taqueue">TA&nbsp;Queue</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<div id="navbar-placeholder" data-wiki-root="" data-site-root="../"></div>
+<script src="js/navbar.js"></script>
 
 <!-- ################################################################################### -->
 
-<div class="container main-container">
-    <div class="col-md-10">
-        <h1>CS 4440 Wiki: <br class="on-narrow"><b style="color:dodgerblue">VM Setup & Troubleshooting</b></h1><br>
+<div class="container main-container" role="main">
+    <div class="row">
+    <div class="col-lg-9">
+        <h1>CS 4440 Wiki: <br class="on-narrow"><strong style="color:dodgerblue">VM Setup & Troubleshooting</strong></h1><br>
 
     <!-- ################################################################################### -->
 
-        <p>To ensure consistency in project environments, we provide a virtual machine (VM) running versions of Linux and Firefox specially configured to never auto-update. Follow the instructions below, depending on which architecture your computer runs. You must work on all project code within the course VM; we will grade your assignments <b>in the same VM environment</b>.</p>
+        <p>To ensure consistency in project environments, we provide a virtual machine (VM) running versions of Linux and Firefox specially configured to never auto-update. Follow the instructions below, depending on which architecture your computer runs. You must work on all project code within the course VM; we will grade your assignments <strong>in the same VM environment</strong>.</p>
 
-        <p>It is your responsibility to <b>set aside enough disk space</b> on your personal device for all course material, including this VM. Be sure to <b>download your VM files only to your computer's <i>permanent</i> hard disk</b>—NOT <i>cloud</i> storage (e.g., iCloud, OneDrive) as this will corrupt your VM! If disk space is scarce, you may want to consider migrating non-course data to the cloud or to an external storage medium. Except in the most extenuating circumstances, the course staff are not able to provide accommodations due to a lack of space and/or loss of data.</p>
+        <p>It is your responsibility to <strong>set aside enough disk space</strong> on your personal device for all course material, including this VM. Be sure to <strong>download your VM files only to your computer's <em>permanent</em> hard disk</strong>—NOT <em>cloud</em> storage (e.g., iCloud, OneDrive) as this will corrupt your VM! If disk space is scarce, you may want to consider migrating non-course data to the cloud or to an external storage medium. Except in the most extenuating circumstances, the course staff are not able to provide accommodations due to a lack of space and/or loss of data.</p>
 
         <p>If you run into any problems while reading this guide, the last section offers some troubleshooting tips. We will update this page as we encounter new problems or parts where students are struggling.</p>
 
     <!-- ################################################################################### -->
 
         <hr><h2 id=vbox>VirtualBox: Intel-based Windows, Linux, and Macs</h2>
-        <p>The following setup instructions are intended for only <i>Intel</i>-based Windows, Linux, and Mac machines. If you are using an <b>ARM-based Mac</b> (i.e., M1/M2, or newer), please instead jump to the <a href="#utm">UTM setup</a>. If you are using an <b>ARM-based Windows machine</b>, please make sure to instead follow the <a href="#qemu">QEMU setup</a>.</p>
+        <p>The following setup instructions are intended for only <em>Intel</em>-based Windows, Linux, and Mac machines. If you are using an <strong>ARM-based Mac</strong> (i.e., M1/M2, or newer), please instead jump to the <a href="#utm">UTM setup</a>. If you are using an <strong>ARM-based Windows machine</strong>, please make sure to instead follow the <a href="#qemu">QEMU setup</a>.</p>
 
         <br><br>
 
@@ -74,14 +47,14 @@
         <br><br>
 
         <h3>Step 1: Download the VM Appliance</h3>
-        <p>Download the VirtualBox VM appliance from <a href="https://drive.google.com/file/d/1QYPum8nOpKTvptcn2EtTYX5E25vVVVlu/view?usp=sharing">here</a>, and extract it (i.e., launch a terminal or shell and run <code>tar -xf cs4440vm.ova.tar.gz</code> from within the same directory as the file) to your directory of choice. You'll soon see file <code>CS 4440 VM.ova</code>—this is the VM appliance. Do <b>not</b> further extract the <code>.ova</code> file!</p>
+        <p>Download the VirtualBox VM appliance from <a href="https://drive.google.com/file/d/1QYPum8nOpKTvptcn2EtTYX5E25vVVVlu/view?usp=sharing">here</a>, and extract it (i.e., launch a terminal or shell and run <code>tar -xf cs4440vm.ova.tar.gz</code> from within the same directory as the file) to your directory of choice. You'll soon see file <code>CS 4440 VM.ova</code>—this is the VM appliance. Do <strong>not</strong> further extract the <code>.ova</code> file!</p>
 
         <br><br>
 
         <h3>Step 2: Import the VM Appliance into VirtualBox</h3>
-        <p>In VirtualBox’s menu, navigate to <code>Tools</code> and then <code>Import Appliance</code>. Select the VM appliance file (<code>CS 4440 VM.ova</code>), and continue to click the <code>Next</code> button until you are no longer prompted. You should not need to modify any settings—just verify that your default settings look like the image below:</p>
+        <p>In VirtualBox's menu, navigate to <code>Tools</code> and then <code>Import Appliance</code>. Select the VM appliance file (<code>CS 4440 VM.ova</code>), and continue to click the <code>Next</code> button until you are no longer prompted. You should not need to modify any settings—just verify that your default settings look like the image below:</p>
 
-        <p><img class="button wikiimage" src="img/vbox.png"/></p>
+        <p><img class="button wikiimage" src="img/vbox.png" alt="VirtualBox download page"/></p>
 
         <p>The import process may take several minutes. Once complete, click <code>Start</code> to run the VM. Upon successfully booting, you should be greeted with the Linux login screen.</p>
 
@@ -93,14 +66,14 @@
 
         <p>To take a snapshot, open the VirtualBox VM manager and select <code>Snapshots</code> as shown in the image below. In the panel that appears, click <code>Take</code> to save a snapshot.</p>
 
-        <p><img class="button wikiimage" src="img/vbox-snap.png" style="max-width:70%"/></p>
+        <p><img class="button wikiimage" src="img/vbox-snap.png" alt="VirtualBox snapshot creation" style="max-width:70%"/></p>
 
         <br>
 
     <!-- ################################################################################### -->
 
         <hr><h2 id=utm>UTM: ARM-based Macs</h2>
-        <p>The following setup is intended for Apple Silicon Macs (M1, M2, or newer). <b>Make sure to verify that your processor is indeed <i>not</i> an Intel processor</b>, as you would instead need to follow the <a href="#vbox">VirtualBox setup</a>!</p>
+        <p>The following setup is intended for Apple Silicon Macs (M1, M2, or newer). <strong>Make sure to verify that your processor is indeed <em>not</em> an Intel processor</strong>, as you would instead need to follow the <a href="#vbox">VirtualBox setup</a>!</p>
 
         <br><br>
 
@@ -110,14 +83,14 @@
         <br><br>
 
         <h3>Step 1: Download the VM Appliance</h3>
-        <p>Download the UTM VM appliance from <a href="https://drive.google.com/file/d/1EH1zFeqX1eHn9pwNdDjkzgUoB0NWluPL/view?usp=sharing">here</a>, and extract it (i.e., launch a terminal or shell and run <code>tar -xf cs4440vm.utm.tar.gz</code> from within the same directory as the file) to your directory of choice. After extracting, you should see a file <code>CS 4440 VM.utm</code>—this is the VM appliance. Do <b>not</b> further extract the <code>.utm</code> file!</p></p>
+        <p>Download the UTM VM appliance from <a href="https://drive.google.com/file/d/1EH1zFeqX1eHn9pwNdDjkzgUoB0NWluPL/view?usp=sharing">here</a>, and extract it (i.e., launch a terminal or shell and run <code>tar -xf cs4440vm.utm.tar.gz</code> from within the same directory as the file) to your directory of choice. After extracting, you should see a file <code>CS 4440 VM.utm</code>—this is the VM appliance. Do <strong>not</strong> further extract the <code>.utm</code> file!</p></p>
 
         <br><br>
 
         <h3>Step 2: Import the VM Appliance into UTM</h3>
         <p>Double-click the <code>CS 4440 VM.utm</code> file, which should open UTM to a screen similar to the following:</p>
 
-        <p><img class="button wikiimage" src="img/utm.png"/></p>
+        <p><img class="button wikiimage" src="img/utm.png" alt="UTM download page"/></p>
 
         <p>The architecture being <code>x86_64</code> is expected, even if you are on an ARM-based Mac! This reflects the architecture of the VM, which will always be based on x86.</p>
 
@@ -128,7 +101,7 @@
     <!-- ################################################################################### -->
 
         <hr><h2 id=qemu>QEMU: ARM-based Windows Surface Pros</h2>
-        <p>The following setup is intended for ARM-based Windows Surface Pros. <b>Make sure to verify that your processor is indeed <i>not</i> an Intel processor</b>, as you would instead need to follow the <a href="#vbox">VirtualBox setup</a>!</p>
+        <p>The following setup is intended for ARM-based Windows Surface Pros. <strong>Make sure to verify that your processor is indeed <em>not</em> an Intel processor</strong>, as you would instead need to follow the <a href="#vbox">VirtualBox setup</a>!</p>
 
         <br><br>
 
@@ -138,7 +111,7 @@
         <br><br>
 
         <h3>Step 1: Download the VM Appliance</h3>
-        <p>Download the QEMU VM appliance from <a href="https://drive.google.com/file/d/1-ZODZmB2GujXwmcSuADZz0tsck7STqSe/view?usp=sharing">here</a>, and extract it (i.e., launch a terminal or shell and run <code>tar -xf cs4440vm.qcow2.tar.gz</code> from within the same directory as the file) to your directory of choice. You'll soon see file <code>CS 4440 VM.qcow2</code>—this is the VM appliance. Do <b>not</b> further extract the <code>.qcow2</code> file!</p>
+        <p>Download the QEMU VM appliance from <a href="https://drive.google.com/file/d/1-ZODZmB2GujXwmcSuADZz0tsck7STqSe/view?usp=sharing">here</a>, and extract it (i.e., launch a terminal or shell and run <code>tar -xf cs4440vm.qcow2.tar.gz</code> from within the same directory as the file) to your directory of choice. You'll soon see file <code>CS 4440 VM.qcow2</code>—this is the VM appliance. Do <strong>not</strong> further extract the <code>.qcow2</code> file!</p>
 
         <br><br>
 
@@ -154,37 +127,37 @@
   -device virtio-vga,ram_size=4096
 pause</code></pre>
 
-        <p>Be sure to swap the above placeholder <code>[PATH_TO_VM_DIRECTORY]</code> with <b>the correct path</b> to the directory where your <code>CS 4440 VM.qcow2</code> appliance is stored (e.g., your <code>\%USERNAME%\Downloads</code> folder or somewhere else).</p>
+        <p>Be sure to swap the above placeholder <code>[PATH_TO_VM_DIRECTORY]</code> with <strong>the correct path</strong> to the directory where your <code>CS 4440 VM.qcow2</code> appliance is stored (e.g., your <code>\%USERNAME%\Downloads</code> folder or somewhere else).</p>
 
-        <p>Next, <b>save</b> this file as <code>StartVM.bat</code> in a convenient directory of your choosing (e.g., your <code>Desktop</code> folder). If prompted, be sure to choose the file type <b>UTF-8 without BOM</b>.</p>
+        <p>Next, <strong>save</strong> this file as <code>StartVM.bat</code> in a convenient directory of your choosing (e.g., your <code>Desktop</code> folder). If prompted, be sure to choose the file type <strong>UTF-8 without BOM</strong>.</p>
 
-        <p>To launch your VM, simply double-click on shortcut <code>StartVM.bat</code>. QEMU will then attempt to boot (<b>note that this may take a little while</b>, depending on your machine), but afterwards, your VM should be up and running!</p>
+        <p>To launch your VM, simply double-click on shortcut <code>StartVM.bat</code>. QEMU will then attempt to boot (<strong>note that this may take a little while</strong>, depending on your machine), but afterwards, your VM should be up and running!</p>
 
     <!-- ################################################################################### -->
 
         <hr><h2 id=login>Logging-in and Using the VM</h2>
 
-        <div class="panel panel-default">
-            <div class="panel-heading" style="background-color: cornsilk;">
+        <div class="card">
+            <div class="card-header" style="background-color: cornsilk;">
                 The username and password are both <code>cs4440</code> (though we've configured the VM to not require you to enter these on startup). You may need to enter this password when issuing commands as <code>sudo</code>.
             </div>
         </div>
 
         <p>On login, you should be greeted with the UofU Desktop. Notice the <code>Terminal</code> and <code>File Browser</code> shortcuts in the bottom task-bar, as well as the <code>Firefox</code> shortcut on your Desktop.</p>
 
-        <p><img class="button wikiimage" src="img/vm.png"/></p>
+        <p><img class="button wikiimage" src="img/vm.png" alt="CS 4440 virtual machine desktop"/></p>
 
         <p>For some Project exercises, everything you need will be pre-installed in your VM. For others, you'll need to download some files from the CS 4440 web server; you can use Firefox, or <code>wget</code> in your <code>Terminal</code>.</p>
 
-        <p><b>Spend some time getting familiar with your new VM</b>—you'll be using it all semester!</p>
+        <p><strong>Spend some time getting familiar with your new VM</strong>—you'll be using it all semester!</p>
 
     <!-- ################################################################################### -->
 
         <hr><h2 id=vscode>Optional: Working Outside the VM via VSCode</h2>
 
-        <p>If you prefer using <a href="https://code.visualstudio.com/">Microsoft's Visual Studio Code (VSCode)</a> as your primary code editor, you may optionally use its <a href="https://code.visualstudio.com/docs/remote/ssh">remote SSH connection</a> feature to edit code and run terminal commands within your VM <b>directly from your local machine's VSCode environment</b> (i.e., from <i>outside</i> your VM). Note that, to receive full credit on the course projects, all of your solutions must work entirely inside of the VM without VSCode!</p>
+        <p>If you prefer using <a href="https://code.visualstudio.com/">Microsoft's Visual Studio Code (VSCode)</a> as your primary code editor, you may optionally use its <a href="https://code.visualstudio.com/docs/remote/ssh">remote SSH connection</a> feature to edit code and run terminal commands within your VM <strong>directly from your local machine's VSCode environment</strong> (i.e., from <em>outside</em> your VM). Note that, to receive full credit on the course projects, all of your solutions must work entirely inside of the VM without VSCode!</p>
 
-        <p>Before continuing, <b>ensure that your CS 4440 VM boots as intended</b> (see <a href=#login>Logging-in and Using the VM</a> above). Within your host's corresponding VM software (i.e., VirtualBox or UTM), select your working CS 4440 VM appliance, and proceed with the relevant set of instructions below:</p>
+        <p>Before continuing, <strong>ensure that your CS 4440 VM boots as intended</strong> (see <a href=#login>Logging-in and Using the VM</a> above). Within your host's corresponding VM software (i.e., VirtualBox or UTM), select your working CS 4440 VM appliance, and proceed with the relevant set of instructions below:</p>
 
         <br><br>
 
@@ -194,10 +167,10 @@ pause</code></pre>
         <p>Then, click <code>Advanced</code> <i style="vertical-align: middle;" class="fa fa-arrow-right"></i> <code>Port Forwarding</code>, and select the <code>+</code> icon to add a new rule and configure as follows:</p>
 
         <ul>
-            <li><b>Name:</b> <code>SSH</code>.</li>
-            <li><b>Protocol:</b> <code>TCP</code>.</li>
-            <li><b>Host Port:</b> <code>2222</code> (or any other unused port of your choosing).</li>
-            <li><b>Guest Port:</b> <code>22</code>.</li>
+            <li><strong>Name:</strong> <code>SSH</code>.</li>
+            <li><strong>Protocol:</strong> <code>TCP</code>.</li>
+            <li><strong>Host Port:</strong> <code>2222</code> (or any other unused port of your choosing).</li>
+            <li><strong>Guest Port:</strong> <code>22</code>.</li>
         </ul><br>
 
         <p>Lastly, click <code>OK</code> when finished.</p>
@@ -211,9 +184,9 @@ pause</code></pre>
         <p>Then, select the newly created <code>Port Forwarding</code> tab on the left-hand sidebar. Then, click the <code>New</code> button to add a new rule and configure as follows:</p>
 
         <ul>
-            <li><b>Protocol:</b> <code>TCP</code>.</li>
-            <li><b>Host Port</b> (the bottom-most box)<b>:</b> <code>2222</code> (or any other unused port of your choosing).</li>
-            <li><b>Guest Port</b> (the second box from the top)<b>:</b> <code>22</code></li>
+            <li><strong>Protocol:</strong> <code>TCP</code>.</li>
+            <li><strong>Host Port</strong> (the bottom-most box)<strong>:</strong> <code>2222</code> (or any other unused port of your choosing).</li>
+            <li><strong>Guest Port</strong> (the second box from the top)<strong>:</strong> <code>22</code></li>
         </ul><br>
         
         <p>Leave all other settings as-is, before finally clicking <code>OK</code> when finished.</p>
@@ -222,7 +195,7 @@ pause</code></pre>
 
         <h3 id="vscode#qemu">SSH Setup for QEMU:</h3>
 
-        <p>First, we must modify your original QEMU launcher script to forward a host port (e.g., <code>2222</code>, or any other unused port of your choosing) to the guest’s SSH port (<code>22</code>). If you followed our <a href="#qemu">QEMU setup</a>, add the following line inside of your <code>StartVM.bat</code> launcher command, <b>as a new line right after the line beginning with</b> <code>-display</code>:</p>
+        <p>First, we must modify your original QEMU launcher script to forward a host port (e.g., <code>2222</code>, or any other unused port of your choosing) to the guest's SSH port (<code>22</code>). If you followed our <a href="#qemu">QEMU setup</a>, add the following line inside of your <code>StartVM.bat</code> launcher command, <strong>as a new line right after the line beginning with</strong> <code>-display</code>:</p>
 
         <pre><code>-nic user,model=virtio-net-pci,hostfwd=tcp:127.0.0.1:2222-:22 ^</code></pre>
 
@@ -234,23 +207,23 @@ pause</code></pre>
 
         <p>With your VM's network settings now finalized, boot into your VM and open a terminal. Then, run the following terminal commands one at a time (copy and paste each into your terminal and hit <code>Enter</code>):</p>
 
-        <p><b>1. Backup the current sources:</b></p><br>
+        <p><strong>1. Backup the current sources:</strong></p><br>
         <pre><code>sudo cp /etc/apt/sources.list /etc/apt/sources.list.snapshot</code></pre>
 
-        <p><b>2. Update package sources</b> (copy and paste the entire command)<b>:</b></p><br>
+        <p><strong>2. Update package sources</strong> (copy and paste the entire command)<strong>:</strong></p><br>
         <pre><code>sudo cp /etc/apt/sources.list /etc/apt/sources.list.temp && \
         echo "deb http://archive.ubuntu.com/ubuntu focal main restricted universe multiverse
         deb http://archive.ubuntu.com/ubuntu focal-updates main restricted universe multiverse
         deb http://archive.ubuntu.com/ubuntu focal-security main restricted universe multiverse" | sudo tee /etc/apt/sources.list</code></pre>
 
-        <p><b>3. Install OpenSSH server:</b></p><br>
+        <p><strong>3. Install OpenSSH server:</strong></p><br>
         <pre><code>sudo apt update && sudo apt install -y openssh-server</code></pre>
 
-        <p><b>4. Restore original sources:</b></p><br>
+        <p><strong>4. Restore original sources:</strong></p><br>
         <pre><code>sudo mv /etc/apt/sources.list.snapshot /etc/apt/sources.list && sudo apt update</code></pre>
         </p>
 
-        <p><b>5. Start the SSH service:</b></p><br>
+        <p><strong>5. Start the SSH service:</strong></p><br>
         <pre><code>sudo systemctl start ssh</code></pre>
         
         <br>
@@ -275,18 +248,18 @@ pause</code></pre>
         Upon attempting to connect, you may be prompted to choose the system type (select <code>Linux</code>) and to enter your VM's account password (<code>cs4440</code>).
         </p>
 
-        <p><b>If this all worked, you're now connected to your VM!</b> You should notice a green <code>SSH</code> tab in the bottom-left of your screen during your active connection. Now that you've SSH'd in, you can connect into any VM folder of your choosing from the files tab, or open a local terminal to begin executing commands on your VM.</p>
+        <p><strong>If this all worked, you're now connected to your VM!</strong> You should notice a green <code>SSH</code> tab in the bottom-left of your screen during your active connection. Now that you've SSH'd in, you can connect into any VM folder of your choosing from the files tab, or open a local terminal to begin executing commands on your VM.</p>
 
     <!-- ################################################################################### -->
 
         <hr><h2 id=help>Troubleshooting</h2>
-        <p>See the below suggestions for troubleshooting common VM issues. If you are encountering a different issue (and none of our tips have helped you solve it), <b>please let us know on <a href="../redirect_piazza">Piazza</a></b>!</p>
+        <p>See the below suggestions for troubleshooting common VM issues. If you are encountering a different issue (and none of our tips have helped you solve it), <strong>please let us know on <a href="../redirect_piazza">Piazza</a></strong>!</p>
 
         <br><br>
 
         <h3 id=download>Downloading the VM Appliance</h3>
         <p>While we have tried to create the smallest-possible VMs, they are inevitably a few gigabytes in size. We recommend that you download the VMs on a fast internet connection (e.g., UofU campus WiFi).</p>
-        <p>Depending on your web browser’s configuration such as extensions or add-ons geared towards privacy, the VM Appliance download from may fail in the middle. If this happens repeatedly, we recommend downloading from incognito mode with all extensions disabled, or downloading another web browser.</p>
+        <p>Depending on your web browser's configuration such as extensions or add-ons geared towards privacy, the VM Appliance download from may fail in the middle. If this happens repeatedly, we recommend downloading from incognito mode with all extensions disabled, or downloading another web browser.</p>
 
         <br><br>
 
@@ -299,37 +272,37 @@ pause</code></pre>
         <h3 id=copypaste>Copying and Pasting To/From Host</h3>
         <p>To help make your workflow easier, both VirtualBox and UTM support copying and pasting from host to VM (and vice-versa). To enable this, see the following steps.</p>
 
-        <p><b>VirtualBox:</b> with your VM off, click on <code>Settings</code> and then then <code>General</code>. Under the <code>Advanced</code> tab, make sure that <code>Shared Clipboard</code> is set to <code>Bidirectional</code>.</p>
+        <p><strong>VirtualBox:</strong> with your VM off, click on <code>Settings</code> and then then <code>General</code>. Under the <code>Advanced</code> tab, make sure that <code>Shared Clipboard</code> is set to <code>Bidirectional</code>.</p>
 
-        <p><img class="button wikiimage" src="img/vbox-clip.png" style="max-width:70%"/></p>
+        <p><img class="button wikiimage" src="img/vbox-clip.png" alt="VirtualBox clipboard settings" style="max-width:70%"/></p>
 
-        <p><b>UTM:</b> with your VM off, select your VM and click on the top-right <code>Edit selected VM</code> button ( <i style="vertical-align: middle;" class="fas fa-sliders"></i> ). Under <code>Sharing</code>, toggle <code>Enable Clipboard Sharing</code>.</p>
+        <p><strong>UTM:</strong> with your VM off, select your VM and click on the top-right <code>Edit selected VM</code> button ( <i style="vertical-align: middle;" class="fas fa-sliders"></i> ). Under <code>Sharing</code>, toggle <code>Enable Clipboard Sharing</code>.</p>
 
-        <p>Note that Mac's standard copy/pasting keyboard shortcuts (<code>⌘</code>+<code>c</code> and <code>⌘</code>+<code>v</code>, respectively) <b>will not work</b> within the VM, as Linux does not support Mac's <code>⌘</code> key! However, your VM does have built-in copy/paste shortcuts: <b>for copying</b>, <code>control</code>+<code>shift</code>+<code>c</code>, and <b>for pasting</b>, <code>control</code>+<code>shift</code>+<code>v</code>. Note that when outside the VM (e.g., on a non-UTM window), you'll need to default back to Mac's standard <code>⌘</code>-based shortcuts.</p>
+        <p>Note that Mac's standard copy/pasting keyboard shortcuts (<code>⌘</code>+<code>c</code> and <code>⌘</code>+<code>v</code>, respectively) <strong>will not work</strong> within the VM, as Linux does not support Mac's <code>⌘</code> key! However, your VM does have built-in copy/paste shortcuts: <strong>for copying</strong>, <code>control</code>+<code>shift</code>+<code>c</code>, and <strong>for pasting</strong>, <code>control</code>+<code>shift</code>+<code>v</code>. Note that when outside the VM (e.g., on a non-UTM window), you'll need to default back to Mac's standard <code>⌘</code>-based shortcuts.</p>
 
-        <p><img class="button wikiimage" src="img/utm-clip.png" style="max-width:80%"/></p>
+        <p><img class="button wikiimage" src="img/utm-clip.png" alt="UTM clipboard settings" style="max-width:80%"/></p>
 
         <br><br>
 
         <h3 id=startup>Crashes or Black Screens on VM Startup</h3>
         <p>Often, non-bootable VMs are stem from corrupted downloads or corrupted VM appliances.
-        This can be caused by incomplete/partial downloads of the VM tarball; your system's hard disk having insufficient space for the VM tarball and/or the extracted VM appliance; or from corruption caused by downloading/extracting to a <i>cloud-synced</i> folder (e.g., iCloud, OneDrive, etc.). If you're seeing such errors, be sure to <b>(1) free enough space on your hard drive</b>, before <b>(2) re-downloading, re-extracting, and re-loading the VM appliance to a <i>non-cloud-synced</i> directory</b>. Be sure to delete any non-working VM appliances from before, as these also take up unnecessary disk space!</p>
+        This can be caused by incomplete/partial downloads of the VM tarball; your system's hard disk having insufficient space for the VM tarball and/or the extracted VM appliance; or from corruption caused by downloading/extracting to a <em>cloud-synced</em> folder (e.g., iCloud, OneDrive, etc.). If you're seeing such errors, be sure to <strong>(1) free enough space on your hard drive</strong>, before <strong>(2) re-downloading, re-extracting, and re-loading the VM appliance to a <em>non-cloud-synced</em> directory</strong>. Be sure to delete any non-working VM appliances from before, as these also take up unnecessary disk space!</p>
 
         <p>In some cases, corruption can happen suddenly. If your VM was working previously but suddenly stopped being bootable—specifically dropping you into an <code>(initramfs)</code> terminal on bootup—you can try running <code>fsck -yf /dev/sda2</code> to attempt to fix any filesystem-related errors. Once <code>fsck</code> is done, enter <code>exit</code> to resume booting.</p>
 
-        <p>In other cases, your VM may be using <i>too much</i> or <i>too little</i> memory depending on your host system's resources. This often causes VirtualBox and UTM to either crash on VM startup, or indefinitely hang on a black screen. We recommend that you try adjusting your VM's settings to either increase or decrease the amount of RAM (memory) and/or VRAM (video memory) used. This may require some trial and error!</p>
+        <p>In other cases, your VM may be using <em>too much</em> or <em>too little</em> memory depending on your host system's resources. This often causes VirtualBox and UTM to either crash on VM startup, or indefinitely hang on a black screen. We recommend that you try adjusting your VM's settings to either increase or decrease the amount of RAM (memory) and/or VRAM (video memory) used. This may require some trial and error!</p>
 
-        <p><b>VirtualBox:</b> first make sure that your VM is turned off, and then click on the <code>Settings</code> button. Select the <code>System</code> tab and adjust your RAM (<code>Base Memory</code>) accordingly:</p>
+        <p><strong>VirtualBox:</strong> first make sure that your VM is turned off, and then click on the <code>Settings</code> button. Select the <code>System</code> tab and adjust your RAM (<code>Base Memory</code>) accordingly:</p>
 
-        <p><img class="button wikiimage" src="img/vbox-ram.png" style="max-width:70%"/></p>
+        <p><img class="button wikiimage" src="img/vbox-ram.png" alt="VirtualBox RAM settings" style="max-width:70%"/></p>
 
         <p>You can also adjust the VRAM (<code>Video Memory</code>) within the <code>Display</code> tab:</p>
 
-        <p><img class="button wikiimage" src="img/vbox-vram.png" style="max-width:70%"/></p>
+        <p><img class="button wikiimage" src="img/vbox-vram.png" alt="VirtualBox video RAM settings" style="max-width:70%"/></p>
 
-        <p><b>UTM:</b> first turn off your VM, and then select your VM and click on the top-right <code>Edit selected VM</code> button ( <i style="vertical-align: middle;" class="fas fa-sliders"></i> ). From there, click the <code>System</code> tab and adjust your RAM accordingly:
+        <p><strong>UTM:</strong> first turn off your VM, and then select your VM and click on the top-right <code>Edit selected VM</code> button ( <i style="vertical-align: middle;" class="fas fa-sliders"></i> ). From there, click the <code>System</code> tab and adjust your RAM accordingly:
 
-        <p><img class="button wikiimage" src="img/utm-ram.png" style="max-width:80%"/></p>
+        <p><img class="button wikiimage" src="img/utm-ram.png" alt="UTM RAM settings" style="max-width:80%"/></p>
 
         <br><br>
 
@@ -339,9 +312,9 @@ pause</code></pre>
         <br><br>
 
         <h3 id=vbox_cpu>VirtualBox: CPU Virtualization Setup</h3>
-        <p>VirtualBox requires an x86(-64) processor with hardware-assisted virtualization; such feature is called <b>VT-x</b> on Intel processors and <b>AMD-V</b> on AMD processors. If you have a Mac, virtualization should be enabled by default in firmware. If you have a PC, chances are the feature will be enabled from the factory, yet this is not always the case.</p>
+        <p>VirtualBox requires an x86(-64) processor with hardware-assisted virtualization; such feature is called <strong>VT-x</strong> on Intel processors and <strong>AMD-V</strong> on AMD processors. If you have a Mac, virtualization should be enabled by default in firmware. If you have a PC, chances are the feature will be enabled from the factory, yet this is not always the case.</p>
 
-        <p>In order to enable virtualization, you will need to enter the setup menu of your BIOS or UEFI on your PC. The key combination to press immediately after startup differs by PC manufacturer, but oftentimes it is one of <code>F2</code>, <code>Delete</code>, <code>F10</code>, <code>F12</code>, or <code>Esc</code>. Consult your manufacturer’s documentation if you are unsure. The location of the setting will also differ by manufacturer. However, the name will almost always include "virtualization" or "virtualization technology".</p>
+        <p>In order to enable virtualization, you will need to enter the setup menu of your BIOS or UEFI on your PC. The key combination to press immediately after startup differs by PC manufacturer, but oftentimes it is one of <code>F2</code>, <code>Delete</code>, <code>F10</code>, <code>F12</code>, or <code>Esc</code>. Consult your manufacturer's documentation if you are unsure. The location of the setting will also differ by manufacturer. However, the name will almost always include "virtualization" or "virtualization technology".</p>
 
         <br><br>
 
@@ -351,12 +324,12 @@ pause</code></pre>
         <br><br>
 
         <h3 id=vbox_bootup>VirtualBox: Error while Booting Up</h3>
-        <p>We've seen some laptops where, upon booting the VM, VirtualBox throws errors such as <code>VERR_ACCESS_DENIED</code> or <code>VbglR3InitUser</code>. We recommend just rebooting your computer (not the VM—your <i>entire</i> laptop) and trying again. Alternatively, we've seen some successes where users just clicked-through those errors to get to the working VM. We also recommend trying to run VirtualBox with Administrator permissions, or increasing/decreasing the VM's memory (refer to <a href="#startup">Crashes or Black Screen on VM Startup</a> for instructions on adjusting your VM's RAM limit).</p>
+        <p>We've seen some laptops where, upon booting the VM, VirtualBox throws errors such as <code>VERR_ACCESS_DENIED</code> or <code>VbglR3InitUser</code>. We recommend just rebooting your computer (not the VM—your <em>entire</em> laptop) and trying again. Alternatively, we've seen some successes where users just clicked-through those errors to get to the working VM. We also recommend trying to run VirtualBox with Administrator permissions, or increasing/decreasing the VM's memory (refer to <a href="#startup">Crashes or Black Screen on VM Startup</a> for instructions on adjusting your VM's RAM limit).</p>
 
         <br><br>
 
         <h3 id=vbox_deps>VirtualBox: Missing Dependencies</h3>
-        <p>VirtualBox may prompt you with a message about missing <code>Python Core / win32api</code> dependencies. You can <b>ignore this</b> as these features are not necessary for the course. See <a href="https://forums.virtualbox.org/viewtopic.php?p=531949&sid=72e69e09d7b10ea033671bee691a7e16#p531949">this thread</a> on the VBox forums for more info.</p>
+        <p>VirtualBox may prompt you with a message about missing <code>Python Core / win32api</code> dependencies. You can <strong>ignore this</strong> as these features are not necessary for the course. See <a href="https://forums.virtualbox.org/viewtopic.php?p=531949&sid=72e69e09d7b10ea033671bee691a7e16#p531949">this thread</a> on the VBox forums for more info.</p>
 
         <br><br>
 
@@ -370,9 +343,9 @@ pause</code></pre>
 
     <!-- ################################################################################### -->
     </div>
-    <div class="col-md-2 text-left scrollable" style="position:static;">
-        <div class="col-md-12 text-left scrollable" style="position:fixed;">
-            <h4><b>Table of Contents:</b></h4>
+    <div class="col-lg-3">
+        <nav class="sidebar-toc" aria-label="Table of Contents">
+            <h4><strong>Table of Contents:</strong></h4>
                 <ul>
                     <li><a href="#vbox">Setup via VirtualBox</a></li>
                     <li><a href="#utm">Setup via UTM</a></li>
@@ -395,21 +368,24 @@ pause</code></pre>
                         </ul>
                 </ul>
             </h4>
-        </div>
+        </nav>
     </div>
 
+</div>
 </div>
 
 <!-- ################################################################################### -->
 
-<footer class="bg-light text-center text-lg-start">
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); font-size: 0.75em;">
+<footer class="bg-light text-center text-lg-start" role="contentinfo">
+    <div class="text-center p-3">
         Copyright © Stefan Nagy. All rights reserved.
     </div>
 </footer>
 
 <!-- ################################################################################### -->
 
+<script>document.querySelectorAll('pre').forEach(el => el.setAttribute('tabindex', '0'));</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

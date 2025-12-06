@@ -4,60 +4,33 @@
     <title>CS 4440</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons/css/academicons.min.css">
     <link rel="stylesheet" href="css/main.css"/>
-    <link rel="icon" type="image/x-icon" href="../../../img/favicon.ico">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
     <script src="https://kit.fontawesome.com/982c2a20d7.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 </head>
 
 <body>
 
-<nav class="navbar navbar-inverse">
-    <a class="navbar-brand" href="http://cs.utah.edu">
-        <img class="button" width="185px" src="../../../img/ksoclogo_white.png" style="margin-top:1.3%">
-    </a>
-
-    <div class="ml-auto">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav" style="margin-top: 1px;">
-                <li><a href="../">Syllabus</a></li>
-                <li><a href="../schedule">Schedule</a></li>
-                <li><a href="../assignments">Assignments</a></li>
-                <li><a href="../wiki">Wiki</a></li>
-                <li><a href="../redirect_piazza">Piazza</a></li>
-                <li><a href="../redirect_canvas">Canvas</a></li>
-                <li><a href="../redirect_pollev">PollEv</a></li>
-                <li><a href="../redirect_taqueue">TA&nbsp;Queue</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<div id="navbar-placeholder" data-wiki-root="" data-site-root="../"></div>
+<script src="js/navbar.js"></script>
 
 <!-- ################################################################################### -->
 
-<div class="container main-container">
-    <div class="col-md-10">
-        <h1>CS 4440 Wiki: <br class="on-narrow"><b style="color:dodgerblue">HTML Cheat Sheet</b></h1><br>
+<div class="container main-container" role="main">
+    <div class="row">
+    <div class="col-lg-9">
+        <h1>CS 4440 Wiki: <br class="on-narrow"><strong style="color:dodgerblue">HTML Cheat Sheet</strong></h1><br>
 
     <!-- ################################################################################### -->
 
-        <p>In Project 3, you will use HTML pages as a mechanism for performing XSS (cross-site scripting) attacks. To help guide you, the following offers a brief introduction to HTML basics. As you follow along, we recommend that you <b>save the code examples locally</b> (e.g., as <code>test.html</code>) and open them in your web browser.</p>
+        <p>In Project 3, you will use HTML pages as a mechanism for performing XSS (cross-site scripting) attacks. To help guide you, the following offers a brief introduction to HTML basics. As you follow along, we recommend that you <strong>save the code examples locally</strong> (e.g., as <code>test.html</code>) and open them in your web browser.</p>
 
-        <p><b>This page is by no means comprehensive—we encourage you to bookmark and familiarize yourself with one of the many in-depth HTML tutorials on the web.</b> Some great examples are:</p>
+        <p><strong>This page is by no means comprehensive—we encourage you to bookmark and familiarize yourself with one of the many in-depth HTML tutorials on the web.</strong> Some great examples are:</p>
 
         <ul>
             <li><a href="https://www.w3schools.com/html/">W3 Schools' HTML Introduction</a></li>
@@ -70,7 +43,7 @@
         <p>In Project 3, we provide you with an attack template (<code>bsf.html</code>) containing much of the attack setup code pre-filled. The following dives into some of the fundamentals of HTML code and how it's rendered by your browser.</p>
 
         <h3 id=basics#structure>Core Structure</h3>
-        <p>All HTML code must be wrapped by <code>&lt;html></code> tags. As shown below, all <b>open</b> tags (e.g., <code>&lt;html></code>) must be matched with a corresponding <b>close</b> tag (e.g., <code>&lt;/html></code>):</p>
+        <p>All HTML code must be wrapped by <code>&lt;html></code> tags. As shown below, all <strong>open</strong> tags (e.g., <code>&lt;html></code>) must be matched with a corresponding <strong>close</strong> tag (e.g., <code>&lt;/html></code>):</p>
 <pre><code class="language-html">&lt;html>
     &lt;!-- HTML code goes here! -->
 &lt;/html>
@@ -86,7 +59,7 @@
 </code></pre>
 
         <h3 id=basics#comments>Commenting-out Code</h3>
-        <p>Like other languages, HTML supports code comments, which can be helpful to isolate specific code snippets of interest. As shown below, HTML comment blocks have corresponding <b>open</b> (<code>&lt;--</code>) and <b>close</b> tags (<code>--></code>):</p>
+        <p>Like other languages, HTML supports code comments, which can be helpful to isolate specific code snippets of interest. As shown below, HTML comment blocks have corresponding <strong>open</strong> (<code>&lt;--</code>) and <strong>close</strong> tags (<code>--></code>):</p>
 <pre><code class="language-html">&lt;html>
     &lt;!--
     &lt;img> This image is now commented-out! &lt;/img>
@@ -98,7 +71,7 @@
         <p>Todo.</p>-->
 
 <!--        <h3 id=dbg#console>Developer Console</h3>
-        <p>Virtually all modern web browsers have <b>developer consoles</b> for debugging HTML code errors. In Firefox, you can access the console by right-clicking on the currently-loaded page and selecting <code>Inspect</code>.</p>
+        <p>Virtually all modern web browsers have <strong>developer consoles</strong> for debugging HTML code errors. In Firefox, you can access the console by right-clicking on the currently-loaded page and selecting <code>Inspect</code>.</p>
 <pre><code class="language-html">&lt;html>
     &lt;b> This code lacks a correct closing tag! &lt;/p>
 &lt;/html>
@@ -106,7 +79,7 @@
 
    <!-- ################################################################################### -->
         <hr><h2 id=forms>Sending Data via Forms</h2>
-        <p>Web applications commonly handle user input via <b>forms</b>. Think of these as analogous to "filling out a form"—but for a web application! Below covers some basics of setting up, configuring inputs to, and submitting HTML forms.</p>
+        <p>Web applications commonly handle user input via <strong>forms</strong>. Think of these as analogous to "filling out a form"—but for a web application! Below covers some basics of setting up, configuring inputs to, and submitting HTML forms.</p>
 
         <h3 id=forms#setup>Setting up a Form</h3>
         <p>Creating a form is easy—just use HTML's own <code>&lt;form></code> tag! Below shows an example form for preparing a form that will eventually contain a search query for Google's search engine.</p>
@@ -119,7 +92,7 @@
         <p>Notice the <code>method=</code> parameter, which dictates whether the form is to be submitted via <code>GET</code> or <code>POST</code> requests. Depending on how the web application is designed, you need to adjust your form's <code>method</code> accordingly. In this example, Google's search engine expects user input via <code>GET</code> requests.
 
         <h3 id=forms#inputs>Form Inputs</h3>
-        <p>Although forms <i>initialize</i> our user-to-server data submission, setting up the application's expected <i>parameters</i> requires <code>&lt;input></code> objects. Building from our above example, Google's search engine processes queries via the <code>q=</code> parameter. You can test this out yourself by entering a search for the word <code>"test"</code> on Google—the resulting URL will look something like <code>https://www.google.com/search?q=test...</code>!</p>
+        <p>Although forms <em>initialize</em> our user-to-server data submission, setting up the application's expected <em>parameters</em> requires <code>&lt;input></code> objects. Building from our above example, Google's search engine processes queries via the <code>q=</code> parameter. You can test this out yourself by entering a search for the word <code>"test"</code> on Google—the resulting URL will look something like <code>https://www.google.com/search?q=test...</code>!</p>
 
         <p>Likewise, we want to send a search query for string <code>CS 4440 UofU</code>, our form will need to look like this:</p>
 <pre><code class="language-html">&lt;html>
@@ -130,7 +103,7 @@
 </code></pre>
 
         <h3 id=forms#submit>Submitting a Form</h3>
-        <p>While the above two steps take care of initializing the form and its necessary application-defined parameters, we still need to <i>submit</i> the form! To do this, you'll need to use JavaScript (more on JavaScript <a href="#javascript">below</a>).</p>
+        <p>While the above two steps take care of initializing the form and its necessary application-defined parameters, we still need to <em>submit</em> the form! To do this, you'll need to use JavaScript (more on JavaScript <a href="#javascript">below</a>).</p>
 
         <p>In our running example, we can just use the following JavaScript code to submit the form:</p>
 <pre><code class="language-html">&lt;html>
@@ -175,7 +148,7 @@
 </code></pre>
 
         <h3 id=javascript#events>Via Event Handlers</h3>
-        <p>Another way of invoking JavaScript code is via an <b>event handler</b>. HTML supports <a href="https://www.w3schools.com/tags/ref_eventattributes.asp">many event handlers</a> that can be used to trigger JavaScript code execution for specific actions related to pages, objects, or user interactions. 
+        <p>Another way of invoking JavaScript code is via an <strong>event handler</strong>. HTML supports <a href="https://www.w3schools.com/tags/ref_eventattributes.asp">many event handlers</a> that can be used to trigger JavaScript code execution for specific actions related to pages, objects, or user interactions. 
         Shown below is an example of JavaScript invocation via the <code>onload</code> event handler for a given <code>img</code> object:</p>
 <pre><code class="language-html">&lt;html>
     &lt;img src="image.png"  width="100" height="100" onload="foo()">
@@ -192,9 +165,9 @@
 
     </div>
     <!-- ################################################################################### -->
-    <div class="col-md-2 text-left scrollable" style="position:static;">
-        <div class="col-md-12 text-left scrollable" style="position:fixed;">
-            <h4><b>Table of Contents:</b></h4>
+    <div class="col-lg-3">
+        <nav class="sidebar-toc" aria-label="Table of Contents">
+            <h4><strong>Table of Contents:</strong></h4>
                 <ul>
                     <li><a href="#basics">HTML Basics</a></li>
                     <ul>
@@ -217,20 +190,23 @@
                     </ul>
                 </ul>
             </h4>
-        </div>
+        </nav>
     </div>
+</div>
 </div>
 
 <!-- ################################################################################### -->
 
-<footer class="bg-light text-center text-lg-start">
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); font-size: 0.75em;">
+<footer class="bg-light text-center text-lg-start" role="contentinfo">
+    <div class="text-center p-3">
         Copyright © Stefan Nagy. All rights reserved.
     </div>
 </footer>
 
 <!-- ################################################################################### -->
 
+<script>document.querySelectorAll('pre').forEach(el => el.setAttribute('tabindex', '0'));</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

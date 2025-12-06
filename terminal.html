@@ -4,54 +4,27 @@
     <title>CS 4440</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons/css/academicons.min.css">
     <link rel="stylesheet" href="css/main.css"/>
-    <link rel="icon" type="image/x-icon" href="../../../img/favicon.ico">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
     <script src="https://kit.fontawesome.com/982c2a20d7.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 </head>
 
 <body>
 
-<nav class="navbar navbar-inverse">
-    <a class="navbar-brand" href="http://cs.utah.edu">
-        <img class="button" width="185px" src="../../../img/ksoclogo_white.png" style="margin-top:1.3%">
-    </a>
-
-    <div class="ml-auto">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav" style="margin-top: 1px;">
-                <li><a href="../">Syllabus</a></li>
-                <li><a href="../schedule">Schedule</a></li>
-                <li><a href="../assignments">Assignments</a></li>
-                <li><a href="../wiki">Wiki</a></li>
-                <li><a href="../redirect_piazza">Piazza</a></li>
-                <li><a href="../redirect_canvas">Canvas</a></li>
-                <li><a href="../redirect_pollev">PollEv</a></li>
-                <li><a href="../redirect_taqueue">TA&nbsp;Queue</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<div id="navbar-placeholder" data-wiki-root="" data-site-root="../"></div>
+<script src="js/navbar.js"></script>
 
 <!-- ################################################################################### -->
 
-<div class="container main-container">
-    <div class="col-md-10">
-        <h1>CS 4440 Wiki: <br class="on-narrow"><b style="color:dodgerblue">Terminal Cheat Sheet</b></h1><br>
+<div class="container main-container" role="main">
+    <div class="row">
+    <div class="col-lg-9">
+        <h1>CS 4440 Wiki: <br class="on-narrow"><strong style="color:dodgerblue">Terminal Cheat Sheet</strong></h1><br>
 
     <!-- ################################################################################### -->
 
@@ -61,17 +34,17 @@
 
         <hr><h2 id=nav>Navigating the File System</h2>
  
-        <p id=pwd><b><code>pwd</code>: print working directory:</b></p>
+        <p id=pwd><strong><code>pwd</code>: print working directory:</strong></p>
 <pre>
 $ pwd                   # Print path of current dir
 </pre>
 
-        <p id=mkdir><b><code>mkdir</code>: create directory:</b></p>
+        <p id=mkdir><strong><code>mkdir</code>: create directory:</strong></p>
 <pre>
 $ mkdir dir             # Create directory dir
 </pre>
 
-        <p id=cd><b><code>cd</code>: change directory:</b></p>
+        <p id=cd><strong><code>cd</code>: change directory:</strong></p>
 <pre>
 $ cd dir                # Move to directory dir
 
@@ -80,14 +53,14 @@ $ cd ..                 # Move to parent of current directory
 $ cd ../..              # Move to parent of parent of current directory
 </pre>
 
-        <p id=ls><b><code>ls</code>: list the contents of a directory:</b></p>
+        <p id=ls><strong><code>ls</code>: list the contents of a directory:</strong></p>
 <pre>
 $ ls                    # Print contents of current directory
 
 $ ls dir                # Print contents of directory dir
 </pre>
 
-        <p id=rm><b><code>rm</code>: permanently delete:</b></p>
+        <p id=rm><strong><code>rm</code>: permanently delete:</strong></p>
 <pre>
 $ rm file               # Remove file
 
@@ -99,7 +72,7 @@ $ rm -r dir             # Recursively delete directory dir and its contents
 
         <hr><h2 id=files>Working with Files</h2>
 
-        <p id=cp><b><code>cp</code>: copying files:</b></p>
+        <p id=cp><strong><code>cp</code>: copying files:</strong></p>
 <pre>
 $ cp srcFile dstFile    # Copy srcFile over dstFile
 
@@ -108,7 +81,7 @@ $ cp srcFile dstDir     # Copy srcFile to dstDir
 $ cp srcDir/* dstDir    # Copy contents of srcDir into dstDir
 </pre>
 
-        <p id=cat><b><code>cat</code>: print or concatenate files:</b></p>
+        <p id=cat><strong><code>cat</code>: print or concatenate files:</strong></p>
 <pre>
 $ cat file              # Print the contents of file
 
@@ -117,14 +90,14 @@ $ cat src > dst         # Copy contents of src over dst
 $ cat pre suf > new     # Concatenate prefix and suffix into a new file
 </pre>
 
-        <p id=mv><b><code>mv</code>: move files or directories:</b></p>
+        <p id=mv><strong><code>mv</code>: move files or directories:</strong></p>
 <pre>
 $ mv srcFile dstDir     # Move srcFile to dstDir/srcFile
 
 $ mv srcDir dstDir      # Move srcDir to dstDir/srcDir
 </pre>
 
-        <p id=wget><b><code>wget</code>: download from web:</b></p>
+        <p id=wget><strong><code>wget</code>: download from web:</strong></p>
 <pre>
 $ wget url.com/srcFile  # Download srcFile to current directory
 </pre>
@@ -133,12 +106,12 @@ $ wget url.com/srcFile  # Download srcFile to current directory
 
         <hr><h2 id=archives>Working with Archives</h2>
 
-        <p id=tarx><b><code>tar -xf</code>: extract archive:</b></p>
+        <p id=tarx><strong><code>tar -xf</code>: extract archive:</strong></p>
 <pre>
 $ tar -x src.tar.gz     # Extract archive src to current directory
 </pre>
 
-        <p id=tarc><b><code>tar -czvf</code>: generate archive:</b></p>
+        <p id=tarc><strong><code>tar -czvf</code>: generate archive:</strong></p>
 <pre>
 $ tar -c dst.tar.gz src # Create archive dst.tar.gz containing src
 </pre>
@@ -147,7 +120,7 @@ $ tar -c dst.tar.gz src # Create archive dst.tar.gz containing src
 
     <hr><h2 id=arguments>Bad Arguments</h2>
 <p> Certain bytes corresponding to specific characters are handled differently by bash. These can cause issues when used as arguments, leading to frustration. </p>
-    <p id=null-byte><b>Null Bytes: <code>b'\x00'</code></b></p>
+    <p id=null-byte><strong>Null Bytes: <code>b'\x00'</code></strong></p>
 <pre>
 payload = pack('&lt;', 0xFFFF00FF)     # Payload containing byte \x00 after packing in python 
 $ ./target# $(python3 sol#.py)         # Inputting payload into target
@@ -155,7 +128,7 @@ bash: warning: command substitution: ignored null byte in input
 </pre>
 <p> Bash is written in C which uses a 0 byte as a null terminator to know when a string ends. Bash originally 'stripped' bytes when parsing data by failing to read characters after a null terminator. Now, you get this warning instead. </p>
 
-    <p id=whitespace><b>Whitespace: <code>b'\x0A' b'\x09' b'\x20' </code></b></p>
+    <p id=whitespace><strong>Whitespace: <code>b'\x0A' b'\x09' b'\x20' </code></strong></p>
 <pre>
 payload = pack('&lt;', 0xFFFF0AFF)     # Payload containing byte \x0A after packing in python 
 $ ./target# $(python3 sol#.py)         # Inputting payload into target
@@ -171,9 +144,9 @@ $ gdb --args target# $(python3 sol#.py)# Inputting payload into target
 <p> While there are ways of avoiding these issues, they are out of the scope for project2. If your target address contains one of these bytes, check your math!</p>
     <!-- ################################################################################### -->
     </div>
-    <div class="col-md-2 text-left scrollable" style="position:static;">
-        <div class="col-md-12 text-left scrollable" style="position:fixed;">
-            <h4><b>Table of Contents:</b></h4>
+    <div class="col-lg-3">
+        <nav class="sidebar-toc" aria-label="Table of Contents">
+            <h4><strong>Table of Contents:</strong></h4>
                 <ul>
                     <li><a href="#nav">Navigation</a></li>
                         <ul>
@@ -202,21 +175,24 @@ $ gdb --args target# $(python3 sol#.py)# Inputting payload into target
                         </ul>
                 </ul>
             </h4>
-        </div>
+        </nav>
     </div>
 
+</div>
 </div>
 
 <!-- ################################################################################### -->
 
-<footer class="bg-light text-center text-lg-start">
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); font-size: 0.75em;">
+<footer class="bg-light text-center text-lg-start" role="contentinfo">
+    <div class="text-center p-3">
         Copyright © Stefan Nagy. All rights reserved.
     </div>
 </footer>
 
 <!-- ################################################################################### -->
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>document.querySelectorAll('pre').forEach(el => el.setAttribute('tabindex', '0'));</script>
 </body>
 
 </html>
