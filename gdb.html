@@ -24,7 +24,7 @@
 <div class="container main-container" role="main">
     <div class="row">
     <div class="col-lg-9">
-        <h1>CS 4440 Wiki: <br class="on-narrow"><strong style="color:dodgerblue">GDB Cheat Sheet</strong></h1><br>
+        <h1>CS 4440 Wiki: <br class="on-narrow"><strong style="color:var(--color-blue)">GDB Cheat Sheet</strong></h1><br>
 
     <!-- ################################################################################### -->
 
@@ -268,19 +268,21 @@ Non-debugging symbols:
         <nav class="sidebar-toc" aria-label="Table of Contents">
             <h4><strong>Table of Contents:</strong></h4>
                 <ul>
-                    <li><a href="#running">Running GDB</a></li>
+                    <li><a href="#running">Running GDB</a>
                         <ul>
                             <li><a href="#running#start">Start a session</a></li>
                             <li><a href="#running#run">run</a></li>
                             <li><a href="#running#kill">kill</a></li>
                             <li><a href="#running#quit">quit</a></li>
                         </ul>
-                    <li style="margin-top:1ex"><a href="#breakpoints">Breakpoints</a></li>
+                    </li>
+                    <li style="margin-top:1ex"><a href="#breakpoints">Breakpoints</a>
                         <ul>
                             <li><a href="#breakpoints#break">break</a></li>
                             <li><a href="#breakpoints#delete">delete</a></li>
                         </ul>
-                    <li style="margin-top:1ex"><a href="#stepping">Stepping</a></li>
+                    </li>
+                    <li style="margin-top:1ex"><a href="#stepping">Stepping</a>
                         <ul>
                             <li><a href="#stepping#step">step</a></li>
                             <li><a href="#stepping#stepi">stepi</a></li>
@@ -288,7 +290,8 @@ Non-debugging symbols:
                             <li><a href="#stepping#nexti">nexti</a></li>
                             <li><a href="#stepping#continue">continue</a></li>
                         </ul>
-                    <li style="margin-top:1ex"><a href="#memory">Inspect Memory</a></li>
+                    </li>
+                    <li style="margin-top:1ex"><a href="#memory">Inspect Memory</a>
                         <ul>
                             <li><a href="#memory#disas">disas</a></li>
                             <li><a href="#memory#backtrace">backtrace</a></li>
@@ -297,7 +300,8 @@ Non-debugging symbols:
                             <li><a href="#memory#find">find</a></li>
                             <li><a href="#memory#x">x (examine)</a></li>
                         </ul>
-                    <li style="margin-top:1ex"><a href="#info">Other Info</a></li>
+                    </li>
+                    <li style="margin-top:1ex"><a href="#info">Other Info</a>
                         <ul>
                             <li><a href="#info#procmap">info proc map</a></li>
                             <li><a href="#info#breaks">info break</a></li>
@@ -306,8 +310,8 @@ Non-debugging symbols:
                             <li><a href="#info#regs">info reg</a></li>
                             <li><a href="#info#function">info function</a></li>
                         </ul>
+                    </li>
                 </ul>
-            </h4>
         </nav>
     </div>
 
