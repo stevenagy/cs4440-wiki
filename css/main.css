@@ -10,6 +10,32 @@
   --color-purple: #9932CC;
 }
 
+.text-muted{
+	color: #6b6b6b;
+}
+fa-solid fa-video {
+	color: #6b6b6b;
+}
+
+pre {
+	background: #fcfcfc;
+	color:#000000;
+	border-color: #aaaaaa;
+}
+code.hljs {
+	background: #fcfcfc !important;
+	border-color: #aaaaaa;
+}
+.hljs-comment {
+    color:#6b6b6b !important; 
+}
+.hljs-number {
+    color: #1d791d !important;
+}
+.hljs-operator,.hljs-prompt {
+	color: var(--color-purple) !important;
+}
+
 /* ------------------------------- */
 /* Responsive sizing 
 /* ------------------------------- */
