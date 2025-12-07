@@ -42,15 +42,15 @@
         <hr><h2 id=basics>Scapy Basics</h2>
 
         <p id=basics#install>In case Scapy is not installed on your VM, just run <code>$ pip3 install scapy</code> in your VM's terminal. Once installed, here's how you can import Scapy in Python:</p> 
-        <pre>from scapy.all import *</pre>
+        <pre tabindex="0">from scapy.all import *</pre>
 
         <p id=basics#pcap><strong><code>rdpcap('&#10092;pcap&#10093;')</code> : </strong> Retrieve packets from a packet capture file.</p>
-        <pre>
+        <pre tabindex="0">
 >>> packets = rdpcap('crack0.pcap')
 >>> packet = packets[0]</pre>
 
         <p id=basics#layers><strong><code>packet.show()</code> : </strong> Show available protocols and fields for a packet.</p>
-        <pre>
+        <pre tabindex="0">
 >>> packet.show()
 ###[ Ethernet ]###
     dst       = 08:00:27:6e:cf:4a
@@ -66,12 +66,12 @@
     ...</pre>
 
         <p id=basics#haslayer><strong><code>packet.haslayer('&#10092;protocol&#10093;')</code> : </strong>Check if packet contains the given protocol.</p>
-        <pre>
+        <pre tabindex="0">
 >>> packet.haslayer('TCP') 
 True</pre>
 
         <p id=basics#payload><strong><code>packet['&#10092;protocol&#10093;'].payload</code> : </strong> Retrieve the protocol's <strong>payload</strong>.</p>
-        <pre>
+        <pre tabindex="0">
 >>> packet['TCP'].payload
 &lt;Raw  load=b'220 redmint FTP server (Version 6.4/OpenBSD/Linux-ftpd-0.17) ready.\r\n' |></pre>
 
@@ -80,12 +80,12 @@ True</pre>
         <hr><h2 id=link>Link Layer</h2>
 
         <p id=link#src><strong><code>packet['&#10092;protocol&#10093;'].src</code> : </strong>The packet's <strong>source address</strong> for the <strong>link layer</strong>.</p>
-        <pre>
+        <pre tabindex="0">
 >>> packet['Ethernet'].src
 '0a:00:27:00:00:00'</pre>
 
         <p id=link#dst><strong><code>packet['&#10092;protocol&#10093;'].dst</code> : </strong>The packet's <strong>destination address</strong> for the <strong>link layer</strong>.</p>
-        <pre>
+        <pre tabindex="0">
 >>> packet['Ethernet'].dst
 '08:00:27:6e:cf:4a'</pre>
 
@@ -94,17 +94,17 @@ True</pre>
         <hr><h2 id=network>Network Layer</h2>
 
         <p id=network#version><strong><code>packet['&#10092;protocol&#10093;'].version</code> : </strong>The packet's protocol <strong>version</strong>. For example, IPv4 or IPv6.</p>
-        <pre>
+        <pre tabindex="0">
 >>> packet['IP'].version
 4</pre>
 
         <p id=network#src><strong><code>packet['&#10092;protocol&#10093;'].src</code> : </strong>The packet's <strong>source address</strong> for the <strong>network layer</strong>.</p>
-        <pre>
+        <pre tabindex="0">
 >>> packet['IP'].src
 '192.168.56.1'</pre>
 
         <p id=network#dst><strong><code>packet['&#10092;protocol&#10093;'].dst</code> : </strong>The packet's <strong>destination address</strong> for the <strong>network layer</strong>.</p>
-        <pre>
+        <pre tabindex="0">
 >>> packet['IP'].dst
 '192.168.56.101'</pre>
 
@@ -113,17 +113,17 @@ True</pre>
         <hr><h2 id=transport>Transport Layer</h2>
 
         <p id=transport#sport><strong><code>packet['&#10092;protocol&#10093;'].sport</code> : </strong>The packet's <strong>source port</strong> for the <strong>transport layer</strong>.</p>
-        <pre>
+        <pre tabindex="0">
 >>> packet['TCP'].sport
 54017</pre>
 
         <p id=transport#dport><strong><code>packet['&#10092;protocol&#10093;'].dport</code> : </strong>The packet's <strong>destination port</strong> for the <strong>transport layer</strong>.</p>
-        <pre>
+        <pre tabindex="0">
 >>> packet['TCP'].dport
 21</pre>
 
         <p id=transport#flags><strong><code>packet['&#10092;protocol&#10093;'].flags</code> : </strong>Inspect a packet's <strong>flags</strong>.</p>
-        <pre>
+        <pre tabindex="0">
 >>> packet["TCP"].flags == 'S'  # Check for SYN flag
 True
 
@@ -135,7 +135,7 @@ True</pre>
         <hr><h2 id=app>Application Layer</h2>
 
         <p id=app#data>You can use the <code>payload</code> to grab a packet's <strong>application layer</strong> data from the transport layer.</p>
-        <pre>
+        <pre tabindex="0">
 >>> bytes(packet["TCP"].payload).decode("utf-8", "replace")
 '220 redmint FTP server (Version 6.4/OpenBSD/Linux-ftpd-0.17) ready.\r\n'</pre>
 

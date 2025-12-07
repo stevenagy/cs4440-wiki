@@ -126,45 +126,45 @@
         <h3 id=filters#operators>Filter Operators</h3>
 
         <p id=operators#eq><strong><code>eq</code> or <code>==</code> : </strong> Equality comparison operator</p>
-        <pre>tcp.srcport eq 21</pre>
+        <pre tabindex="0">tcp.srcport eq 21</pre>
 
         <p id=operators#not><strong><code>!</code> : </strong> Not operator</p>
-        <pre>!(tcp.srcport eq 21)</pre>
+        <pre tabindex="0">!(tcp.srcport eq 21)</pre>
 
         <p id=operators#not><strong><code>and</code> : </strong> And operator</p>
-        <pre>tcp.flags.syn eq 1 and tcp.flags.ack eq 1</pre>
+        <pre tabindex="0">tcp.flags.syn eq 1 and tcp.flags.ack eq 1</pre>
 
         <p id=operators#not><strong><code>or</code> : </strong> Or operator</p>
-        <pre>tcp.flags.syn eq 1 or tcp.flags.ack eq 1</pre>
+        <pre tabindex="0">tcp.flags.syn eq 1 or tcp.flags.ack eq 1</pre>
 
         <h3 id=filters#examples>Filter Examples</h3>
 
         <p id=examples#protocol><strong><code>&#10092;protocol&#10093;</code> : </strong> Filter by protocol type</p>
-        <pre>ftp</pre>
+        <pre tabindex="0">ftp</pre>
 
         <p id=examples#ip><strong><code>ip.addr eq &#10092;ip&#10093;</code> : </strong> Filter by IP address</p>
-        <pre>ip.addr eq 192.168.56.1</pre>
+        <pre tabindex="0">ip.addr eq 192.168.56.1</pre>
 
         <p id=examples#src><strong><code>ip.src eq &#10092;ip&#10093;</code> : </strong> Filter by source IP address</p>
-        <pre>ip.src eq 192.168.56.1</pre>
+        <pre tabindex="0">ip.src eq 192.168.56.1</pre>
 
         <p id=examples#dst><strong><code>ip.dst eq &#10092;ip&#10093;</code> : </strong> Filter by destination IP address</p>
-        <pre>ip.dst eq 192.168.56.1</pre>
+        <pre tabindex="0">ip.dst eq 192.168.56.1</pre>
 
         <p id=examples#port><strong><code>tcp.port eq &#10092;port number&#10093;</code> : </strong> Filter by port number</p>
-        <pre>tcp.port eq 54017</pre>
+        <pre tabindex="0">tcp.port eq 54017</pre>
 
         <p id=examples#srcport><strong><code>tcp.srcport eq &#10092;port number&#10093;</code> : </strong> Filter by source port number</p>
-        <pre>tcp.srcport eq 54017</pre>
+        <pre tabindex="0">tcp.srcport eq 54017</pre>
 
         <p id=examples#dstport><strong><code>tcp.dstport eq &#10092;port number&#10093;</code> : </strong> Filter by destination port number</p>
-        <pre>tcp.dstport eq 54017</pre>
+        <pre tabindex="0">tcp.dstport eq 54017</pre>
 
         <p id=examples#dst><strong><code>tcp.flags.&#10092;flag&#10093; eq 1</code> : </strong> Filter by flags</p>
-        <pre>tcp.flags.syn eq 1</pre>
+        <pre tabindex="0">tcp.flags.syn eq 1</pre>
 
         <p id=examples#dst><strong><code>tcp.stream eq &#10092;stream number&#10093;</code> : </strong> Filter by stream</p>
-        <pre>tcp.stream eq 0</pre>
+        <pre tabindex="0">tcp.stream eq 0</pre>
 
         <br><br>
 

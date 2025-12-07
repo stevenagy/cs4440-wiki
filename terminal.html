@@ -35,17 +35,17 @@
         <hr><h2 id=nav>Navigating the File System</h2>
  
         <p id=pwd><strong><code>pwd</code>: print working directory:</strong></p>
-<pre>
+<pre tabindex="0">
 $ pwd                   # Print path of current dir
 </pre>
 
         <p id=mkdir><strong><code>mkdir</code>: create directory:</strong></p>
-<pre>
+<pre tabindex="0">
 $ mkdir dir             # Create directory dir
 </pre>
 
         <p id=cd><strong><code>cd</code>: change directory:</strong></p>
-<pre>
+<pre tabindex="0">
 $ cd dir                # Move to directory dir
 
 $ cd ..                 # Move to parent of current directory
@@ -54,14 +54,14 @@ $ cd ../..              # Move to parent of parent of current directory
 </pre>
 
         <p id=ls><strong><code>ls</code>: list the contents of a directory:</strong></p>
-<pre>
+<pre tabindex="0">
 $ ls                    # Print contents of current directory
 
 $ ls dir                # Print contents of directory dir
 </pre>
 
         <p id=rm><strong><code>rm</code>: permanently delete:</strong></p>
-<pre>
+<pre tabindex="0">
 $ rm file               # Remove file
 
 $ rm -r dir             # Recursively delete directory dir and its contents
@@ -73,7 +73,7 @@ $ rm -r dir             # Recursively delete directory dir and its contents
         <hr><h2 id=files>Working with Files</h2>
 
         <p id=cp><strong><code>cp</code>: copying files:</strong></p>
-<pre>
+<pre tabindex="0">
 $ cp srcFile dstFile    # Copy srcFile over dstFile
 
 $ cp srcFile dstDir     # Copy srcFile to dstDir
@@ -82,7 +82,7 @@ $ cp srcDir/* dstDir    # Copy contents of srcDir into dstDir
 </pre>
 
         <p id=cat><strong><code>cat</code>: print or concatenate files:</strong></p>
-<pre>
+<pre tabindex="0">
 $ cat file              # Print the contents of file
 
 $ cat src > dst         # Copy contents of src over dst
@@ -91,14 +91,14 @@ $ cat pre suf > new     # Concatenate prefix and suffix into a new file
 </pre>
 
         <p id=mv><strong><code>mv</code>: move files or directories:</strong></p>
-<pre>
+<pre tabindex="0">
 $ mv srcFile dstDir     # Move srcFile to dstDir/srcFile
 
 $ mv srcDir dstDir      # Move srcDir to dstDir/srcDir
 </pre>
 
         <p id=wget><strong><code>wget</code>: download from web:</strong></p>
-<pre>
+<pre tabindex="0">
 $ wget url.com/srcFile  # Download srcFile to current directory
 </pre>
 
@@ -107,12 +107,12 @@ $ wget url.com/srcFile  # Download srcFile to current directory
         <hr><h2 id=archives>Working with Archives</h2>
 
         <p id=tarx><strong><code>tar -xf</code>: extract archive:</strong></p>
-<pre>
+<pre tabindex="0">
 $ tar -x src.tar.gz     # Extract archive src to current directory
 </pre>
 
         <p id=tarc><strong><code>tar -czvf</code>: generate archive:</strong></p>
-<pre>
+<pre tabindex="0">
 $ tar -c dst.tar.gz src # Create archive dst.tar.gz containing src
 </pre>
 
@@ -121,7 +121,7 @@ $ tar -c dst.tar.gz src # Create archive dst.tar.gz containing src
     <hr><h2 id=arguments>Bad Arguments</h2>
 <p> Certain bytes corresponding to specific characters are handled differently by bash. These can cause issues when used as arguments, leading to frustration. </p>
     <p id=null-byte><strong>Null Bytes: <code>b'\x00'</code></strong></p>
-<pre>
+<pre tabindex="0">
 payload = pack('&lt;', 0xFFFF00FF)     # Payload containing byte \x00 after packing in python 
 $ ./target# $(python3 sol#.py)         # Inputting payload into target
 bash: warning: command substitution: ignored null byte in input
@@ -129,7 +129,7 @@ bash: warning: command substitution: ignored null byte in input
 <p> Bash is written in C which uses a 0 byte as a null terminator to know when a string ends. Bash originally 'stripped' bytes when parsing data by failing to read characters after a null terminator. Now, you get this warning instead. </p>
 
     <p id=whitespace><strong>Whitespace: <code>b'\x0A' b'\x09' b'\x20' </code></strong></p>
-<pre>
+<pre tabindex="0">
 payload = pack('&lt;', 0xFFFF0AFF)     # Payload containing byte \x0A after packing in python 
 $ ./target# $(python3 sol#.py)         # Inputting payload into target
 Error: need a command-line argument

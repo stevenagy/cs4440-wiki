@@ -118,7 +118,7 @@
         <h3>Step 2: Setup QEMU Launcher Script</h3>
         <p>Normally, you'd need to run QEMU via command-line, but we'll instead create a handy <code>.bat</code> shortcut that you can double-click. To do so, open up <code>Notepad</code> and copy-paste the entirety of the following:</p>
 
-        <pre><code>@echo off
+        <pre tabindex="0"><code>@echo off
 "C:\Program Files\qemu\qemu-system-x86_64.exe" ^
   -cpu qemu64 ^
   -m 8192 ^
@@ -197,7 +197,7 @@ pause</code></pre>
 
         <p>First, we must modify your original QEMU launcher script to forward a host port (e.g., <code>2222</code>, or any other unused port of your choosing) to the guest's SSH port (<code>22</code>). If you followed our <a href="#qemu">QEMU setup</a>, add the following line inside of your <code>StartVM.bat</code> launcher command, <strong>as a new line right after the line beginning with</strong> <code>-display</code>:</p>
 
-        <pre><code>-nic user,model=virtio-net-pci,hostfwd=tcp:127.0.0.1:2222-:22 ^</code></pre>
+        <pre tabindex="0"><code>-nic user,model=virtio-net-pci,hostfwd=tcp:127.0.0.1:2222-:22 ^</code></pre>
 
         <p>Leave all other settings as-is, and overwrite your existing <code>StartVM.bat</code> launcher with this new script.</p>
 
@@ -208,23 +208,23 @@ pause</code></pre>
         <p>With your VM's network settings now finalized, boot into your VM and open a terminal. Then, run the following terminal commands one at a time (copy and paste each into your terminal and hit <code>Enter</code>):</p>
 
         <p><strong>1. Backup the current sources:</strong></p><br>
-        <pre><code>sudo cp /etc/apt/sources.list /etc/apt/sources.list.snapshot</code></pre>
+        <pre tabindex="0"><code>sudo cp /etc/apt/sources.list /etc/apt/sources.list.snapshot</code></pre>
 
         <p><strong>2. Update package sources</strong> (copy and paste the entire command)<strong>:</strong></p><br>
-        <pre><code>sudo cp /etc/apt/sources.list /etc/apt/sources.list.temp && \
+        <pre tabindex="0"><code>sudo cp /etc/apt/sources.list /etc/apt/sources.list.temp && \
         echo "deb http://archive.ubuntu.com/ubuntu focal main restricted universe multiverse
         deb http://archive.ubuntu.com/ubuntu focal-updates main restricted universe multiverse
         deb http://archive.ubuntu.com/ubuntu focal-security main restricted universe multiverse" | sudo tee /etc/apt/sources.list</code></pre>
 
         <p><strong>3. Install OpenSSH server:</strong></p><br>
-        <pre><code>sudo apt update && sudo apt install -y openssh-server</code></pre>
+        <pre tabindex="0"><code>sudo apt update && sudo apt install -y openssh-server</code></pre>
 
         <p><strong>4. Restore original sources:</strong></p><br>
-        <pre><code>sudo mv /etc/apt/sources.list.snapshot /etc/apt/sources.list && sudo apt update</code></pre>
+        <pre tabindex="0"><code>sudo mv /etc/apt/sources.list.snapshot /etc/apt/sources.list && sudo apt update</code></pre>
         </p>
 
         <p><strong>5. Start the SSH service:</strong></p><br>
-        <pre><code>sudo systemctl start ssh</code></pre>
+        <pre tabindex="0"><code>sudo systemctl start ssh</code></pre>
         
         <br>
 
@@ -234,10 +234,10 @@ pause</code></pre>
         Search for and install Microsoft's <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack">Remote Development</a> extension package.</p>
 
         <p>Afterwards, open VSCode's command palette (press <code>Ctrl+Shift+P</code>) and enter the following:</p><br>
-        <pre><code>Remote-SSH: Open SSH Configuration File</code></pre>
+        <pre tabindex="0"><code>Remote-SSH: Open SSH Configuration File</code></pre>
 
         <p>Select the first file option: typically <code>C:\Users\%USERNAME%\.ssh\config</code> for Windows hosts, or <code>/Users/$USER/.ssh/config</code> for Mac/Linux hosts. Then, paste the following configuration:</p><br>
-        <pre><code>Host cs4440vm<br>
+        <pre tabindex="0"><code>Host cs4440vm<br>
 &nbsp;&nbsp;HostName localhost<br>
 &nbsp;&nbsp;Port 2222<br>
 &nbsp;&nbsp;User cs4440<br></code></pre>

@@ -44,7 +44,7 @@
 
         <h3 id=registers#general>General-purpose Registers</h3>
         <p>The following are <strong>general-purpose registers</strong>: quickly-accessible locations that the CPU utilizes any time data is being operated on (e.g., for storing or reading data from).</p>
-<pre><code class="language-assembly">%eax 
+<pre tabindex="0"><code class="language-assembly">%eax 
 %ecx
 %edx
 %ebx
@@ -54,7 +54,7 @@
 
         <h3 id=registers#special>Special Registers</h3>
         <p>Below are several "special" registers critical to program execution:</p>
-<pre><code class="language-assembly">%eip  // Instruction pointer (always points to the address of the next instruction).
+<pre tabindex="0"><code class="language-assembly">%eip  // Instruction pointer (always points to the address of the next instruction).
 %ebp  // Frame pointer (points to current stack frame's base); adjusted on calls/rets.
 %esp  // Stack pointer (points to the top of the stack); adjusted on pushes/pops.
 </code></pre>         
@@ -65,7 +65,7 @@
 
         <h3 id=instructions#arithmetic>Arithmetic</h3>
         <p>Below describes several common arithmetic instructions that you will likely come across:</p>
-<pre><code class="language-assembly">add src,dst    // dst = dst + src
+<pre tabindex="0"><code class="language-assembly">add src,dst    // dst = dst + src
 sub src,dst    // dst = dst - src
 mul src,dst    // dst = dst * src
 inc dst        // dst = dst + 1
@@ -79,13 +79,13 @@ not dst        // dst = ~dst
 
         <p>Operands <code>src</code> or <code>dst</code> can be <strong>immediates</strong> (e.g., <code>$0x10</code>), <strong>registers</strong> (e.g., <code>eax</code>), or memory <strong>addresses</strong>.</p>
 
-<pre><code class="language-assembly">mov src, dst   // Copies the contents of src into dst
+<pre tabindex="0"><code class="language-assembly">mov src, dst   // Copies the contents of src into dst
 lea src, dst   // Copies the address of src into dst
 </code></pre>     
 
         <h3 id=instructions#jumps>Jumps</h3>
         <p>Aside from function calls and returns, <strong>jumps</strong> are the other way of transferring control from one program location to another. Below discusses two types of jumps: <strong>unconditional</strong> (equivalent to "just go there") and <strong>conditional</strong> (equivalent to "jump there if condition X is met").</p>
-<pre><code class="language-assembly">jmp label      // Unconditional jump to label
+<pre tabindex="0"><code class="language-assembly">jmp label      // Unconditional jump to label
 jmp *reg       // Unconditional jump to contents of register reg
 
 cmp arg1,arg2  // Compare arg1 to arg2; must precede a conditional jump.
@@ -99,7 +99,7 @@ jle label      // Conditional jump to label if arg2 <= arg1.
 
         <h3 id=instructions#misc>Miscellaneous</h3>
         <p>Here are some other common instructions that you will likely encounter:</p>
-<pre><code class="language-assembly">nop            // Short for No Op; skips-over to the next instruction.
+<pre tabindex="0"><code class="language-assembly">nop            // Short for No Op; skips-over to the next instruction.
 push item      // Push item (e.g., constant, register) to stack.
 pop reg        // Pop item from stack into register reg.
 </code></pre>     
@@ -110,12 +110,12 @@ pop reg        // Pop item from stack into register reg.
         
         <h3 id=functions#calls>Calling</h3>
         <p>Function <strong>calls</strong> transfer control from the call-<strong><em>er</em></strong> (the current active function) to a call-<strong><em>ee</em></strong> (the function being invoked by the caller). When the callee returns, execution transfers back to the caller.</p>
-<pre><code class="language-assembly">cal&#8203;l label     // Transfer control to the callee fun&#8203;ction named label.
+<pre tabindex="0"><code class="language-assembly">cal&#8203;l label     // Transfer control to the callee fun&#8203;ction named label.
 </code></pre>     
 
         <h3 id=functions#prologues>Prologue Routines</h3>
         <p>The following is a common function <strong>prologue</strong>—the initial set of callee instructions that happen immediately after a <code>call</code> instruction transfers control from the caller.</p>
-<pre><code class="language-assembly">push ebp       // Save the previous (i.e., the caller's) value of ebp.
+<pre tabindex="0"><code class="language-assembly">push ebp       // Save the previous (i.e., the caller's) value of ebp.
                // When callee returns, ebp will res&#8203;et to the caller ebp.
 mov esp, ebp   // U&#8203;pdate ebp to now point to the top of the stack.
 sub X, esp     // Allocate X bytes of stack space for local variables.
@@ -123,7 +123,7 @@ sub X, esp     // Allocate X bytes of stack space for local variables.
 
         <h3 id=functions#epilogues>Epilogue Routines</h3>
         <p>The following is a common function <strong>epilogue</strong>—the final set of callee instructions that cleans-up its stack frame (i.e., de-allocates the space used by local variables) immediately before a <code>ret</code> transfers control back to the caller. Often, this epilogue procedure is represented as the single instruction <code>leave</code>.</p>
-<pre><code class="language-assembly">mov ebp, esp   // Reset the stack pointer to the top of the callee's frame. 
+<pre tabindex="0"><code class="language-assembly">mov ebp, esp   // Reset the stack pointer to the top of the callee's frame. 
                // In other words, esp is now back to its pre-callee (caller) state.
 pop ebp        // Pop frame pointer off the stack, restoring to the caller's saved ebp.
                // In other words, ebp is now back to its pre-callee (caller) state.
@@ -131,7 +131,7 @@ pop ebp        // Pop frame pointer off the stack, restoring to the caller's sav
 
         <h3 id=functions#returns>Returning</h3>
         <p>Following the epilogue, a <strong>return</strong> instruction is executed, transferring control from the callee back to the caller. Execution resumes in the caller at the instructiom immediately following the preceding <code>call</code>.</p>
-<pre><code class="language-assembly">ret            // Transfer control back to the caller's next (post-call) instruction.
+<pre tabindex="0"><code class="language-assembly">ret            // Transfer control back to the caller's next (post-call) instruction.
 </code></pre>     
 
     <!-- ################################################################################### -->

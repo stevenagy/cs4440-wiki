@@ -63,7 +63,7 @@
         <p>The following shows the source code for every CSRF and XSS defense level available in the site.</p>
 
         <h3 id=csrf0><strong>CSRF Level 0</strong> (no defense)</h3>
-<pre><code>class CSRFNone(object):
+<pre tabindex="0"><code>class CSRFNone(object):
     @staticmethod
     def init(request, response):
         return None
@@ -76,7 +76,7 @@
 </code></pre>
 
         <h3 id=csrf1><strong>CSRF Level 1</strong> (token validation)</h3>
-<pre><code>class CSRFToken(object):
+<pre tabindex="0"><code>class CSRFToken(object):
     @staticmethod
     def init(request, response):
         token = request.get_cookie("csrf_token")
@@ -94,7 +94,7 @@
 </code></pre>
 
         <h3 id=xss0><strong>XSS Level 0</strong> (no defense)</h3>
-<pre><code>class XSSNone(object):
+<pre tabindex="0"><code>class XSSNone(object):
     @staticmethod
     def init(response):
         response.set_header("X-XSS-Protection", "0");           
@@ -104,7 +104,7 @@
 </code></pre>
 
         <h3 id=xss1><strong>XSS Level 1</strong> (remove <code>script</code> tags)</h3>
-<pre><code>class XSSRemoveScript(object):
+<pre tabindex="0"><code>class XSSRemoveScript(object):
     @staticmethod
     def init(response):
         response.set_header("X-XSS-Protection", "0");           
@@ -114,7 +114,7 @@
 </code></pre>
 
         <h3 id=xss2><strong>XSS Level 2</strong> (remove several tags)</h3>
-<pre><code>class XSSRemoveSeveralTags(object):
+<pre tabindex="0"><code>class XSSRemoveSeveralTags(object):
     @staticmethod
     def init(response):
         response.set_header("X-XSS-Protection", "0");           
@@ -124,7 +124,7 @@
 </code></pre>
 
         <h3 id=xss3><strong>XSS Level 3</strong> (remove <code>"</code>, <code>'</code>, and <code>;</code>)</h3>
-<pre><code>class XSSRemovePunctuation(object):
+<pre tabindex="0"><code>class XSSRemovePunctuation(object):
     @staticmethod
     def init(response):
         response.set_header("X-XSS-Protection", "0");           
@@ -134,7 +134,7 @@
 </code></pre>
 
         <h3 id=xss4><strong>XSS Level 4</strong> (encode <code>&lt; and &gt;</code>)</h3>
-<pre><code>class XSSEncodeAngles(object):
+<pre tabindex="0"><code>class XSSEncodeAngles(object):
     @staticmethod
     def init(response):
         response.set_header("X-XSS-Protection", "0");

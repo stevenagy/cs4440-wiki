@@ -108,7 +108,7 @@
 
         <h3 id="basics#select">Selecting Records:</h3>
             <p><strong><code>SELECT</code></strong>: return a result set of rows, from one or more tables.</p>
-<pre><code>SELECT ID, Name from CourseStaff;
+<pre tabindex="0"><code>SELECT ID, Name from CourseStaff;
 </code> Number of records: 4
  {ID, Name}
  {0, Stefan Nagy}
@@ -121,30 +121,30 @@
 
         <h3 id="basics#insert">Inserting Records:</h3>
             <p><strong><code>INSERT</code></strong>: insert data records into the table.</p>
-<pre><code>INSERT INTO CourseStaff (Name, Role, City) VALUES ("Hokie Bird", "TA", "Blacksburg, VA");
+<pre tabindex="0"><code>INSERT INTO CourseStaff (Name, Role, City) VALUES ("Hokie Bird", "TA", "Blacksburg, VA");
 </code> Inserted row: {4, Hokie Bird, TA, Blacksburg VA}
 </pre> 
 
         <h3 id="basics#update">Updating Records:</h3>
             <p><strong><code>UPDATE</code></strong>: update data records within table.</p>
-<pre><code>UPDATE CourseStaff SET Name = "C&#8203;ount Chocula", City = "Hershey, PA" WHERE id = 0; 
+<pre tabindex="0"><code>UPDATE CourseStaff SET Name = "C&#8203;ount Chocula", City = "Hershey, PA" WHERE id = 0; 
 </code> Updated row: {0, Count Chocula, Professor, Hershey PA}
 </pre> 
 
         <h3 id="basics#delete">Deleting Records:</h3>
             <p><strong><code>DELETE</code></strong>: delete existing records.</p>
-<pre><code>DELETE FROM CourseStaff WHERE City="Salt Lake City, UT"
+<pre tabindex="0"><code>DELETE FROM CourseStaff WHERE City="Salt Lake City, UT"
 </code> Deleted 4 rows.</pre> 
  
         <h3 id="basics#union">Union of Multiple Selections:</h3>
             <p><strong><code>UNION</code></strong>: combine results of multiple queries.</p>
-<pre><code>SELECT Name FROM CourseStaff UNION SELECT Name FROM SomeOtherTable;
+<pre tabindex="0"><code>SELECT Name FROM CourseStaff UNION SELECT Name FROM SomeOtherTable;
 </code> Results in a list of all <strong>unique</strong> names in Name column from CourseStaff and all names from SomeOtherTable.
 </pre> 
 
         <h3 id="basics#conditionals">Conditional Operators:</h3>
             <p><strong><code>WHERE/AND/OR</code></strong>: conditional operations to find data in table.</p>
-<pre><code>SELECT * FROM CourseStaff WHERE Name = "Ethan Quinlan"
+<pre tabindex="0"><code>SELECT * FROM CourseStaff WHERE Name = "Ethan Quinlan"
 </code> Number of records: 1
  {3, Ethan Quinlan, TA, Salt Lake City UT}
 <code>SELECT * FROM CourseStaff WHERE City = "Salt Lake City, UT" AND Role = "TA"
@@ -161,37 +161,37 @@
             <div>
                 <h3 id="tips#operations">Operators:</h3>
                 <p id="operators#all"><strong><code>*</code> :</strong> all</p>
-                <pre><code>SELECT * from CourseStaff</code> Returns every column for every row in the table CourseStaff.</pre>
+                <pre tabindex="0"><code>SELECT * from CourseStaff</code> Returns every column for every row in the table CourseStaff.</pre>
         
                 <p id="operators#null"><strong><code>NULL</code> : </strong>nothing. Reports a missing or undefined value in a database. Not equivalent to an empty string or zero, indicates a value is unknown.</p>
-                <pre><code>NULL = NULL</code> Returns false because NULL is considered unknown. <code>SELECT * FROM CourseStaff WHERE Role IS NULL;</code> To check for NULL you must use IS NULL or IS NOT NULL operators.
+                <pre tabindex="0"><code>NULL = NULL</code> Returns false because NULL is considered unknown. <code>SELECT * FROM CourseStaff WHERE Role IS NULL;</code> To check for NULL you must use IS NULL or IS NOT NULL operators.
  This query will return 0 rows as each row in CourseStaff has a value for role.</pre>
             
                 <p id="operators#equal"><strong><code>=</code> : </strong>equal (comparison) operator. Checks if two expressions or values are equal. Returns True or False.</p>
-                <pre><code>SELECT * from CourseStaff where id = 0;</code> Number of records: 1
+                <pre tabindex="0"><code>SELECT * from CourseStaff where id = 0;</code> Number of records: 1
  {0, Stefan Nagy, Professor, Salt Lake City UT}</pre>
             
                 <h3 id="tips#booleans">Booleans:</h3>
                 <p id="booleans#true"><strong><code>TRUE</code> : </strong>true keyword</p>
-                <pre><code>SELECT 1 = 1;</code> Returns TRUE.</pre>
+                <pre tabindex="0"><code>SELECT 1 = 1;</code> Returns TRUE.</pre>
             
                 <p id="booleans#false"><strong><code>FALSE</code> : </strong>false keyword</p>
-                <pre><code>SELECT 1 = 4;</code> Returns FALSE.</pre>
+                <pre tabindex="0"><code>SELECT 1 = 4;</code> Returns FALSE.</pre>
             
                 <p id="booleans#type"><strong><code>"1" = 1</code> : </strong>type mismatch</p>
-                <pre><code>SELECT '1' = 1;</code> Returns FALSE.
+                <pre tabindex="0"><code>SELECT '1' = 1;</code> Returns FALSE.
  A string is not equal to an integer, type mismatch results in FALSE.</pre>
             
                 <p><strong><code>1 = 1</code> : </strong>integer comparison</p>
-                <pre> Comparison of two equal integer values results in TRUE. </pre>
+                <pre tabindex="0"> Comparison of two equal integer values results in TRUE. </pre>
             
                 <p><strong><code>"1" = 1 OR 1</code> : </strong>will result in TRUE</p>
-                <pre> "1" = 1 returns FALSE but the second part is OR 1. 
+                <pre tabindex="0"> "1" = 1 returns FALSE but the second part is OR 1. 
  In SQL, any non-zero number is evaluated as true. So 1 is considered TRUE.</pre>
             
                 <h3 id="tips#comments">Code Commenting:</h3>
                 <p><strong><code>-- </code> : </strong>comment-out the rest of the line (note the space at the end)</p>
-                <pre><code>SELECT '1' = 1 -- OR 1;</code> Returns FALSE. 
+                <pre tabindex="0"><code>SELECT '1' = 1 -- OR 1;</code> Returns FALSE. 
  Everything after the comment is ignored by the SQL interpreter, so it is the comparison of a string to an integer.</pre>
             </div>
             
