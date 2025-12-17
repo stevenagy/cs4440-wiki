@@ -689,11 +689,27 @@ button.detailsButton:hover {
    Sidebar TOC
    =============================== */
 
-.sidebar-toc {
+.row:has(.sidebar-toc) {
+	align-items: flex-start;
+	margin-top: -0.5rem;
+}
+
+.col-lg-3:has(.sidebar-toc) {
+	padding-top: 0.25rem;
 	position: sticky;
-	top: 4rem;
+	top: 4.5rem;
+}
+
+.sidebar-toc {
 	padding-left: 2rem;
-	border-left: 1px solid #ccc;
+}
+
+.sidebar-toc h3 {
+	margin-bottom: 0.5rem;
+}
+
+.sidebar-toc > ul {
+	margin-top: 0;
 }
 
 @media (max-width: 991.98px) {
