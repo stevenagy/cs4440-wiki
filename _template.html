@@ -21,7 +21,7 @@
 
 <!-- ################################################################################### -->
 
-<div class="container main-container" role="main">
+<div class="container main-container" role="main" id="main-content">
     <div class="col-md-10">
         <h1>The CS 4440 Wiki<br> <b style="color:var(--color-blue)">Title</b></h1><br>
 
@@ -68,7 +68,13 @@
 <!-- ################################################################################### -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>document.querySelectorAll('pre').forEach(el => el.setAttribute('tabindex', '0'));</script>
+<script>
+// Make pre/code elements keyboard accessible
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('pre').forEach(pre => {
+    pre.setAttribute('aria-label', 'Code block');
+});
+</script>
 </body>
 
 </html>

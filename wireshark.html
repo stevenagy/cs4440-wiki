@@ -21,7 +21,7 @@
 
 <!-- ################################################################################### -->
 
-<div class="container main-container" role="main">
+<div class="container main-container" role="main" id="main-content">
     <div class="row">
     <div class="col-lg-9">
         <h1>CS 4440 Wiki: <br class="on-narrow"><strong style="color:var(--color-blue)">Wireshark Tutorial</strong></h1><br>
@@ -38,34 +38,34 @@
 
     <!-- ################################################################################### -->
 
-        <hr><h2 id=basics>Wireshark Basics</h2>
+        <hr><h2 id="basics">Wireshark Basics</h2>
         <p>Wireshark is a graphical packet analyzer. We recommend using Wireshark for <strong>manual packet inspection</strong> to aid in developing your solutions for Project 4.</p>
 
         <br><br>
 
-        <h3 id=basics#run>Running Wireshark Inside the VM</h3>
+        <h3 id="basics-run">Running Wireshark Inside the VM</h3>
         <p>To run Wireshark inside your VM, launch the interactive menu (accessible via the bottom-left-most icon). Navigate to the Internet tab, and select Wireshark.</p>
         <p><img class="button wikiimage" src="img/wireshark-run.png" alt="Launching Wireshark from the applications menu" style="max-width:70%"/></p>
 
         <br><br>
 
-        <h3 id=basics#open>Opening Packet Capture Files</h3>
+        <h3 id="basics-open">Opening Packet Capture Files</h3>
         <p>In Project 4, we provide you with a set of network packet captures (<code>.pcap</code> files). To start analyzing these packets with Wireshark, click on <strong>File</strong> and then <strong>Open</strong>. Select your <code>pcap</code> file of choice. </p>
-        <p><img class="button wikiimage" src="img/wireshark-open.png" alt="Wireshark file open dialog" style="max-width:70%"/></p>
+        <p><img class="button wikiimage" src="img/wireshark-open.png" alt="Selecting Open from the Wireshark menu to load a pcap capture" style="max-width:70%"/></p>
 
         <br><br>
 
     <!-- ################################################################################### -->
 
-        <hr><h2 id=navigation>Navigating Wireshark</h2>
+        <hr><h2 id="navigation">Navigating Wireshark</h2>
 
-        <h3 id=navigation#main>Main Window</h3>
+        <h3 id="navigation-main">Main Window</h3>
         <p> After selecting a <code>.pcap</code> file, you will be taken to the <strong>Main Window</strong>. Here you will find three essential panes for packet analysis: the <strong>Packet List</strong> pane, the <strong>Packet Details</strong> pane, and the <strong>Packet Bytes</strong> pane.</p>
         <p><img class="button wikiimage" src="img/wireshark-main.png" alt="Wireshark main interface showing packet list" style="max-width:70%"/></p>
 
         <br><br>
 
-        <h3 id=navigation#list>Packet List</h3>
+        <h3 id="navigation-list">Packet List</h3>
         <p> The <strong>Packet List</strong> displays a complete list of packets captured in the selected trace. You can <strong>double-click</strong> on any packet to inspect it.</p>
         <p><img class="button wikiimage" src="img/wireshark-list.png" alt="Wireshark packet list view" style="max-width:70%"/></p>
 
@@ -84,93 +84,97 @@
 
         <br><br>
 
-        <h3 id=navigation#details>Packet Details</h3>
+        <h3 id="navigation-details">Packet Details</h3>
         <p> After selecting a packet, you can explore the fields and information contained in each of the packet's layers. The <strong>Packet Details</strong> pane begins with the packet's link layer <em>frame</em> and ends with its app layer <em>application protocol</em> (if applicable for the packet).</p>
         <p><img class="button wikiimage" src="img/wireshark-details.png" alt="Wireshark packet details pane" style="max-width:70%"/></p><br><br>
 
         <p> Select a layer to inspect: </p>
         <ul>
-            <li id=details#link><strong>Link Layer: </strong>Includes the source and destination <strong>MAC</strong> addresses, as well as the network protocol.</li>
-            <p><img class="button wikiimage" src="img/wireshark-details-link.png" alt="Wireshark link layer details" style="max-width:70%"/></p><br><br>
+            <li id="details-link"><strong>Link Layer: </strong>Includes the source and destination <strong>MAC</strong> addresses, as well as the network protocol.
+                <p><img class="button wikiimage" src="img/wireshark-details-link.png" alt="Wireshark link layer details" style="max-width:70%"/></p>
+            </li>
 
-            <li id=details#network><strong>Network Layer: </strong>Includes the network protocol, <strong>source address</strong>, and <strong>destination address</strong>. These match the corresponding columns in the <strong>Packet List</strong>.</li>
-            <p><img class="button wikiimage" src="img/wireshark-details-network.png" alt="Wireshark network layer details" style="max-width:70%"/></p><br><br>
+            <li id="details-network"><strong>Network Layer: </strong>Includes the network protocol, <strong>source address</strong>, and <strong>destination address</strong>. These match the corresponding columns in the <strong>Packet List</strong>.
+                <p><img class="button wikiimage" src="img/wireshark-details-network.png" alt="Wireshark network layer details" style="max-width:70%"/></p>
+            </li>
 
-            <li id=details#transport><strong>Transport Layer: </strong>Includes the <strong>source port</strong>, <strong>destination port</strong>, and relative sequence and acknowledgment numbers which help track the order of packets in TCP connections.</li>
-            <p><img class="button wikiimage" src="img/wireshark-details-transport.png" alt="Wireshark transport layer details" style="max-width:70%"/></p><br><br>
-            <p> The transport layer also contains relative <strong>flags</strong> for the specific packet and protocol. </p>
-            <p><img class="button wikiimage" src="img/wireshark-details-flags.png" alt="Wireshark TCP flags details" style="max-width:70%"/></p><br><br>
+            <li id="details-transport"><strong>Transport Layer: </strong>Includes the <strong>source port</strong>, <strong>destination port</strong>, and relative sequence and acknowledgment numbers which help track the order of packets in TCP connections.
+                <p><img class="button wikiimage" src="img/wireshark-details-transport.png" alt="Wireshark transport layer details" style="max-width:70%"/></p>
+                <p>The transport layer also contains relative <strong>flags</strong> for the specific packet and protocol.</p>
+                <p><img class="button wikiimage" src="img/wireshark-details-flags.png" alt="Wireshark TCP flags details" style="max-width:70%"/></p>
+            </li>
 
-            <li id=details#app><strong>Application Layer: </strong>Includes details specific to the application protocol.</li>
-            <p><img class="button wikiimage" src="img/wireshark-details-app.png" alt="Wireshark application layer details" style="max-width:70%"/></p><br><br>
+            <li id="details-app"><strong>Application Layer: </strong>Includes details specific to the application protocol.
+                <p><img class="button wikiimage" src="img/wireshark-details-app.png" alt="Wireshark application layer details" style="max-width:70%"/></p>
+            </li>
         </ul>
 
         <br><br>
 
-        <h3 id=navigation#bytes>Packet Bytes</h3>
+        <h3 id="navigation-bytes">Packet Bytes</h3>
         <p>Utilize this pane to explore the complete raw packet data, including both hexadecimal values (left) and corresponding ASCII representations (right).</p>
-        <p><img class="button wikiimage" src="img/wireshark-bytes.png" style="max-width:70%"/></p>
+        <p><img class="button wikiimage" src="img/wireshark-bytes.png" style="max-width:70%" alt="Wireshark packet bytes view showing raw data"/></p>
 
         <br><br>
 
     <!-- ################################################################################### -->
 
-        <hr><h2 id=tips>Helpful Tips & Tricks</h2>
+        <hr><h2 id="tips">Helpful Tips & Tricks</h2>
 
-        <h3 id=tips#filters>Filter Toolbar</h3>
+        <h3 id="tips-filters">Filter Toolbar</h3>
         <p>The <strong>Filter</strong> toolbar can help you quickly apply <strong>display filters</strong> to the <strong>Packet List</strong>.</p>
-        <p><img class="button wikiimage" src="img/wireshark-filter.png" style="max-width:70%"/></p>
+        <p><img class="button wikiimage" src="img/wireshark-filter.png" style="max-width:70%" alt="Wireshark display filter toolbar"/></p>
 
         <br><br>
 
-        <h3 id=filters#operators>Filter Operators</h3>
+        <h3 id="filters-operators">Filter Operators</h3>
 
-        <p id=operators#eq><strong><code>eq</code> or <code>==</code> : </strong> Equality comparison operator</p>
-        <pre tabindex="0">tcp.srcport eq 21</pre>
+        <p id="operators-eq"><strong><code>eq</code> or <code>==</code> : </strong> Equality comparison operator</p>
+        <pre>tcp.srcport eq 21</pre>
 
-        <p id=operators#not><strong><code>!</code> : </strong> Not operator</p>
-        <pre tabindex="0">!(tcp.srcport eq 21)</pre>
+        <p id="operators-not"><strong><code>!</code> : </strong> Not operator</p>
+        <pre>!(tcp.srcport eq 21)</pre>
 
-        <p id=operators#not><strong><code>and</code> : </strong> And operator</p>
-        <pre tabindex="0">tcp.flags.syn eq 1 and tcp.flags.ack eq 1</pre>
+        <p id="operators-and"><strong><code>and</code> : </strong> And operator</p>
+        <pre>tcp.flags.syn eq 1 and tcp.flags.ack eq 1</pre>
 
-        <p id=operators#not><strong><code>or</code> : </strong> Or operator</p>
-        <pre tabindex="0">tcp.flags.syn eq 1 or tcp.flags.ack eq 1</pre>
+        <p id="operators-or"><strong><code>or</code> : </strong> Or operator</p>
+        <pre>tcp.flags.syn eq 1 or tcp.flags.ack eq 1</pre>
 
-        <h3 id=filters#examples>Filter Examples</h3>
+        <h3 id="filters-examples">Filter Examples</h3>
 
-        <p id=examples#protocol><strong><code>&#10092;protocol&#10093;</code> : </strong> Filter by protocol type</p>
-        <pre tabindex="0">ftp</pre>
+        <p id="examples-protocol"><strong><code>&#10092;protocol&#10093;</code> : </strong> Filter by protocol type</p>
+        <pre>ftp</pre>
 
-        <p id=examples#ip><strong><code>ip.addr eq &#10092;ip&#10093;</code> : </strong> Filter by IP address</p>
-        <pre tabindex="0">ip.addr eq 192.168.56.1</pre>
+        <p id="examples-ip"><strong><code>ip.addr eq &#10092;ip&#10093;</code> : </strong> Filter by IP address</p>
+        <pre>ip.addr eq 192.168.56.1</pre>
 
-        <p id=examples#src><strong><code>ip.src eq &#10092;ip&#10093;</code> : </strong> Filter by source IP address</p>
-        <pre tabindex="0">ip.src eq 192.168.56.1</pre>
+        <p id="examples-src"><strong><code>ip.src eq &#10092;ip&#10093;</code> : </strong> Filter by source IP address</p>
+        <pre>ip.src eq 192.168.56.1</pre>
 
-        <p id=examples#dst><strong><code>ip.dst eq &#10092;ip&#10093;</code> : </strong> Filter by destination IP address</p>
-        <pre tabindex="0">ip.dst eq 192.168.56.1</pre>
+        <p id="examples-dst"><strong><code>ip.dst eq &#10092;ip&#10093;</code> : </strong> Filter by destination IP address</p>
+        <pre>ip.dst eq 192.168.56.1</pre>
 
-        <p id=examples#port><strong><code>tcp.port eq &#10092;port number&#10093;</code> : </strong> Filter by port number</p>
-        <pre tabindex="0">tcp.port eq 54017</pre>
+        <p id="examples-port"><strong><code>tcp.port eq &#10092;port number&#10093;</code> : </strong> Filter by port number</p>
+        <pre>tcp.port eq 54017</pre>
 
-        <p id=examples#srcport><strong><code>tcp.srcport eq &#10092;port number&#10093;</code> : </strong> Filter by source port number</p>
-        <pre tabindex="0">tcp.srcport eq 54017</pre>
+        <p id="examples-srcport"><strong><code>tcp.srcport eq &#10092;port number&#10093;</code> : </strong> Filter by source port number</p>
+        <pre>tcp.srcport eq 54017</pre>
 
-        <p id=examples#dstport><strong><code>tcp.dstport eq &#10092;port number&#10093;</code> : </strong> Filter by destination port number</p>
-        <pre tabindex="0">tcp.dstport eq 54017</pre>
+        <p id="examples-dstport"><strong><code>tcp.dstport eq &#10092;port number&#10093;</code> : </strong> Filter by destination port number</p>
+        <pre>tcp.dstport eq 54017</pre>
 
-        <p id=examples#dst><strong><code>tcp.flags.&#10092;flag&#10093; eq 1</code> : </strong> Filter by flags</p>
-        <pre tabindex="0">tcp.flags.syn eq 1</pre>
+        <p id="examples-flags"><strong><code>tcp.flags.&#10092;flag&#10093; eq 1</code> : </strong> Filter by flags</p>
+        <pre>tcp.flags.syn eq 1</pre>
 
-        <p id=examples#dst><strong><code>tcp.stream eq &#10092;stream number&#10093;</code> : </strong> Filter by stream</p>
-        <pre tabindex="0">tcp.stream eq 0</pre>
+        <p id="examples-stream"><strong><code>tcp.stream eq &#10092;stream number&#10093;</code> : </strong> Filter by stream</p>
+        <pre>tcp.stream eq 0</pre>
 
         <br><br>
 
-        <h3 id=tips#follow>Follow Specific Protocol Stream</h3>
+        <h3 id="tips-follow">Follow Specific Protocol Stream</h3>
         <p>To follow a specific protocol stream/connection, <strong>right-click</strong> on the packet from the desired stream, select <strong>Follow</strong>, and choose the corresponding protocol stream you wish to view (as seen below). You may also find the <strong>Follow</strong> option under <strong>Analyze</strong>.</p>
-        <p><img class="button wikiimage" src="img/wireshark-follow.png" style="max-width:70%"/></p>
+        <p><img class="button wikiimage" src="img/wireshark-follow.png" style="max-width:70%" alt="Wireshark follow TCP stream dialog"/></p>
 
         <p>This will apply a display filter to the <strong>Packet List</strong>, showing only packets from the selected stream (as an example, it may apply a filter like <code>tcp.stream eq &#10092;stream number&#10093;</code>). <em>Additionally</em>, a separate window will open displaying the stream content in a more readable format.</p>
 
@@ -234,7 +238,20 @@
 
 <!-- ################################################################################### -->
 
-<script>document.querySelectorAll('pre').forEach(el => el.setAttribute('tabindex', '0'));</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('pre').forEach(pre => {
+        pre.setAttribute('tabindex', '0');
+        pre.setAttribute('role', 'region');
+        pre.setAttribute('aria-label', 'Code block');
+    });
+    document.querySelectorAll('pre code').forEach(code => {
+        code.setAttribute('tabindex', '0');
+        code.setAttribute('role', 'region');
+        code.setAttribute('aria-label', 'Code block');
+    });
+});
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

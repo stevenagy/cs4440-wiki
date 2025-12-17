@@ -10,8 +10,44 @@
   --color-lightblue: #C3EEEE;
   --color-blue: #006bdf;
   --color-orange: #c53f0a;
-  --color-green: #218721;
+  --color-green: #1a6b1a;
   --color-purple: #9932CC;
+}
+
+/* ===============================
+   Accessibility
+   =============================== */
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 8px 16px;
+  z-index: 1100;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+pre {
+  overflow: auto;
+}
+
+pre:focus,
+code:focus {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 2px;
+}
+
+/* Fix highlight.js contrast issues for WCAG AA compliance */
+.hljs-tag,
+.hljs-comment,
+.hljs-quote {
+  color: #5a5a5a !important;
 }
 
 /* ===============================

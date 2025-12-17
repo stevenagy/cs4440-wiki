@@ -21,7 +21,7 @@
 
 <!-- ################################################################################### -->
 
-<div class="container main-container" role="main">
+<div class="container main-container" role="main" id="main-content">
     <div class="row">
     <div class="col-lg-9">
         <h1>CS 4440 Wiki: <br class="on-narrow"><strong style="color:var(--color-blue)">C Cheat Sheet</strong></h1><br>
@@ -44,7 +44,7 @@
 
         <h3 id=functions#declaration>Declarations</h3>
         <p>Function <strong>declarations</strong> include a function's name, the type of the data it returns, and its arguments.</p>
-<pre tabindex="0"><code class="language-c">void hello()          // This function's return type is "void", meaning it returns nothing.
+<pre><code class="language-c">void hello()          // This function's return type is "void", meaning it returns nothing.
 
 int add(int a, int b) // This function returns an integer, and takes in two integers a and b.
 
@@ -53,7 +53,7 @@ char *gets(char *s)   // This function returns a char pointer, and takes in one 
 
         <h3 id=functions#definition>Definitions</h3>
         <p>Function <strong>definitions</strong> provides the actual body of a declared function.</p>
-<pre tabindex="0"><code class="language-c">void hello(){
+<pre><code class="language-c">void hello(){
     printf("Goodbye!");
     return; // Returns nothing; it's void!
 }
@@ -66,7 +66,7 @@ int add(int a, int b) {
 
         <h3 id=functions#calling>Calling Functions</h3>
         <p>Function <strong>calls</strong> are how one function invokes another. To be successful, the call<strong>er</strong> function must properly set up the call<strong>ee</strong>'s arguments. For example, suppose our callee's definintion is <code>void callee(int a)</code>:</p>
-<pre tabindex="0"><code class="language-c">void caller(){
+<pre><code class="language-c">void caller(){
     int x = 4440;
 
     void callee();  // Will fail; missing the callee's argument!
@@ -81,7 +81,7 @@ int add(int a, int b) {
 
         <h3 id=storing#buffers>Fixed-size Buffers</h3>
         <p>The following statically allocates a stack buffer with name <code>name</code> to hold <code>nmemb</code> objects of type <code>type</code>: <code>type name[nmemb]</code>. Note that buffer's total size is based on the <em>number</em> and <em>size</em> of the data type~</p>
-<pre tabindex="0"><code class="language-c">char foo[100]    // Allocates a 100-byte character buffer foo.
+<pre><code class="language-c">char foo[100]    // Allocates a 100-byte character buffer foo.
                  // Characters are just one byte in size!
 
 int bar[100]     // Allocates a 400-byte integer buffer bar.
@@ -90,18 +90,18 @@ int bar[100]     // Allocates a 400-byte integer buffer bar.
 
         <h3 id=storing#alloca>Variable-size Buffers</h3>
         <p>In Project 2, you'll see function <code>void *alloca(size_t size)</code> used to allocate stack buffers of <strong>variable</strong> sizes (i.e., dependent on argument <code>size</code>).</p>
-<pre tabindex="0"><code class="language-c">int *buf = alloca(sizeof(int) * x);  // Allocates a buffer that can fit x integers.
+<pre><code class="language-c">int *buf = alloca(sizeof(int) * x);  // Allocates a buffer that can fit x integers.
                                      // Ints are 4 bytes large, so we get a (4*x) byte buf!
 </code></pre>
 
         <h3 id=storing#pointers>Data Pointers</h3>
         <p>Pointers are variables whose values are the <strong>memory address</strong> of another variable of the same data type. Pointers are created with the <code>*</code> operator (e.g., <code>int *ptr = &var</code>):</p>
-<pre tabindex="0"><code class="language-c">int course = 4440;    // Variable 'course' is an integer with the value 4440.
+<pre><code class="language-c">int course = 4440;    // Variable 'course' is an integer with the value 4440.
 int *ptr = &course;   // Pointer ptr now points to course's memory address!
 </code></pre> 
 
         <p>Pointer <strong>dereferencing</strong> allows you to update or reference the value <em>pointed to</em> by a pointer variable. We'll again use the <code>*</code> dereference operator accordingly:</p>
-<pre tabindex="0"><code class="language-c">int x = 4440;    // Variable x is an integer with value 4440.
+<pre><code class="language-c">int x = 4440;    // Variable x is an integer with value 4440.
 int *ptr = &x;   // Pointer ptr points to x's memory address!
 *ptr = 5963      // The memory slot that ptr points to now contains 5963!
 </code></pre> 
@@ -114,14 +114,14 @@ int *ptr = &x;   // Pointer ptr points to x's memory address!
         <p><strong>Definition:</strong> <code>char *gets(char *s)</code>.</p>
 
         <p>Reads a line from <code>stdin</code> (standard in) into the buffer pointed to by <code>s</code> until either a terminating newline or EOF (end of file), which it replaces with a null terminator (<code>'\0'</code>). No bounds check is performed.</p>
-<pre tabindex="0"><code class="language-c">char dest[4];  // Set up our dest buffer...
+<pre><code class="language-c">char dest[4];  // Set up our dest buffer...
 gets(dest);    // Save user's input from stdin into dest!
 </code></pre> 
 
         <h3 id=reading#strcpy><code>strcpy()</code>: String Copy</h3>
         <p><strong>Definition:</strong> <code>char *strcpy(char *dest, char *src)</code>.</p>
         <p>Copies the string pointed to by buffer <code>src</code> to the buffer pointed to by  <code>dest</code>. No bounds check is performed.</p>
-<pre tabindex="0"><code class="language-c">char src[100];           // Set up our source buffer...
+<pre><code class="language-c">char src[100];           // Set up our source buffer...
 char dst[50];            // Set up our destination buffer...
 strcpy(dst, src);        // Copy source into dest; oh no, overflow!
 </code></pre> 
@@ -129,7 +129,7 @@ strcpy(dst, src);        // Copy source into dest; oh no, overflow!
         <h3 id=reading#strncpy><code>strncpy()</code>: Restricted String Copy</h3>
         <p><strong>Definition:</strong> <code>char *strncpy(char *dest, char *src, size_t n)</code>.</p>
         <p>Copies up to <code>n</code> bytes from the string pointed to by buffer <code>src</code> to the buffer pointed to by <code>dest</code>.</p>
-<pre tabindex="0"><code class="language-c">char src[100];           // Set up our source buffer...
+<pre><code class="language-c">char src[100];           // Set up our source buffer...
 char dst[50];            // Set up our destination buffer...
 strncpy(dst, src, 50);   // Copy 50 bytes from source to dest!
 </code></pre> 
@@ -137,7 +137,7 @@ strncpy(dst, src, 50);   // Copy 50 bytes from source to dest!
         <h3 id=reading#fread><code>fread()</code>: Reading from Files</h3>
         <p><strong>Definition:</strong> <code>size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream)</code>.</p>
         <p>Reads <code>nmemb</code> items of size <code>size</code> bytes long from the stream pointed to by <code>stream</code> into the location pointed to by <code>ptr</code>.</p>
-<pre tabindex="0"><code class="language-c">FILE *f = fopen("grades.txt", "r"); // Set up our file stream...
+<pre><code class="language-c">FILE *f = fopen("grades.txt", "r"); // Set up our file stream...
 char buf[4440];                     // Set up our char buffer...
 fread(&buf, sizeof(char), 4440, f); // Read 4440 char-sized elements from f into buf!
 </code></pre> 
@@ -150,14 +150,14 @@ fread(&buf, sizeof(char), 4440, f); // Read 4440 char-sized elements from f into
         <h3 id=misc#system><code>system()</code>: Command Execution</h3>
         <p><strong>Definition:</strong> <code>int system(const char *command)</code>.</p>
         <p>Executes a command specified in <code>command</code> by calling <code>/bin/sh -c command</code>, and returns after the command has been completed.</p>
-<pre tabindex="0"><code class="language-c">system("foo");      // This opens process foo!
+<pre><code class="language-c">system("foo");      // This opens process foo!
 system("/bin/sh");  // This opens the shell process!
 </code></pre> 
 
         <h3 id=misc#setuid><code>setuid()</code>: Set Permissions</h3>
         <p><strong>Definition:</strong> <code>int setuid(uid_t uid)</code></p>.<br>
         <p>Calling <code>setuid(0)</code> sets the process privilege level to <strong>root</strong>:</p>
-<pre tabindex="0"><code class="language-c">setuid(0);      // Set privilege to root...
+<pre><code class="language-c">setuid(0);      // Set privilege to root...
 system("/bin/sh");  // Now this shell is a ROOT shell!
 </code></pre> 
 
@@ -216,7 +216,20 @@ system("/bin/sh");  // Now this shell is a ROOT shell!
 <!-- ################################################################################### -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>document.querySelectorAll('pre').forEach(el => el.setAttribute('tabindex', '0'));</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('pre').forEach(pre => {
+        pre.setAttribute('tabindex', '0');
+        pre.setAttribute('role', 'region');
+        pre.setAttribute('aria-label', 'Code block');
+    });
+    document.querySelectorAll('pre code').forEach(code => {
+        code.setAttribute('tabindex', '0');
+        code.setAttribute('role', 'region');
+        code.setAttribute('aria-label', 'Code block');
+    });
+});
+</script>
 </body>
 
 </html>

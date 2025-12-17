@@ -21,7 +21,7 @@
 
 <!-- ################################################################################### -->
 
-<div class="container main-container" role="main">
+<div class="container main-container" role="main" id="main-content">
     <div class="row">
     <div class="col-lg-9">
         <h1>CS 4440 Wiki: <br class="on-narrow"><strong style="color:var(--color-blue)">The PyMD5 Module</strong></h1><br>
@@ -38,40 +38,40 @@
 
         <h3 id=md5>Class <code>md5(string='', state=None, count=0)</code></h3>
         <p>Returns a new <code>md5</code> objects and processes string.  Optional advanced parameters allow you to resume an earlier computation by setting the internal state of the function and the counter of message bits processed so far. Most of the interface matches Python's standard <code>hashlib</code>.</p>
-<pre tabindex="0"><code class="language-python"
+<pre><code class="language-python"
 >>>> m = md5()
 </code></pre>
 
         <h3 id=update>Function <code>md5.update(arg)</code></h3>
         <p>Updates the <code>md5</code> object with the string <code>arg</code>. Repeated calls are equivalent to a single call with the concatenation of all the arguments.</p>
-<pre tabindex="0"><code class="language-python"
+<pre><code class="language-python"
 >>>> m.update("msg")
 </code></pre>
 
         <h3 id=digest>Function <code>md5.digest()</code></h3>  
         <p>Returns the digest of the strings passed to the <code>update()</code> method so far. This may contain non-ASCII characters, including <code>NULL</code> bytes.</p>
-<pre tabindex="0"><code class="language-python"
+<pre><code class="language-python"
 >>>> print(m.digest())
 b'\xf2\xbc[\x1d\x86\x98p\xd7h\x8fq\xb2\xd8p0\xbd'
 </code></pre>
 
         <h3 id=hexdigest>Function <code>md5.hexdigest()</code></h3>
         <p>Like <code>digest()</code> but returns a string of double length, containing only hexadecimal digits.</p>
-<pre tabindex="0"><code class="language-python"
+<pre><code class="language-python"
 >>>> print(m.hexdigest())
 f2bc5b1d869870d7688f71b2d87030bd
 </code></pre>
 
         <h3 id=digest_size>Function <code>md5.digest_size</code></h3>
         <p>Returns the size of the resulting hash in bytes.</p>
-<pre tabindex="0"><code class="language-python"
+<pre><code class="language-python"
 >>>> print(m.digest_size)
 16
 </code></pre>
 
         <h3 id=block_size>Function <code>md5.block_size</code></h3>  
         <p>Returns the internal block size of the hash algorithm in bytes.</p>
-<pre tabindex="0"><code class="language-python"
+<pre><code class="language-python"
 >>>> print(m.block_size)
 64
 </code></pre>
@@ -79,7 +79,7 @@ f2bc5b1d869870d7688f71b2d87030bd
     <h3 id=padding>Function <code>padding(msg_bits)</code></h3>
         <p>Given a message size (in bits), returns the full padding byte string that should be appended to the end of a message to reach a multiple of the block size.</p>
     </li>
-<pre tabindex="0"><code class="language-python"
+<pre><code class="language-python"
 >>>> p = pymd5.padding(8)  # 8 bits (1 byte)
 >>> print(len(p))
 63
@@ -120,7 +120,20 @@ f2bc5b1d869870d7688f71b2d87030bd
 <!-- ################################################################################### -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>document.querySelectorAll('pre').forEach(el => el.setAttribute('tabindex', '0'));</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('pre').forEach(pre => {
+        pre.setAttribute('tabindex', '0');
+        pre.setAttribute('role', 'region');
+        pre.setAttribute('aria-label', 'Code block');
+    });
+    document.querySelectorAll('pre code').forEach(code => {
+        code.setAttribute('tabindex', '0');
+        code.setAttribute('role', 'region');
+        code.setAttribute('aria-label', 'Code block');
+    });
+});
+</script>
 </body>
 
 </html>

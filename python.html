@@ -21,7 +21,7 @@
 
 <!-- ################################################################################### -->
 
-<div class="container main-container" role="main">
+<div class="container main-container" role="main" id="main-content">
     <div class="row">
     <div class="col-lg-9">
         <h1>CS 4440 Wiki: <br class="on-narrow"><strong style="color:var(--color-blue)">Python 3 Cheat Sheet</strong></h1><br>
@@ -33,7 +33,7 @@
         <p><strong>This page is by no means comprehensive—we encourage you to bookmark and familiarize yourself with one of the many in-depth Python tutorials on the web.</strong> Some great examples are:</p>
 
         <ul>
-            <li><a href="https://docs.python.org/3/contents.html">The Official Python Docs</li>
+            <li><a href="https://docs.python.org/3/contents.html">The Official Python Docs</a></li>
             <li><a href="https://www.learnpython.org/">LearnPython.org</a></li>
             <li><a href="https://developers.google.com/edu/python">Google's Python Class</a></li>
         </ul>
@@ -46,7 +46,7 @@
         <p>In some course exercises, we'll walk you through examples demonstrated in Python's <strong>interactive mode</strong>. Think of interactive mode as a Python "session", where you write programs line-by-line (rather than all at once) and get feedback as each line is processed and executed.</p>
 
         <p>To launch interactive mode, run <code>python3</code> in your terminal. An example session is below:</p>
-<pre tabindex="0"><code class="language-python"
+<pre><code class="language-python"
 >$ python3
 >>> print("Hello from the interpreter!")
 Hello f&#8203;rom the interpreter!
@@ -55,7 +55,7 @@ Hello f&#8203;rom the interpreter!
 
         <h3 id=run#scripts><strong>Writing and Running Scripts:</strong></h3>
         <p>The most common way that you'll be using Python is writing and running your own programs (or more technically, "scripts"). After editing your Python program (any IDE or text editor will work), save it as a <code>.py</code> file. Then, run it by calling <code>$ python3 /path/to/your/script.py</code>. An example is below:</p>
-<pre tabindex="0"><code class="language-python"
+<pre><code class="language-python"
 >$ echo 'print("Hello from a script!")' > example.py
 $ python3 example.py
 Hello f&#8203;rom a script!
@@ -63,7 +63,7 @@ Hello f&#8203;rom a script!
 
         <h3 id="run#debug"><strong>Debugging Code:</strong></h3>
         <p>Occasionally your code might not function as expected. Thankfully, Python provides descriptive <strong>error messages</strong> to help you narrow down where your code is incorrect. For example:</p>
-<pre tabindex="0"><code class="language-python"
+<pre><code class="language-python"
 >>>> print(os.path)
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -84,7 +84,7 @@ NameError: name 'os' is not defined
         <p>Note that in all of CS 4440, you may only use <strong>default Python libraries</strong> (the ones that come pre-installed in your Linux VM) and/or <strong>modules that we provide you</strong>. We won't install any others when grading your work, which means your code will fail—and you'll lose points—if you rely on any external dependencies.</p>
 
         <h3 id="mods#import"><strong>Importing Modules:</strong></h3>
-<pre tabindex="0"><code class="language-python"
+<pre><code class="language-python"
 >>>> import os               # Import the `os` module.
 >>> print(os.name)          # To access objects, we use prefix "os.OBJNAME".
 posix
@@ -94,7 +94,7 @@ posix.uname_result(sysname='Linux', ...)
 </code></pre>
 
         <h3 id="mods#import#one"><strong>Importing Specific Objects:</strong></h3>
-<pre tabindex="0"><code class="language-python"
+<pre><code class="language-python"
 >>>> from os import name     # Import variable `name` from the `os` module.
 >>> print(name)             # We no longer need a prefix to access `name`!
 posix
@@ -107,7 +107,7 @@ NameError: name 'os' is not defined
 </code></pre>
 
         <h3 id="mods#import#all"><strong>Importing All Objects:</strong></h3>
-<pre tabindex="0"><code class="language-python"
+<pre><code class="language-python"
 >>>> from os import *        # The '*' imports every object from the module.
 >>> print(name)             # As before, we no longer need to prefix objects!
 posix
@@ -121,7 +121,7 @@ posix.uname_result(sysname='Linux', ...)
         <hr><h2 id=vars>Variables</h2>
 
         <h3 id="vars#init"><strong>Initializing:</strong></h3>
-<pre tabindex="0"><code class="language-python"
+<pre><code class="language-python"
 >>>> x = 5           # We've declared variable `x` with value 5.
 >>> print(type(x))  # Python correctly infers it is an integer!
 <&#8203;c&#8203;lass 'int'>
@@ -132,7 +132,7 @@ posix.uname_result(sysname='Linux', ...)
 </code></pre>
 
         <h3 id="vars#cast"><strong>Casting:</strong></h3>
-<pre tabindex="0"><code class="language-python"
+<pre><code class="language-python"
 >>>> x = int(5)      # Let's cast `x` as an `int` (integer).
 >>> print(x)        # Now print it — it's indeed an integer!
 5
@@ -146,14 +146,14 @@ posix.uname_result(sysname='Linux', ...)
         <hr><h2 id=strs>String Manipulation</h2>
 
         <h3 id="strs#length"><strong>Length of a String:</strong></h3>
-<pre tabindex="0"><code class="language-python"
+<pre><code class="language-python"
 >>>> x = "cs4440"            # Use `len()` to get a string's length.
 >>> print(len(x))
 6
 </code></pre>
 
         <h3 id="strs#append"><strong>Appending to a String:</strong></h3>
-<pre tabindex="0"><code class="language-python"
+<pre><code class="language-python"
 >>>> x = "cs4440"            # Append ' is cool' to string 'cs4440'.
 >>> x += " is cool"
 >>> print(x)
@@ -161,7 +161,7 @@ cs4440 i&#8203;s cool
 </code></pre>
 
         <h3 id="strs#substrs"><strong>Substrings:</strong></h3>
-<pre tabindex="0"><code class="language-python"
+<pre><code class="language-python"
 >>>> x = "cs4440 is cool"    # Check if substring 'cool' is present.
 >>> print("cool" in x)
 T&#8203;rue
@@ -171,14 +171,14 @@ F&#8203;alse
 </code></pre>
 
         <h3 id="strs#split"><strong>Splitting by a Delimiter:</strong></h3>
-<pre tabindex="0"><code class="language-python"
+<pre><code class="language-python"
 >>>> x = "cs4440:cool"       # Use delimiter ':' to split into a list.
 >>> print(x.split(':'))
 ['cs4440', 'cool']
 </code></pre>
 
         <h3 id="strs#strip"><strong>Stripping Characters:</strong></h3>
-<pre tabindex="0"><code class="language-python"
+<pre><code class="language-python"
 >>>> x = "  cs4440   "       # Strip any leading / trailing whitespace.
 >>> print(x.strip())
 cs4440
@@ -189,14 +189,14 @@ cs
 </code></pre>
 
         <h3 id="strs#repeat"><strong>Repeating Characters:</strong></h3>
-<pre tabindex="0"><code class="language-python"
+<pre><code class="language-python"
 >>>> x = "A"*10            # You can use multiplication to quickly  
 >>> print(x)              # generate strings of repeated characters.
 AAAAAAAAAA
 </code></pre>
 
         <h3 id="strs#bytes"><strong>Byte Strings:</strong></h3>
-<pre tabindex="0"><code class="language-python"
+<pre><code class="language-python"
 >>>> x = b'cs4440'               # Python byte strings are wrapped by `b''`.
 >>> print(x.decode('utf-8'))    # Use `decode()` to convert them to strings.
 cs4440
@@ -210,7 +210,7 @@ b'cs4440'
         <hr><h2 id=lists>List Manipulation</h2>
 
         <h3 id="lists#index"><strong>Indexing:</strong></h3>
-<pre tabindex="0"><code class="language-python"
+<pre><code class="language-python"
 >>>> x = ['cs4440', 'is', 'cool']    # Print the 0th item of our list.
 >>> print(x[0])
 cs4440
@@ -221,7 +221,7 @@ cool
 </code></pre>
 
         <h3 id="lists#insert"><strong>Inserting:</strong></h3>
-<pre tabindex="0"><code class="language-python"
+<pre><code class="language-python"
 >>>> x = ['cs4440', 'is', 'cool']    # Overwrite the last item with 'fun'.
 >>> x[-1] = 'fun'
 >>> print(x)
@@ -233,7 +233,7 @@ cool
 </code></pre>
 
         <h3 id="lists#join"><strong>Joining:</strong></h3>
-<pre tabindex="0"><code class="language-python"
+<pre><code class="language-python"
 >>>> x = ['cs4440', 'is', 'cool']    # Join items into a space-delimited string. 
 >>> print(' '.join(x))
 cs4440 i&#8203;s cool
@@ -247,7 +247,7 @@ cs4440 i&#8203;s cool
         <hr><h2 id=conds>Conditional Statements</h2>
 
         <h3 id="conds#if"><strong>If Statements:</strong></h3>
-<pre tabindex="0"><code class="language-python"
+<pre><code class="language-python"
 >>>> x = 5
 >>> if (5 % 2 == 1):    # Evaluates to True if x modulo 2 equals 1.
 ...     print("Yes!")   # Prints string "Yes!" if condition is True.
@@ -255,7 +255,7 @@ Yes!
 </code></pre>
 
         <h3 id="conds#else"><strong>Else Statements:</strong></h3>
-<pre tabindex="0"><code class="language-python"
+<pre><code class="language-python"
 >>>> x = 5
 >>> if (x % 3 == 1):    # Evaluates to True if x modulo 3 equals 1.
 ...     print("Yes!")
@@ -268,7 +268,7 @@ Nope!
         <hr><h2 id=loops>Loops</h2>
 
         <h3 id="loops#for"><strong>For Loops:</strong></h3>
-<pre tabindex="0"><code class="language-python"
+<pre><code class="language-python"
 >>>> x = ['a', 'b', 'c']    # For every item `y` in list `x`...
 >>> for y in x:
 ...     print(y)
@@ -277,7 +277,7 @@ b
 c
 </code></pre>
         <h3 id="loops#while"><strong>While Loops:</strong></h3>
-<pre tabindex="0"><code class="language-python"
+<pre><code class="language-python"
 >>>> x = 3
 >>> while x != 0:          # While x is not equal to 0...
 ...   print(x)             # Print x and then decrement it.
@@ -291,7 +291,7 @@ c
         <hr><h2 id=funcs>Functions</h2>
 
         <h3 id="funcs#defs"><strong>Defining Functions:</strong></h3>
-<pre tabindex="0"><code class="language-python"
+<pre><code class="language-python"
 >>>> def foo():             # Definition of function `foo()`.
 ...      print("Hello!")
 ...      return
@@ -302,7 +302,7 @@ c
 </code></pre>
 
         <h3 id="funcs#call"><strong>Calling Functions:</strong></h3>
-<pre tabindex="0"><code class="language-python"
+<pre><code class="language-python"
 >>>> foo()                  # Call foo(), which has no arguments.
 Hello!
 
@@ -393,7 +393,20 @@ Hello!
 <!-- ################################################################################### -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>document.querySelectorAll('pre').forEach(el => el.setAttribute('tabindex', '0'));</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('pre').forEach(pre => {
+        pre.setAttribute('tabindex', '0');
+        pre.setAttribute('role', 'region');
+        pre.setAttribute('aria-label', 'Code block');
+    });
+    document.querySelectorAll('pre code').forEach(code => {
+        code.setAttribute('tabindex', '0');
+        code.setAttribute('role', 'region');
+        code.setAttribute('aria-label', 'Code block');
+    });
+});
+</script>
 </body>
 
 </html>

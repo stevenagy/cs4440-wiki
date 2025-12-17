@@ -21,7 +21,7 @@
 
 <!-- ################################################################################### -->
 
-<div class="container main-container" role="main">
+<div class="container main-container" role="main" id="main-content">
     <div class="row">
     <div class="col-lg-9">
         <h1>CS 4440 Wiki: <br class="on-narrow"><strong style="color:var(--color-blue)">JavaScript Cheat Sheet</strong></h1><br>
@@ -44,19 +44,19 @@
         <p>In Project 3, you'll work with three fundamental ways to execute JavaScript code: <strong>on-page scripts</strong> wrapped in HTML code, <strong>functions</strong>, and <strong>event</strong>-driven execution.</p>
 
         <h3 id=exec#scripts>On-page Scripts:</h3>
-<pre tabindex="0"><code class="language-java">&lt;script&gt;
+<pre><code class="language-java">&lt;script&gt;
     /* Code to be executed as the parent HTML code is processed. */
 &lt;&sol;script&gt;
 </code></pre> 
 
         <h3 id=exec#funcs>Functions:</h3>
-<pre tabindex="0"><code class="language-js">function foo(){
+<pre><code class="language-js">function foo(){
     /* Code to be executed when this function is called. */
 }
 </code></pre>
 
         <h3 id=exec#events>Events:</h3>
-<pre tabindex="0"><code class="language-js">document.onload = function(){ 
+<pre><code class="language-js">document.onload = function(){ 
     /* Code to be executed when the document is loaded. */ 
 }
 
@@ -69,12 +69,12 @@ window.onload = function(){
         <hr><h2 id=dbg>Debugging</h2>
         <p>As with other languages, debugging is key to understanding where your code is incorrect. There are two key features to help you debug your code: <strong>alert</strong> boxes, and your browser's JavaScript <strong>console</strong>. These are analogous to the many types of print statements that you've seen in other languages.</p>
         <h3 id=dbg#alerts>Alert Boxes:</h3>
-<pre tabindex="0"><code class="language-js">var x = "Hello, world!"      
+<pre><code class="language-js">var x = "Hello, world!"      
 alert(x);       // On execution, opens an `alert()` box saying "Hello, world!".
 </code></pre>
 
         <h3 id=dbg#console>Console Logging:</h3>
-<pre tabindex="0"><code class="language-js">var x = "Hello, world!"
+<pre><code class="language-js">var x = "Hello, world!"
 console.log(x); // On execution, logs "Hello, world!" to your browser's JS console.
 </code></pre>
 
@@ -82,7 +82,7 @@ console.log(x); // On execution, logs "Hello, world!" to your browser's JS conso
         <hr><h2 id=vars>Variables</h2>
         <p>Like Python, variables types are inferred by the interpreter. For brevity, we won't cover casting here as you will not need to use it in your work. The following is borrowed from <a href="https://htmlcheatsheet.com/js/">HTMLCheatSheet.com</a>.</p>
         <h3 id=vars#init>Initializing:</h3>
-<pre tabindex="0"><code class="language-js">var a;                          // Variable.
+<pre><code class="language-js">var a;                          // Variable.
 var b = "init";                 // String
 var c = "Hi" + " " + "Joe";     // c = "Hi Joe"
 var d = 1 + 2 + "3";            // d = "33"
@@ -93,7 +93,7 @@ var h = 1, b = 2, c = a + b;    // One line.
 </code></pre>        
 
         <h3 id=vars#types>Data types:</h3>
-<pre tabindex="0"><code class="language-js">var age = 18;                           // Number.
+<pre><code class="language-js">var age = 18;                           // Number.
 var name = "Jane";                      // String.
 var name = {first:"Jane", last:"Doe"};  // Object.
 var truth = false;                      // Boolean.
@@ -104,17 +104,17 @@ var a = null;                           // Null.
    <!-- ################################################################################### -->
         <hr><h2 id=strs>String Manipulation</h2>
         <h3 id=strs#length>Length of a String:</h3>
-<pre tabindex="0"><code class="language-js">var x = "cs4440";
+<pre><code class="language-js">var x = "cs4440";
 var y = x.length;       // y = 6
 </code></pre>
  
         <h3 id=strs#append>Appending to a String:</h3>
-<pre tabindex="0"><code class="language-js">var x = "cs4440"
+<pre><code class="language-js">var x = "cs4440"
 var y = x + " is cool"  // y = "cs4440 is cool"
 </code></pre>
 
         <h3 id=strs#substrs>Substrings:</h3>
-<pre tabindex="0"><code class="language-js">var x = "cs4440";
+<pre><code class="language-js">var x = "cs4440";
 x.indexOf("4440");            // Find the substring's first index; -1 if not found.
 x.lastIndexOf("4440");        // Find the index of the substring's last occurrence.
 x.slice(0, 2);                // Grabs the substring "cs" from "cs4440".
@@ -123,14 +123,14 @@ x.charAt(0);                  // Return character at the index (in this case, "c
 </code></pre>
 
         <h3 id=strs#split>Splitting by a Delimiter:</h3>
-<pre tabindex="0"><code class="language-js">var x = "cs4440";
+<pre><code class="language-js">var x = "cs4440";
 var y = x.split("cs");        // Splits string by delimiter 'cs' into array ['','4440'].
 </code></pre>
 
    <!-- ################################################################################### -->
         <hr><h2 id=arrs>Array Manipulation</h2>
         <h3 id=arrs#index>Indexing:</h3>
-<pre tabindex="0"><code class="language-js">var courses = ['cs4440', 'cs3500', 'cs3810']
+<pre><code class="language-js">var courses = ['cs4440', 'cs3500', 'cs3810']
 var x = courses[0]                  // Accesses the item at index 0 ('cs4440').
 var x = courses[courses.length-1]   // Accesses the last array item ('cs3810').
 </code></pre>
@@ -141,11 +141,11 @@ var x = courses[courses.length-1]   // Accesses the last array item ('cs3810').
         <p>We recommend the following API calls for issuing <code>GET</code> and <code>POST</code> requests.</p>
 
         <h3 id=reqs#get>GET:</h3>
-<pre tabindex="0"><code class="language-js">$.get('http://url.com', {param1: (p1_value), param1: (p2_value)});
+<pre><code class="language-js">$.get('http://url.com', {param1: (p1_value), param1: (p2_value)});
 </code></pre> 
         
         <h3 id=reqs#post>POST:</h3>
-<pre tabindex="0"><code class="language-js">$.post('http://url.com/form?', {
+<pre><code class="language-js">$.post('http://url.com/form?', {
     param1: p1_value,
     param2: p2_value,
 });
@@ -155,13 +155,13 @@ var x = courses[courses.length-1]   // Accesses the last array item ('cs3810').
         <hr><h2 id=elems>Accessing Site Elements</h2>
         <h3 id=elems#domtree>DOM Elements:</h3>
         <p>The <code>document</code> object refers to the page DOM tree, where you'll be able to access all page objects. We recommend using the <code>getElementById()</code> function.</p>
-<pre tabindex="0"><code class="language-js">var x = document.getElementById("eID").innerHTML;             // Grab an element.
+<pre><code class="language-js">var x = document.getElementById("eID").innerHTML;             // Grab an element.
 var y = document.getElementById("eID").children[0].innerHTML; // Grab 1st item of an array.
 </code></pre>
 
         <h3 id=elems#cookies>Cookies:</h3>
         <p>You can also access the website's <code>cookie</code> in a similar fashion. Note that the above code only accesses the raw cookie <em>in full</em> (i.e., the entire <strong>site cookie</strong> that you can see in Firefox's <strong>Developer Tools</strong>). If you want to access <em>specific fields</em> of this cookie, you'll need to add some additional parsing code!</p>
-<pre tabindex="0"><code class="language-js">var z = document.cookie; // Grab the full site cookie.
+<pre><code class="language-js">var z = document.cookie; // Grab the full site cookie.
 </code></pre>
 
     </div>
@@ -238,7 +238,20 @@ var y = document.getElementById("eID").children[0].innerHTML; // Grab 1st item o
 
 <!-- ################################################################################### -->
 
-<script>document.querySelectorAll('pre').forEach(el => el.setAttribute('tabindex', '0'));</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('pre').forEach(pre => {
+        pre.setAttribute('tabindex', '0');
+        pre.setAttribute('role', 'region');
+        pre.setAttribute('aria-label', 'Code block');
+    });
+    document.querySelectorAll('pre code').forEach(code => {
+        code.setAttribute('tabindex', '0');
+        code.setAttribute('role', 'region');
+        code.setAttribute('aria-label', 'Code block');
+    });
+});
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
