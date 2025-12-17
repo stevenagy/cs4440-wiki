@@ -376,6 +376,8 @@ code.hljs {
 	line-height: 1.275em;
 }
 
+
+
 .main-container .row {
 	margin-bottom: 1.5%;
 }
@@ -691,11 +693,10 @@ button.detailsButton:hover {
 
 .row:has(.sidebar-toc) {
 	align-items: flex-start;
-	margin-top: -0.5rem;
 }
 
 .col-lg-3:has(.sidebar-toc) {
-	padding-top: 0.25rem;
+	padding-top: 0.75rem;
 	position: sticky;
 	top: 4.5rem;
 }
