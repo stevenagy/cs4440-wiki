@@ -86,7 +86,9 @@
 
         <h3 id="navigation-details">Packet Details</h3>
         <p> After selecting a packet, you can explore the fields and information contained in each of the packet's layers. The <strong>Packet Details</strong> pane begins with the packet's link layer <em>frame</em> and ends with its app layer <em>application protocol</em> (if applicable for the packet).</p>
-        <p><img class="button wikiimage" src="img/wireshark-details.png" alt="Wireshark packet details pane" style="max-width:70%"/></p><br><br>
+        <p><img class="button wikiimage" src="img/wireshark-details.png" alt="Wireshark packet details pane" style="max-width:70%"/></p>
+
+        <br><br>
 
         <p> Select a layer to inspect: </p>
         <ul>
@@ -178,7 +180,18 @@
 
         <p>This will apply a display filter to the <strong>Packet List</strong>, showing only packets from the selected stream (as an example, it may apply a filter like <code>tcp.stream eq &#10092;stream number&#10093;</code>). <em>Additionally</em>, a separate window will open displaying the stream content in a more readable format.</p>
 
-        <br>
+        <br><br>
+
+        <h3 id="tips-capture">Capture Additional Packets</h3>
+        <p>The <code>Capture</code> menu can help you sniff for additional packets and produce <code>.pcap</code> files for further testing.</p>
+        <p><img class="button wikiimage" src="img/wireshark-capture-dropdown.png" alt="Wireshark Capture menu dropdown" style="max-width:70%"/></p>
+
+        <p>Within capture, select <code>Options</code> and then <strong>choose your active internet connection</strong> (most likely Wi-Fi or Ethernet) under the <code>Input</code> tab. On the <code>Output</code> tab, change the default file setting from <code>.pcapng</code> to <code>.pcap</code>. Press <code>Start</code> and a temporary file will be produced based on network traffic. Click the red <code>Stop</code> button on the left side of the icon bar to stop capturing.</p>
+        <p><img class="button wikiimage" src="img/wireshark-capture-options.png" alt="Wireshark Capture options dialog" style="max-width:70%"/></p>
+
+        <p>You can visit various HTTPS sites, such as <a href="https://users.cs.utah.edu/~snagy/courses/cs4440/">https://users.cs.utah.edu/~snagy/courses/cs4440/</a> or <a href="https://cs4440.eng.utah.edu/project3/sqlinject0/">https://cs4440.eng.utah.edu/project3/sqlinject0/</a>, to capture and inspect encrypted transmissions. This is especially useful if you want to test your solutions to Project 4 with additional <code>.pcap</code> files.</p>
+
+        <br><br>
 
     <!-- ################################################################################### -->
 
@@ -191,34 +204,35 @@
                 <ul>
                     <li><a href="#basics">Wireshark Basics</a>
                     <ul>
-                        <li><a href="#basics#run">Running Wireshark</a></li>
-                        <li><a href="#basics#open">Opening PCAP Files</a></li>
+                        <li><a href="#basics-run">Running Wireshark</a></li>
+                        <li><a href="#basics-open">Opening PCAP Files</a></li>
                     </ul>
                     </li>
                     <li style="margin-top:1ex"><a href="#navigation">Navigating Wireshark</a>
                     <ul>
-                        <li><a href="#navigation#main">Main Window</a></li>
-                        <li><a href="#navigation#list">Packet List</a></li>
-                        <li><a href="#navigation#details">Packet Details</a>
+                        <li><a href="#navigation-main">Main Window</a></li>
+                        <li><a href="#navigation-list">Packet List</a></li>
+                        <li><a href="#navigation-details">Packet Details</a>
                         <ul>
-                            <li><a href="#details#link">Link Layer</a></li>
-                            <li><a href="#details#network">Network Layer</a></li>
-                            <li><a href="#details#transport">Transport Layer</a></li>
-                            <li><a href="#details#app">Application Layer</a></li>
+                            <li><a href="#details-link">Link Layer</a></li>
+                            <li><a href="#details-network">Network Layer</a></li>
+                            <li><a href="#details-transport">Transport Layer</a></li>
+                            <li><a href="#details-app">Application Layer</a></li>
                         </ul>
                         </li>
-                        <li style="margin-top:1ex"><a href="#navigation#bytes">Packet Bytes</a></li>
+                        <li style="margin-top:1ex"><a href="#navigation-bytes">Packet Bytes</a></li>
                     </ul>
                     </li>
                     <li style="margin-top:1ex"><a href="#tips">Helpful Tips & Tricks</a>
                     <ul>
-                        <li><a href="#tips#filters">Filter Toolbar</a>
+                        <li><a href="#tips-filters">Filter Toolbar</a>
                         <ul>
-                            <li><a href="#filters#operators">Filter Operators</a></li>
-                            <li><a href="#filters#examples">Filter Examples</a></li>
+                            <li><a href="#filters-operators">Filter Operators</a></li>
+                            <li><a href="#filters-examples">Filter Examples</a></li>
                         </ul>
                         </li>
-                        <li style="margin-top:1ex"><a href="#tips#follow">Following Streams</a></li>
+                        <li style="margin-top:1ex"><a href="#tips-follow">Following Streams</a></li>
+                        <li><a href="#tips-capture">Capturing Packets</a></li>
                     </ul>
                     </li>
                 </ul>
