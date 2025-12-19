@@ -724,6 +724,13 @@ button.detailsButton:hover {
 	.sidebar-toc {
 		display: none;
 	}
+	.col-lg-3:has(.sidebar-toc) {
+		display: none;
+	}
+	.row:has(.sidebar-toc) > .col-lg-9 {
+		width: 100%;
+		flex: 0 0 100%;
+	}
 }
 
 .sidebar-toc ul {
