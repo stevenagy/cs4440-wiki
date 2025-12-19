@@ -160,6 +160,15 @@ posix.uname_result(sysname='Linux', ...)
 cs4440 i&#8203;s cool
 </code></pre>
 
+        <h3 id="strs#search"><strong>Searching a String:</strong></h3>
+<pre><code class="language-python"
+>>>> x = "lotsandlotsoftext"     # Find the first index in the string where "and" appears.
+>>> print(x.find("and"))
+4
+>>> print(x.find("notfound"))   # Returns -1, since "notfound" is not in the string.
+-1
+</code></pre>
+
         <h3 id="strs#substrs"><strong>Substrings:</strong></h3>
 <pre><code class="language-python"
 >>>> x = "cs4440 is cool"    # Check if substring 'cool' is present.
@@ -168,6 +177,12 @@ T&#8203;rue
 
 >>> print("4440" not in x)  # Check if substring '4440' not present.
 F&#8203;alse
+
+>>> print(x[2:6])           # Print the substring from index 2 to 5.
+4440
+
+>>> print(x[7:])            # Print the substring starting at index 7.
+is cool                     # A blank substring bound defaults to the start/end of the string.
 </code></pre>
 
         <h3 id="strs#split"><strong>Splitting by a Delimiter:</strong></h3>
@@ -218,6 +233,13 @@ cs4440
 >>> x = ['cs4440', 'is', 'cool']    # Print the last item of our list.
 >>> print(x[-1])
 cool
+
+>>> x = ['cs4440', 'is', 'super', 'cool']   # Print the sublist from index 1 to 2.
+>>> print(x[1:3])
+['is', 'super']
+
+>>> print(x[:2])                    # Print the sublist ending at index 1.
+['cs4440', 'is']                    # A blank sublist bound defaults to the start/end of the list.
 </code></pre>
 
         <h3 id="lists#insert"><strong>Inserting:</strong></h3>
@@ -275,6 +297,13 @@ Nope!
 a
 b
 c
+
+>>> for i in range(4):     # Python's version of "for(int i = 0; i < 4; i++)"
+...     print(i)
+0
+1
+2
+3
 </code></pre>
         <h3 id="loops#while"><strong>While Loops:</strong></h3>
 <pre><code class="language-python"
@@ -341,6 +370,7 @@ Hello!
                     <ul>
                         <li><a href="#strs#length">Length</a></li>
                         <li><a href="#strs#append">Appending</a></li>
+                        <li><a href="#strs#search">Searching</a></li>
                         <li><a href="#strs#substrs">Substrings</a></li>
                         <li><a href="#strs#split">Splitting</a></li>
                         <li><a href="#strs#strip">Stripping</a></li>
